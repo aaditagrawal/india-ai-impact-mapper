@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useRef } from "react"
+import { memo, useState, useRef, useCallback } from "react"
 import { MagnifyingGlass, X, EyeSlash, Eye } from "@phosphor-icons/react"
 import {
   InputGroup,
@@ -25,35 +25,48 @@ interface FiltersBarProps {
   hasActiveFilters: boolean
 }
 
-export function FiltersBar({
+export const FiltersBar = memo(function FiltersBar({
   filters,
   onUpdate,
   onClear,
   hasActiveFilters,
 }: FiltersBarProps) {
   const [localQuery, setLocalQuery] = useState(filters.query)
-  const [prevFilterQuery, setPrevFilterQuery] = useState(filters.query)
+  const [debouncePending, setDebouncePending] = useState(false)
   const debounceRef = useRef<ReturnType<typeof setTimeout>>(null)
+  const latestQueryRef = useRef(localQuery)
 
-  // Sync external -> local during render (clear button, URL change)
-  if (filters.query !== prevFilterQuery) {
-    setPrevFilterQuery(filters.query)
-    setLocalQuery(filters.query)
-  }
-
-  const handleQueryChange = (value: string) => {
-    setLocalQuery(value)
-    if (debounceRef.current) clearTimeout(debounceRef.current)
-    debounceRef.current = setTimeout(() => {
-      onUpdate({ query: value })
-    }, 200)
-  }
-
-  const handleQueryClear = () => {
+  // Only sync external → local when query is cleared externally (e.g. "Clear all" button)
+  // Skip sync if there's a pending debounce (user is still typing)
+  if (filters.query === "" && localQuery !== "" && !debouncePending) {
     setLocalQuery("")
-    if (debounceRef.current) clearTimeout(debounceRef.current)
-    onUpdate({ query: "" })
   }
+
+  const handleQueryChange = useCallback(
+    (value: string) => {
+      setLocalQuery(value)
+      latestQueryRef.current = value
+      setDebouncePending(true)
+      if (debounceRef.current) clearTimeout(debounceRef.current)
+      debounceRef.current = setTimeout(() => {
+        debounceRef.current = null
+        setDebouncePending(false)
+        onUpdate({ query: latestQueryRef.current })
+      }, 300)
+    },
+    [onUpdate]
+  )
+
+  const handleQueryClear = useCallback(() => {
+    setLocalQuery("")
+    latestQueryRef.current = ""
+    setDebouncePending(false)
+    if (debounceRef.current) {
+      clearTimeout(debounceRef.current)
+      debounceRef.current = null
+    }
+    onUpdate({ query: "" })
+  }, [onUpdate])
 
   return (
     <div className="flex flex-wrap items-center gap-2 px-4 sm:px-6">
@@ -133,4 +146,4 @@ export function FiltersBar({
       </div>
     </div>
   )
-}
+})

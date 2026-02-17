@@ -69,30 +69,14 @@ export function SessionList({
       <ScrollArea className="h-full">
         <div className="space-y-5 p-4 sm:p-6">
           {groups.map((group) => (
-            <div key={group.key}>
-              <div className="sticky top-0 z-10 -mx-4 bg-background/95 px-4 py-1.5 text-xs font-medium text-muted-foreground backdrop-blur supports-backdrop-filter:bg-background/60 sm:-mx-6 sm:px-6">
-                {group.label}
-              </div>
-              <div className="grid grid-cols-1 gap-2 pt-2 sm:grid-cols-2 xl:grid-cols-3">
-                {group.sessions.map((session) => {
-                  const status = getSessionStatus(session, now)
-                  const zone = normalizeAuditorium(session.auditorium)
-                  const isHighlighted =
-                    hoveredZone !== null && zone === hoveredZone
-                  return (
-                    <SessionCard
-                      key={session.id}
-                      session={session}
-                      status={status}
-                      isHighlighted={isHighlighted}
-                      onClick={() => handleCardClick(session)}
-                      onMouseEnter={() => onHoverSession(zone)}
-                      onMouseLeave={() => onHoverSession(null)}
-                    />
-                  )
-                })}
-              </div>
-            </div>
+            <SessionTimeGroup
+              key={group.key}
+              group={group}
+              now={now}
+              hoveredZone={hoveredZone}
+              onCardClick={handleCardClick}
+              onHoverSession={onHoverSession}
+            />
           ))}
         </div>
       </ScrollArea>
@@ -104,5 +88,45 @@ export function SessionList({
         onOpenChange={setDialogOpen}
       />
     </>
+  )
+}
+
+function SessionTimeGroup({
+  group,
+  now,
+  hoveredZone,
+  onCardClick,
+  onHoverSession,
+}: {
+  group: TimeGroup
+  now: Date
+  hoveredZone: VenueZone | null
+  onCardClick: (session: Session) => void
+  onHoverSession: (zone: VenueZone | null) => void
+}) {
+  return (
+    <div>
+      <div className="sticky top-0 z-10 -mx-4 bg-background/95 px-4 py-1.5 text-xs font-medium text-muted-foreground backdrop-blur supports-backdrop-filter:bg-background/60 sm:-mx-6 sm:px-6">
+        {group.label}
+      </div>
+      <div className="grid grid-cols-1 gap-2 pt-2 sm:grid-cols-2 xl:grid-cols-3">
+        {group.sessions.map((session) => {
+          const status = getSessionStatus(session, now)
+          const zone = normalizeAuditorium(session.auditorium)
+          const isHighlighted = hoveredZone !== null && zone === hoveredZone
+          return (
+            <SessionCard
+              key={session.id}
+              session={session}
+              status={status}
+              isHighlighted={isHighlighted}
+              onClick={() => onCardClick(session)}
+              onMouseEnter={() => onHoverSession(zone)}
+              onMouseLeave={() => onHoverSession(null)}
+            />
+          )
+        })}
+      </div>
+    </div>
   )
 }

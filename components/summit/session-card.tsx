@@ -1,5 +1,6 @@
 "use client"
 
+import { memo } from "react"
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Clock, MapPin, User, Broadcast } from "@phosphor-icons/react"
@@ -16,7 +17,7 @@ interface SessionCardProps {
   onMouseLeave: () => void
 }
 
-export function SessionCard({
+export const SessionCard = memo(function SessionCard({
   session,
   status,
   isHighlighted,
@@ -84,4 +85,4 @@ export function SessionCard({
       </CardContent>
     </Card>
   )
-}
+})

@@ -1,6 +1,6 @@
 "use client"
 
-import { useMemo, Suspense } from "react"
+import { useMemo, useDeferredValue, useCallback, Suspense, useState } from "react"
 import { TooltipProvider } from "@/components/ui/tooltip"
 import { SummitHeader } from "./summit-header"
 import { DateTabs } from "./date-tabs"
@@ -8,12 +8,13 @@ import { FiltersBar } from "./filters-bar"
 import { ActiveFilters } from "./active-filters"
 import { SessionList } from "./session-list"
 import { VenueMap } from "./venue-map"
+import { CommandSearch } from "./command-search"
+import { SessionDetailDialog } from "./session-detail-dialog"
 import { useFilters } from "@/hooks/use-filters"
 import { useCurrentTime } from "@/hooks/use-current-time"
 import { filterSessions, DEFAULT_FILTERS } from "@/lib/filters"
 import { getSessionStatus } from "@/lib/time-utils"
-import type { SummitData, VenueZone } from "@/lib/types"
-import { useState } from "react"
+import type { Session, SummitData, VenueZone } from "@/lib/types"
 
 interface SummitAppProps {
   data: SummitData
@@ -23,10 +24,20 @@ function SummitAppInner({ data }: SummitAppProps) {
   const { filters, updateFilters, clearFilters } = useFilters()
   const now = useCurrentTime()
   const [hoveredZone, setHoveredZone] = useState<VenueZone | null>(null)
+  const [commandOpen, setCommandOpen] = useState(false)
+  const [selectedSession, setSelectedSession] = useState<Session | null>(null)
+  const [detailOpen, setDetailOpen] = useState(false)
+
+  // Defer the query so filtering doesn't block input
+  const deferredQuery = useDeferredValue(filters.query)
+  const deferredFilters = useMemo(
+    () => ({ ...filters, query: deferredQuery }),
+    [filters, deferredQuery]
+  )
 
   const filtered = useMemo(
-    () => filterSessions(data.sessions, filters, now),
-    [data.sessions, filters, now]
+    () => filterSessions(data.sessions, deferredFilters, now),
+    [data.sessions, deferredFilters, now]
   )
 
   const hasLiveSessions = useMemo(
@@ -43,9 +54,22 @@ function SummitAppInner({ data }: SummitAppProps) {
     filters.timeSlot !== DEFAULT_FILTERS.timeSlot ||
     filters.showPast !== DEFAULT_FILTERS.showPast
 
-  const handleZoneClick = (zone: VenueZone) => {
-    updateFilters({ zone: filters.zone === zone ? "" : zone })
-  }
+  const handleZoneClick = useCallback(
+    (zone: VenueZone) => {
+      updateFilters({ zone: filters.zone === zone ? "" : zone })
+    },
+    [filters.zone, updateFilters]
+  )
+
+  // Cmd+K listener
+  const handleCommandSelect = useCallback((session: Session) => {
+    setSelectedSession(session)
+    setDetailOpen(true)
+  }, [])
+
+  const selectedStatus = selectedSession
+    ? getSessionStatus(selectedSession, now)
+    : null
 
   return (
     <TooltipProvider>
@@ -54,6 +78,7 @@ function SummitAppInner({ data }: SummitAppProps) {
           totalSessions={data.totalSessions}
           filteredCount={filtered.length}
           hasLiveSessions={hasLiveSessions}
+          onCommandOpen={() => setCommandOpen(true)}
         />
 
         <div className="space-y-2 border-b py-2.5 sm:py-3">
@@ -74,7 +99,7 @@ function SummitAppInner({ data }: SummitAppProps) {
         </div>
 
         <div className="flex min-h-0 flex-1 flex-col lg:flex-row">
-          {/* Map panel — always visible, scrollable on mobile */}
+          {/* Map panel */}
           <div className="shrink-0 border-b lg:w-2/5 lg:border-r lg:border-b-0">
             <div className="overflow-y-auto p-4 sm:p-6">
               <VenueMap
@@ -99,6 +124,23 @@ function SummitAppInner({ data }: SummitAppProps) {
           </div>
         </div>
       </div>
+
+      {/* Cmd+K command palette */}
+      <CommandSearch
+        sessions={data.sessions}
+        now={now}
+        open={commandOpen}
+        onOpenChange={setCommandOpen}
+        onSelectSession={handleCommandSelect}
+      />
+
+      {/* Detail dialog for Cmd+K selections */}
+      <SessionDetailDialog
+        session={selectedSession}
+        status={selectedStatus}
+        open={detailOpen}
+        onOpenChange={setDetailOpen}
+      />
     </TooltipProvider>
   )
 }

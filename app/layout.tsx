@@ -30,6 +30,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${geistSans.variable} ${geistMono.variable} ${instrumentSerif.variable}`} suppressHydrationWarning>
+      <head>
+        <script defer src="https://stat.sys256.com/script.js"></script>
+      </head>
       <body className="antialiased">
         {children}
       </body>

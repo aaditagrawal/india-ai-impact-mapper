@@ -40,7 +40,7 @@ export const SessionCard = memo(function SessionCard({
     >
       <CardHeader>
         <div className="flex items-start justify-between gap-2">
-          <CardTitle className="line-clamp-2 text-[13px] leading-snug">
+          <CardTitle className="line-clamp-2 font-serif text-sm leading-snug">
             {session.title}
           </CardTitle>
           {status === "live" && (

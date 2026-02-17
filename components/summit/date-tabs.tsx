@@ -1,6 +1,6 @@
 "use client"
 
-import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs"
+import { cn } from "@/lib/utils"
 import type { Session } from "@/lib/types"
 
 const DATES = [
@@ -22,17 +22,29 @@ export function DateTabs({ sessions, activeDate, onDateChange }: DateTabsProps) 
     date ? sessions.filter((s) => s.date === date).length : sessions.length
 
   return (
-    <Tabs value={activeDate} onValueChange={onDateChange}>
-      <TabsList className="w-full overflow-x-auto sm:w-auto">
-        {DATES.map((d) => (
-          <TabsTrigger key={d.value} value={d.value} className="gap-1.5 text-xs">
+    <div className="flex gap-1.5" role="tablist">
+      {DATES.map((d) => {
+        const isActive = activeDate === d.value
+        return (
+          <button
+            key={d.value}
+            role="tab"
+            aria-selected={isActive}
+            onClick={() => onDateChange(d.value)}
+            className={cn(
+              "inline-flex items-center gap-1.5 rounded-md px-2.5 py-1.5 text-xs font-medium transition-colors",
+              isActive
+                ? "bg-foreground text-background"
+                : "bg-muted text-muted-foreground hover:bg-accent hover:text-accent-foreground"
+            )}
+          >
             {d.label}
-            <span className="tabular-nums text-muted-foreground">
+            <span className={cn("tabular-nums", isActive ? "text-background/60" : "text-muted-foreground/60")}>
               {countByDate(d.value)}
             </span>
-          </TabsTrigger>
-        ))}
-      </TabsList>
-    </Tabs>
+          </button>
+        )
+      })}
+    </div>
   )
 }

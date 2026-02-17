@@ -266,7 +266,7 @@ function CommandSearchItem({
     >
       <div className="min-w-0 flex-1">
         <div className="flex items-start gap-2">
-          <span className="line-clamp-1 text-[13px] font-medium leading-snug">
+          <span className="line-clamp-1 font-serif text-sm leading-snug">
             {session.title}
           </span>
           {status === "live" && (

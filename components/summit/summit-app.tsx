@@ -1,6 +1,7 @@
 "use client"
 
 import { useMemo, useDeferredValue, useCallback, Suspense, useState } from "react"
+import { CaretDown, CaretUp, MapTrifold } from "@phosphor-icons/react"
 import { TooltipProvider } from "@/components/ui/tooltip"
 import { SummitHeader } from "./summit-header"
 import { DateTabs } from "./date-tabs"
@@ -27,6 +28,7 @@ function SummitAppInner({ data }: SummitAppProps) {
   const [commandOpen, setCommandOpen] = useState(false)
   const [selectedSession, setSelectedSession] = useState<Session | null>(null)
   const [detailOpen, setDetailOpen] = useState(false)
+  const [mapExpanded, setMapExpanded] = useState(false)
 
   // Defer the query so filtering doesn't block input
   const deferredQuery = useDeferredValue(filters.query)
@@ -99,9 +101,21 @@ function SummitAppInner({ data }: SummitAppProps) {
         </div>
 
         <div className="flex min-h-0 flex-1 flex-col lg:flex-row">
-          {/* Map panel */}
+          {/* Map panel — collapsible on mobile, always visible on desktop */}
           <div className="shrink-0 border-b lg:w-2/5 lg:border-r lg:border-b-0">
-            <div className="overflow-y-auto p-4 sm:p-6">
+            {/* Mobile toggle */}
+            <button
+              onClick={() => setMapExpanded((v) => !v)}
+              className="flex w-full items-center justify-between px-4 py-2 text-xs text-muted-foreground transition-colors hover:bg-accent/50 lg:hidden"
+            >
+              <span className="inline-flex items-center gap-1.5 font-medium">
+                <MapTrifold className="size-3.5" />
+                Venue Map
+              </span>
+              {mapExpanded ? <CaretUp className="size-3.5" /> : <CaretDown className="size-3.5" />}
+            </button>
+            {/* Map content — hidden on mobile unless expanded, always shown on lg+ */}
+            <div className={`overflow-y-auto p-4 sm:p-6 ${mapExpanded ? "block" : "hidden"} lg:block`}>
               <VenueMap
                 sessions={filtered}
                 filters={filters}

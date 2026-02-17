@@ -215,7 +215,7 @@ export function CommandSearch({
 
           {/* Footer */}
           <div className="flex items-center justify-between border-t px-3 py-2 text-[10px] text-muted-foreground/60">
-            <div className="flex items-center gap-3">
+            <div className="hidden items-center gap-3 sm:flex">
               <span className="inline-flex items-center gap-1">
                 <kbd className="rounded border px-1 py-0.5 font-mono text-[9px]">
                   <ArrowElbowDownLeft className="inline size-2.5" />
@@ -231,7 +231,7 @@ export function CommandSearch({
                 close
               </span>
             </div>
-            <span className="tabular-nums">{results.items.length} results</span>
+            <span className="tabular-nums sm:ml-auto">{results.items.length} results</span>
           </div>
         </div>
       </div>

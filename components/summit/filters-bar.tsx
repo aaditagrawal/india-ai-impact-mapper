@@ -16,10 +16,12 @@ import {
 } from "@/components/ui/select"
 import { Toggle } from "@/components/ui/toggle"
 import { Button } from "@/components/ui/button"
-import type { FilterState } from "@/lib/types"
+import { DateTabs } from "./date-tabs"
+import type { FilterState, Session } from "@/lib/types"
 
 interface FiltersBarProps {
   filters: FilterState
+  sessions: Session[]
   onUpdate: (updates: Partial<FilterState>) => void
   onClear: () => void
   hasActiveFilters: boolean
@@ -27,6 +29,7 @@ interface FiltersBarProps {
 
 export const FiltersBar = memo(function FiltersBar({
   filters,
+  sessions,
   onUpdate,
   onClear,
   hasActiveFilters,
@@ -99,6 +102,15 @@ export const FiltersBar = memo(function FiltersBar({
       </InputGroup>
 
       <div className="flex flex-wrap items-center gap-2">
+        {/* Mobile date dropdown — hidden on sm+ where tab buttons show */}
+        <div className="sm:hidden">
+          <DateTabs
+            sessions={sessions}
+            activeDate={filters.date}
+            onDateChange={(date) => onUpdate({ date })}
+          />
+        </div>
+
         <Select
           value={filters.venue || "all"}
           onValueChange={(v) => onUpdate({ venue: v === "all" ? "" : v })}

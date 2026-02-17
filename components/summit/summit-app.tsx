@@ -24,7 +24,9 @@ interface SummitAppProps {
 function SummitAppInner({ data }: SummitAppProps) {
   const { filters, updateFilters, clearFilters } = useFilters()
   const now = useCurrentTime()
-  const [hoveredZone, setHoveredZone] = useState<VenueZone | null>(null)
+  // Separate hover sources so card→card highlighting doesn't happen
+  const [mapHoveredZone, setMapHoveredZone] = useState<VenueZone | null>(null)
+  const [cardHoveredZone, setCardHoveredZone] = useState<VenueZone | null>(null)
   const [commandOpen, setCommandOpen] = useState(false)
   const [selectedSession, setSelectedSession] = useState<Session | null>(null)
   const [detailOpen, setDetailOpen] = useState(false)
@@ -84,7 +86,8 @@ function SummitAppInner({ data }: SummitAppProps) {
         />
 
         <div className="space-y-2 border-b py-2.5 sm:py-3">
-          <div className="px-4 sm:px-6">
+          {/* Desktop date tabs */}
+          <div className="hidden px-4 sm:block sm:px-6">
             <DateTabs
               sessions={data.sessions}
               activeDate={filters.date}
@@ -93,6 +96,7 @@ function SummitAppInner({ data }: SummitAppProps) {
           </div>
           <FiltersBar
             filters={filters}
+            sessions={data.sessions}
             onUpdate={updateFilters}
             onClear={clearFilters}
             hasActiveFilters={hasActiveFilters}
@@ -120,9 +124,9 @@ function SummitAppInner({ data }: SummitAppProps) {
                 sessions={filtered}
                 filters={filters}
                 now={now}
-                hoveredZone={hoveredZone}
+                hoveredZone={mapHoveredZone ?? cardHoveredZone}
                 onZoneClick={handleZoneClick}
-                onZoneHover={setHoveredZone}
+                onZoneHover={setMapHoveredZone}
               />
             </div>
           </div>
@@ -132,8 +136,8 @@ function SummitAppInner({ data }: SummitAppProps) {
             <SessionList
               sessions={filtered}
               now={now}
-              hoveredZone={hoveredZone}
-              onHoverSession={setHoveredZone}
+              hoveredZone={mapHoveredZone}
+              onHoverSession={setCardHoveredZone}
             />
           </div>
         </div>

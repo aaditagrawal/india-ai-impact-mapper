@@ -22,7 +22,7 @@ const instrumentSerif = Instrument_Serif({
 
 export const metadata: Metadata = {
   title: "India AI Impact Summit 2026",
-  description: "Browse 505 sessions at the India AI Impact Summit 2026, Feb 17–20 at Bharat Mandapam, New Delhi. Interactive venue map, search, and filters.",
+  description: "Browse 679 sessions at the India AI Impact Summit 2026, Feb 16–20 at Bharat Mandapam, New Delhi. Interactive venue map, search, and filters.",
 };
 
 export default function RootLayout({

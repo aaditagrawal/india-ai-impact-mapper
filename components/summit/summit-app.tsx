@@ -1,6 +1,6 @@
 "use client"
 
-import { useMemo, useDeferredValue, useCallback, Suspense, useState } from "react"
+import { useMemo, useDeferredValue, useCallback, useState } from "react"
 import { CaretDown, CaretUp, MapTrifold } from "@phosphor-icons/react"
 import { TooltipProvider } from "@/components/ui/tooltip"
 import { SummitHeader } from "./summit-header"
@@ -160,9 +160,5 @@ function SummitAppInner({ data }: SummitAppProps) {
 }
 
 export function SummitApp({ data }: SummitAppProps) {
-  return (
-    <Suspense>
-      <SummitAppInner data={data} />
-    </Suspense>
-  )
+  return <SummitAppInner data={data} />
 }

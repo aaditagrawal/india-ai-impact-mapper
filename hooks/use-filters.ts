@@ -1,53 +1,67 @@
 "use client"
 
-import { useCallback, useMemo } from "react"
-import { useRouter, useSearchParams } from "next/navigation"
+import { useState, useCallback, useEffect } from "react"
 import type { FilterState, VenueZone } from "@/lib/types"
 import { DEFAULT_FILTERS } from "@/lib/filters"
 
-export function useFilters() {
-  const router = useRouter()
-  const searchParams = useSearchParams()
+function parseFiltersFromURL(): FilterState {
+  const params = new URLSearchParams(window.location.search)
+  return {
+    query: params.get("q") ?? DEFAULT_FILTERS.query,
+    date: params.get("date") ?? DEFAULT_FILTERS.date,
+    venue: params.get("venue") ?? DEFAULT_FILTERS.venue,
+    zone: (params.get("zone") as VenueZone | "") ?? DEFAULT_FILTERS.zone,
+    tag: params.get("tag") ?? DEFAULT_FILTERS.tag,
+    timeSlot: params.get("time") ?? DEFAULT_FILTERS.timeSlot,
+    showPast: params.get("past") !== "0",
+  }
+}
 
-  const filters: FilterState = useMemo(() => ({
-    query: searchParams.get("q") ?? DEFAULT_FILTERS.query,
-    date: searchParams.get("date") ?? DEFAULT_FILTERS.date,
-    venue: searchParams.get("venue") ?? DEFAULT_FILTERS.venue,
-    zone: (searchParams.get("zone") as VenueZone | "") ?? DEFAULT_FILTERS.zone,
-    tag: searchParams.get("tag") ?? DEFAULT_FILTERS.tag,
-    timeSlot: searchParams.get("time") ?? DEFAULT_FILTERS.timeSlot,
-    showPast: searchParams.get("past") !== "0",
-  }), [searchParams])
+function filtersToSearchString(filters: FilterState): string {
+  const params = new URLSearchParams()
+  if (filters.query) params.set("q", filters.query)
+  if (filters.date) params.set("date", filters.date)
+  if (filters.venue) params.set("venue", filters.venue)
+  if (filters.zone) params.set("zone", filters.zone)
+  if (filters.tag) params.set("tag", filters.tag)
+  if (filters.timeSlot) params.set("time", filters.timeSlot)
+  if (!filters.showPast) params.set("past", "0")
+  const str = params.toString()
+  return str ? `?${str}` : ""
+}
+
+export function useFilters() {
+  const [filters, setFilters] = useState(DEFAULT_FILTERS)
+
+  // Read URL params on mount (SSR-safe: only runs on client)
+  useEffect(() => {
+    setFilters(parseFiltersFromURL())
+  }, [])
+
+  // Sync filters → URL silently (no Next.js navigation, no re-render)
+  useEffect(() => {
+    const search = filtersToSearchString(filters)
+    const url = search || window.location.pathname
+    window.history.replaceState(null, "", url)
+  }, [filters])
+
+  // Handle browser back/forward
+  useEffect(() => {
+    const handlePopState = () => setFilters(parseFiltersFromURL())
+    window.addEventListener("popstate", handlePopState)
+    return () => window.removeEventListener("popstate", handlePopState)
+  }, [])
 
   const updateFilters = useCallback(
     (updates: Partial<FilterState>) => {
-      const params = new URLSearchParams(searchParams.toString())
-
-      const merged = { ...filters, ...updates }
-
-      const setOrDelete = (key: string, value: string) => {
-        if (value) params.set(key, value)
-        else params.delete(key)
-      }
-
-      setOrDelete("q", merged.query)
-      setOrDelete("date", merged.date)
-      setOrDelete("venue", merged.venue)
-      setOrDelete("zone", merged.zone)
-      setOrDelete("tag", merged.tag)
-      setOrDelete("time", merged.timeSlot)
-
-      if (!merged.showPast) params.set("past", "0")
-      else params.delete("past")
-
-      router.replace(`?${params.toString()}`, { scroll: false })
+      setFilters((prev) => ({ ...prev, ...updates }))
     },
-    [searchParams, filters, router]
+    []
   )
 
   const clearFilters = useCallback(() => {
-    router.replace("?", { scroll: false })
-  }, [router])
+    setFilters({ ...DEFAULT_FILTERS })
+  }, [])
 
   return { filters, updateFilters, clearFilters }
 }

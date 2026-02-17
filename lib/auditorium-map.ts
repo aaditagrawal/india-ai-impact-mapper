@@ -10,6 +10,7 @@ const AUDITORIUM_MAP: Record<string, VenueZone> = {
   "l2 audi ii": "l2-audi-2",
   "l2 summit room": "l2-summit-room",
   "amphitheatre": "amphitheatre",
+  "amphitheater": "amphitheatre",
   "chanakya auditorium": "ssb-chanakya",
   "nalanda banquet": "ssb-nalanda",
   "shakuntalam banquet": "ssb-shakuntalam",

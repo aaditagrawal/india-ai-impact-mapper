@@ -43,7 +43,7 @@ export function SummitHeader({
           <div className="mt-0.5 flex flex-wrap items-center gap-x-3 gap-y-1 text-xs text-muted-foreground">
             <span className="inline-flex items-center gap-1.5">
               <CalendarBlank className="size-3.5" weight="duotone" />
-              Feb 17 – 20, 2026
+              Feb 16 – 20, 2026
             </span>
             <span className="hidden items-center gap-1.5 sm:inline-flex">
               <MapPin className="size-3.5" weight="duotone" />

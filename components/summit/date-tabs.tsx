@@ -5,6 +5,7 @@ import type { Session } from "@/lib/types"
 
 const DATES = [
   { value: "", label: "All" },
+  { value: "2026-02-16", label: "Feb 16" },
   { value: "2026-02-17", label: "Feb 17" },
   { value: "2026-02-18", label: "Feb 18" },
   { value: "2026-02-19", label: "Feb 19" },

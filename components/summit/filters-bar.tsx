@@ -1,6 +1,6 @@
 "use client"
 
-import { memo, useState, useRef, useCallback } from "react"
+import { memo, useState, useRef, useCallback, useEffect } from "react"
 import { MagnifyingGlass, X, EyeSlash, Eye } from "@phosphor-icons/react"
 import {
   InputGroup,
@@ -32,26 +32,34 @@ export const FiltersBar = memo(function FiltersBar({
   hasActiveFilters,
 }: FiltersBarProps) {
   const [localQuery, setLocalQuery] = useState(filters.query)
-  const [debouncePending, setDebouncePending] = useState(false)
   const debounceRef = useRef<ReturnType<typeof setTimeout>>(null)
-  const latestQueryRef = useRef(localQuery)
+  // Track the last query value we sent to parent so we can distinguish
+  // external changes (e.g. "Clear all") from our own debounced updates
+  const lastSentRef = useRef(filters.query)
 
-  // Only sync external → local when query is cleared externally (e.g. "Clear all" button)
-  // Skip sync if there's a pending debounce (user is still typing)
-  if (filters.query === "" && localQuery !== "" && !debouncePending) {
-    setLocalQuery("")
+  // Sync from parent only when query changes externally
+  if (filters.query !== lastSentRef.current) {
+    lastSentRef.current = filters.query
+    if (localQuery !== filters.query) {
+      setLocalQuery(filters.query)
+    }
   }
+
+  // Cleanup debounce on unmount
+  useEffect(() => {
+    return () => {
+      if (debounceRef.current) clearTimeout(debounceRef.current)
+    }
+  }, [])
 
   const handleQueryChange = useCallback(
     (value: string) => {
       setLocalQuery(value)
-      latestQueryRef.current = value
-      setDebouncePending(true)
       if (debounceRef.current) clearTimeout(debounceRef.current)
       debounceRef.current = setTimeout(() => {
         debounceRef.current = null
-        setDebouncePending(false)
-        onUpdate({ query: latestQueryRef.current })
+        lastSentRef.current = value
+        onUpdate({ query: value })
       }, 300)
     },
     [onUpdate]
@@ -59,12 +67,11 @@ export const FiltersBar = memo(function FiltersBar({
 
   const handleQueryClear = useCallback(() => {
     setLocalQuery("")
-    latestQueryRef.current = ""
-    setDebouncePending(false)
     if (debounceRef.current) {
       clearTimeout(debounceRef.current)
       debounceRef.current = null
     }
+    lastSentRef.current = ""
     onUpdate({ query: "" })
   }, [onUpdate])
 

@@ -34,7 +34,7 @@ export const ExhibitorCard = memo(function ExhibitorCard({
       onMouseLeave={onMouseLeave}
     >
       <CardHeader>
-        <CardTitle className="line-clamp-2 font-serif text-sm leading-snug">
+        <CardTitle className="line-clamp-2 font-serif text-xs leading-snug">
           {exhibitor.exhibitor}
         </CardTitle>
       </CardHeader>

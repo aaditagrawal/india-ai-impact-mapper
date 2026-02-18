@@ -40,7 +40,7 @@ export const SessionCard = memo(function SessionCard({
     >
       <CardHeader>
         <div className="flex items-start justify-between gap-2">
-          <CardTitle className="line-clamp-2 font-serif text-sm leading-snug">
+          <CardTitle className="line-clamp-3 font-serif text-[11px] leading-snug">
             {session.title}
           </CardTitle>
           {status === "live" && (
@@ -51,17 +51,17 @@ export const SessionCard = memo(function SessionCard({
           )}
         </div>
       </CardHeader>
-      <CardContent className="space-y-1.5">
-        <div className="flex items-center gap-1.5 text-xs text-muted-foreground">
+      <CardContent className="space-y-1">
+        <div className="flex items-center gap-1.5 text-[11px] text-muted-foreground">
           <Clock className="size-3 shrink-0" />
           <span>{formatTimeRange(session)} (IST)</span>
         </div>
-        <div className="flex items-center gap-1.5 text-xs text-muted-foreground">
+        <div className="flex items-center gap-1.5 text-[11px] text-muted-foreground">
           <MapPin className="size-3 shrink-0" />
           <span className="truncate">{session.auditorium}</span>
         </div>
         {session.speakers.length > 0 && (
-          <div className="flex items-center gap-1.5 text-xs text-muted-foreground">
+          <div className="flex items-center gap-1.5 text-[11px] text-muted-foreground">
             <User className="size-3 shrink-0" />
             <span className="truncate">
               {session.speakers

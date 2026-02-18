@@ -72,6 +72,8 @@ function ZoneRect({
   const fill = getDensityColor(data.count, maxCount)
   const displayLabel = label ?? ZONE_LABELS[zone]
   const emphasized = isActive || isHovered
+  const isEmpty = data.count === 0
+  const cornerRadius = rx ?? 2
 
   return (
     <Tooltip>
@@ -81,33 +83,51 @@ function ZoneRect({
           onClick={() => onZoneClick(zone)}
           onMouseEnter={() => onZoneHover(zone)}
           onMouseLeave={() => onZoneHover(null)}
-          style={{ transition: "opacity 150ms" }}
+          style={{
+            transition: "opacity 200ms cubic-bezier(0.4,0,0.2,1)",
+          }}
           opacity={emphasized ? 1 : undefined}
         >
-          {/* Glow ring on active/hovered */}
+          {/* Soft glow ring on active/hovered */}
           {emphasized && (
             <rect
               x={x - 2}
               y={y - 2}
               width={width + 4}
               height={height + 4}
-              rx={rx ? rx + 2 : 3}
+              rx={cornerRadius + 2}
               fill="none"
               stroke="var(--primary)"
               strokeWidth={1}
-              opacity={0.3}
+              opacity={isActive ? 0.35 : 0.2}
+              className="zone-transition"
             />
           )}
+          {/* Main zone rect */}
           <rect
             x={x}
             y={y}
             width={width}
             height={height}
-            rx={rx ?? 2}
-            fill={fill}
+            rx={cornerRadius}
+            fill={isEmpty ? "url(#empty-zone-pattern)" : fill}
             stroke={emphasized ? "var(--primary)" : "var(--border)"}
             strokeWidth={isActive ? 2 : isHovered ? 1.5 : 0.5}
+            className="zone-transition"
           />
+          {/* Active state: inner highlight at top edge */}
+          {isActive && (
+            <rect
+              x={x + 1}
+              y={y + 1}
+              width={width - 2}
+              height={Math.min(height * 0.35, 14)}
+              rx={Math.max(cornerRadius - 1, 1)}
+              fill="white"
+              opacity={0.12}
+              style={{ pointerEvents: "none" }}
+            />
+          )}
           {data.hasLive && (
             <>
               <circle
@@ -189,26 +209,46 @@ function ZoneRect({
   )
 }
 
-function Gate({ x, y, label }: { x: number; y: number; label: string }) {
+function Gate({ x, y, label, accent }: { x: number; y: number; label: string; accent?: boolean }) {
+  const gateColor = accent ? "var(--primary)" : "var(--chart-2)"
+  const gateOpacity = accent ? 0.65 : 0.5
   return (
     <g style={{ pointerEvents: "none" }}>
-      <rect x={x} y={y} width={14} height={10} rx={2} fill="var(--chart-2)" opacity={0.5} />
+      {/* Gate base */}
+      <rect x={x} y={y + 3} width={14} height={7} rx={1} fill={gateColor} opacity={gateOpacity} />
+      {/* Arch top */}
+      <path
+        d={`M${x},${y + 4} Q${x + 7},${y - 2} ${x + 14},${y + 4}`}
+        fill={gateColor}
+        opacity={gateOpacity * 0.7}
+      />
+      {/* Arch outline */}
+      <path
+        d={`M${x},${y + 4} Q${x + 7},${y - 2} ${x + 14},${y + 4}`}
+        fill="none"
+        stroke={gateColor}
+        strokeWidth={0.5}
+        opacity={gateOpacity}
+      />
+      {/* Door opening lines */}
+      <line x1={x + 5} y1={y + 4} x2={x + 5} y2={y + 10} stroke="var(--card)" strokeWidth={0.5} opacity={0.6} />
+      <line x1={x + 9} y1={y + 4} x2={x + 9} y2={y + 10} stroke="var(--card)" strokeWidth={0.5} opacity={0.6} />
       <text
         x={x + 7}
-        y={y + 6.5}
+        y={y + 8}
         textAnchor="middle"
         dominantBaseline="middle"
-        className="fill-foreground text-[3.5px] font-bold"
+        className="fill-foreground text-[3px] font-bold"
         opacity={0.7}
       >
         G
       </text>
       <text
         x={x + 18}
-        y={y + 6.5}
+        y={y + 7}
         dominantBaseline="middle"
-        className="fill-muted-foreground text-[5px]"
-        opacity={0.5}
+        className={`text-[5px] ${accent ? "fill-foreground font-semibold" : "fill-muted-foreground"}`}
+        opacity={accent ? 0.7 : 0.5}
       >
         {label}
       </text>
@@ -231,6 +271,8 @@ function DecoBuilding({
   label: string
   rx?: number
 }) {
+  const r = rx ?? 2
+  const cornerSize = 6
   return (
     <g style={{ pointerEvents: "none" }}>
       <rect
@@ -238,13 +280,42 @@ function DecoBuilding({
         y={y}
         width={width}
         height={height}
-        rx={rx ?? 2}
+        rx={r}
         fill="var(--muted)"
         stroke="var(--border)"
         strokeWidth={0.5}
         opacity={0.4}
         strokeDasharray="3 2"
       />
+      {/* Subtle crosshatch pattern inside */}
+      {r < 10 && (
+        <g opacity={0.06} clipPath={`inset(0 round ${r}px)`}>
+          {Array.from({ length: Math.ceil((width + height) / 12) }, (_, i) => (
+            <line
+              key={i}
+              x1={x + i * 12}
+              y1={y}
+              x2={x + i * 12 - height}
+              y2={y + height}
+              stroke="var(--foreground)"
+              strokeWidth={0.5}
+            />
+          ))}
+        </g>
+      )}
+      {/* Corner accents — small L-brackets at each corner */}
+      {r < 10 && (
+        <>
+          {/* Top-left */}
+          <path d={`M${x},${y + cornerSize} L${x},${y} L${x + cornerSize},${y}`} fill="none" stroke="var(--border)" strokeWidth={0.8} opacity={0.35} />
+          {/* Top-right */}
+          <path d={`M${x + width - cornerSize},${y} L${x + width},${y} L${x + width},${y + cornerSize}`} fill="none" stroke="var(--border)" strokeWidth={0.8} opacity={0.35} />
+          {/* Bottom-left */}
+          <path d={`M${x},${y + height - cornerSize} L${x},${y + height} L${x + cornerSize},${y + height}`} fill="none" stroke="var(--border)" strokeWidth={0.8} opacity={0.35} />
+          {/* Bottom-right */}
+          <path d={`M${x + width - cornerSize},${y + height} L${x + width},${y + height} L${x + width},${y + height - cornerSize}`} fill="none" stroke="var(--border)" strokeWidth={0.8} opacity={0.35} />
+        </>
+      )}
       <text
         x={x + width / 2}
         y={y + height / 2}
@@ -264,14 +335,52 @@ function SectionLabel({
   y,
   children,
   sub,
+  lineWidth = 40,
 }: {
   x: number
   y: number
   children: string
   sub?: string
+  lineWidth?: number
 }) {
+  // Approximate half-width of text for line placement
+  const textHalfW = children.length * 3.2
   return (
     <g style={{ pointerEvents: "none" }}>
+      {/* Decorative lines flanking the label */}
+      <line
+        x1={x - textHalfW - 6}
+        y1={y - 2}
+        x2={x - textHalfW - 6 - lineWidth}
+        y2={y - 2}
+        stroke="var(--border)"
+        strokeWidth={0.8}
+        opacity={0.5}
+      />
+      <line
+        x1={x + textHalfW + 6}
+        y1={y - 2}
+        x2={x + textHalfW + 6 + lineWidth}
+        y2={y - 2}
+        stroke="var(--border)"
+        strokeWidth={0.8}
+        opacity={0.5}
+      />
+      {/* Small diamond accents at line ends */}
+      <circle
+        cx={x - textHalfW - 6 - lineWidth}
+        cy={y - 2}
+        r={1.2}
+        fill="var(--border)"
+        opacity={0.5}
+      />
+      <circle
+        cx={x + textHalfW + 6 + lineWidth}
+        cy={y - 2}
+        r={1.2}
+        fill="var(--border)"
+        opacity={0.5}
+      />
       <text
         x={x}
         y={y}
@@ -337,6 +446,14 @@ export const VenueMapSvg = memo(function VenueMapSvg({
       className="w-full"
       xmlns="http://www.w3.org/2000/svg"
     >
+      <defs>
+        {/* Diagonal stripe pattern for empty zones (count === 0) */}
+        <pattern id="empty-zone-pattern" width="8" height="8" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+          <rect width="8" height="8" fill="var(--muted)" />
+          <line x1="0" y1="0" x2="0" y2="8" stroke="var(--border)" strokeWidth="0.75" opacity="0.25" />
+        </pattern>
+      </defs>
+
       {/* ═══ BHARAT MANDAPAM ═══ */}
       {/* Building footprint */}
       <rect
@@ -349,14 +466,38 @@ export const VenueMapSvg = memo(function VenueMapSvg({
         stroke="var(--border)"
         strokeWidth={1}
       />
-      {/* Dome arch */}
+      {/* Subtle inner border for architectural depth */}
+      <rect
+        x={bm.x + 3}
+        y={bm.y + 3}
+        width={bm.w - 6}
+        height={bm.h - 6}
+        rx={10}
+        fill="none"
+        stroke="var(--border)"
+        strokeWidth={0.3}
+        opacity={0.25}
+      />
+      {/* Dome arch — double-line architectural effect */}
       <path
         d={`M${bm.x + 80},${bm.y} Q${bm.x + bm.w / 2},${bm.y - 30} ${bm.x + bm.w - 80},${bm.y}`}
         fill="none"
         stroke="var(--border)"
-        strokeWidth={0.8}
-        opacity={0.6}
+        strokeWidth={1}
+        opacity={0.5}
       />
+      <path
+        d={`M${bm.x + 85},${bm.y} Q${bm.x + bm.w / 2},${bm.y - 24} ${bm.x + bm.w - 85},${bm.y}`}
+        fill="none"
+        stroke="var(--border)"
+        strokeWidth={0.5}
+        opacity={0.35}
+      />
+      {/* Dome endpoint circles */}
+      <circle cx={bm.x + 80} cy={bm.y} r={2} fill="var(--border)" opacity={0.4} />
+      <circle cx={bm.x + bm.w - 80} cy={bm.y} r={2} fill="var(--border)" opacity={0.4} />
+      {/* Dome apex accent */}
+      <circle cx={bm.x + bm.w / 2} cy={bm.y - 30} r={1.5} fill="var(--primary)" opacity={0.3} />
       <SectionLabel x={bm.x + bm.w / 2} y={bm.y - 6}>
         BHARAT MANDAPAM
       </SectionLabel>
@@ -456,9 +597,39 @@ export const VenueMapSvg = memo(function VenueMapSvg({
       {/* Wide path background */}
       <line x1={bm.x + bm.w - 20} y1={250} x2={410} y2={250} stroke="var(--border)" strokeWidth={10} strokeLinecap="round" opacity={0.12} />
       <line x1={468} y1={250} x2={ex.x} y2={200} stroke="var(--border)" strokeWidth={10} strokeLinecap="round" opacity={0.12} />
+      {/* Path edge lines for walkway feel */}
+      <line x1={bm.x + bm.w - 20} y1={245} x2={410} y2={245} stroke="var(--muted-foreground)" strokeWidth={0.4} opacity={0.2} />
+      <line x1={bm.x + bm.w - 20} y1={255} x2={410} y2={255} stroke="var(--muted-foreground)" strokeWidth={0.4} opacity={0.2} />
       {/* Dashed center line */}
       <line x1={bm.x + bm.w - 20} y1={250} x2={410} y2={250} stroke="var(--muted-foreground)" strokeWidth={0.8} strokeDasharray="4 3" opacity={0.4} />
       <line x1={468} y1={250} x2={ex.x} y2={200} stroke="var(--muted-foreground)" strokeWidth={0.8} strokeDasharray="4 3" opacity={0.4} />
+      {/* Directional chevrons along horizontal segment */}
+      {[0, 1, 2, 3].map((i) => {
+        const cx = bm.x + bm.w - 10 + i * 22
+        return (
+          <path
+            key={`chev-${i}`}
+            d={`M${cx},${247} L${cx + 3},${250} L${cx},${253}`}
+            fill="none"
+            stroke="var(--muted-foreground)"
+            strokeWidth={0.6}
+            opacity={0.25}
+          />
+        )
+      })}
+      {/* Walking figure icon */}
+      <g style={{ pointerEvents: "none" }} opacity={0.35} transform="translate(420,240)">
+        {/* Head */}
+        <circle cx={0} cy={0} r={1.8} fill="var(--muted-foreground)" />
+        {/* Body */}
+        <line x1={0} y1={2} x2={0} y2={7} stroke="var(--muted-foreground)" strokeWidth={0.8} />
+        {/* Arms */}
+        <line x1={-2.5} y1={3.5} x2={2.5} y2={5} stroke="var(--muted-foreground)" strokeWidth={0.7} />
+        {/* Left leg */}
+        <line x1={0} y1={7} x2={-2} y2={11} stroke="var(--muted-foreground)" strokeWidth={0.7} />
+        {/* Right leg */}
+        <line x1={0} y1={7} x2={2.5} y2={10.5} stroke="var(--muted-foreground)" strokeWidth={0.7} />
+      </g>
       {/* Walkway label */}
       <text x={440} y={236} className="fill-muted-foreground text-[4.5px]" textAnchor="middle" style={{ pointerEvents: "none" }} opacity={0.5}>
         Walkway
@@ -527,8 +698,17 @@ export const VenueMapSvg = memo(function VenueMapSvg({
         { x: ex.x + 200 + 2, y: 260 },
       ].map((fc, i) => (
         <g key={i} style={{ pointerEvents: "none" }}>
-          <rect x={fc.x} y={fc.y} width={16} height={11} rx={2} fill="var(--chart-2)" opacity={0.35} />
-          <text x={fc.x + 8} y={fc.y + 7.5} textAnchor="middle" dominantBaseline="middle" className="fill-foreground text-[4px] font-bold" opacity={0.45}>
+          {/* Plate circle */}
+          <circle cx={fc.x + 8} cy={fc.y + 7} r={8} fill="var(--chart-2)" opacity={0.2} />
+          <circle cx={fc.x + 8} cy={fc.y + 7} r={8} fill="none" stroke="var(--chart-2)" strokeWidth={0.5} opacity={0.35} />
+          {/* Fork icon (left) */}
+          <line x1={fc.x + 4} y1={fc.y + 3} x2={fc.x + 4} y2={fc.y + 11} stroke="var(--foreground)" strokeWidth={0.5} opacity={0.4} />
+          <line x1={fc.x + 3} y1={fc.y + 3} x2={fc.x + 3} y2={fc.y + 5.5} stroke="var(--foreground)" strokeWidth={0.4} opacity={0.35} />
+          <line x1={fc.x + 5} y1={fc.y + 3} x2={fc.x + 5} y2={fc.y + 5.5} stroke="var(--foreground)" strokeWidth={0.4} opacity={0.35} />
+          {/* Knife icon (right) */}
+          <line x1={fc.x + 12} y1={fc.y + 3} x2={fc.x + 12} y2={fc.y + 11} stroke="var(--foreground)" strokeWidth={0.5} opacity={0.4} />
+          <ellipse cx={fc.x + 12} cy={fc.y + 4.5} rx={1} ry={2} fill="none" stroke="var(--foreground)" strokeWidth={0.4} opacity={0.35} />
+          <text x={fc.x + 8} y={fc.y + 7.5} textAnchor="middle" dominantBaseline="middle" className="fill-foreground text-[3.5px] font-bold" opacity={0.45}>
             FC
           </text>
         </g>
@@ -547,7 +727,7 @@ export const VenueMapSvg = memo(function VenueMapSvg({
       )}
 
       {/* ═══ GATES ═══ */}
-      <Gate x={5} y={275} label="Gate 10" />
+      <Gate x={5} y={275} label="Gate 10" accent />
       <Gate x={95} y={bm.y + bm.h + 10} label="Gate 8" />
       <Gate x={230} y={bm.y + bm.h + 10} label="Gate 7" />
       <Gate x={400} y={bm.y + bm.h + 30} label="Gate 6" />
@@ -555,7 +735,7 @@ export const VenueMapSvg = memo(function VenueMapSvg({
       <Gate x={ex.x + 385 - 10} y={435} label="Gate 5A" />
       <Gate x={ex.x + 385 - 10} y={265} label="Gate 4" />
       <Gate x={ex.x + 385 - 10} y={120} label="Gate 3" />
-      <Gate x={ex.x + 340} y={28} label="Gate 1 & 2" />
+      <Gate x={ex.x + 340} y={28} label="Gate 1 & 2" accent />
 
       {/* ═══ SUSHMA SWARAJ BHAWAN (off-site) ═══ */}
       <rect
@@ -570,6 +750,23 @@ export const VenueMapSvg = memo(function VenueMapSvg({
         strokeDasharray="5 3"
         opacity={0.8}
       />
+      {/* Inner border for architectural depth */}
+      <rect
+        x={25}
+        y={558}
+        width={364}
+        height={89}
+        rx={4}
+        fill="none"
+        stroke="var(--border)"
+        strokeWidth={0.3}
+        opacity={0.2}
+      />
+      {/* Corner bracket accents */}
+      <path d="M22,565 L22,555 L32,555" fill="none" stroke="var(--border)" strokeWidth={1} opacity={0.4} />
+      <path d="M382,555 L392,555 L392,565" fill="none" stroke="var(--border)" strokeWidth={1} opacity={0.4} />
+      <path d="M22,640 L22,650 L32,650" fill="none" stroke="var(--border)" strokeWidth={1} opacity={0.4} />
+      <path d="M382,650 L392,650 L392,640" fill="none" stroke="var(--border)" strokeWidth={1} opacity={0.4} />
       <SectionLabel x={207} y={570} sub="Off-site venue">
         SUSHMA SWARAJ BHAWAN
       </SectionLabel>

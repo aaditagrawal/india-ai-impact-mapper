@@ -28,7 +28,7 @@ export function ExhibitorDetailDialog({
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent className="sm:max-w-md">
         <DialogHeader>
-          <DialogTitle className="font-serif text-lg leading-snug">
+          <DialogTitle className="font-serif text-base leading-snug">
             {exhibitor.exhibitor}
           </DialogTitle>
         </DialogHeader>

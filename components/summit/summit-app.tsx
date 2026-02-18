@@ -230,7 +230,7 @@ function SummitAppInner({ data, exhibitors }: SummitAppProps) {
 
         <div className="flex min-h-0 flex-1 flex-col lg:flex-row">
           {/* Map panel */}
-          <div className="shrink-0 border-b lg:w-2/5 lg:border-r lg:border-b-0">
+          <div className="shrink-0 border-b lg:w-1/2 lg:border-r lg:border-b-0">
             <button
               onClick={() => setMapExpanded((v) => !v)}
               className="flex w-full items-center justify-between px-4 py-2 text-xs text-muted-foreground transition-colors hover:bg-accent/50 lg:hidden"

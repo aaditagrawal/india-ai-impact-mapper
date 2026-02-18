@@ -3,14 +3,17 @@
 import { useEffect } from "react"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
-import { Broadcast, MapPin, CalendarBlank, Moon, Sun, MagnifyingGlass, Command } from "@phosphor-icons/react"
+import { Broadcast, MapPin, CalendarBlank, Moon, Sun, MagnifyingGlass, Command, Storefront, Presentation } from "@phosphor-icons/react"
 import { useTheme } from "@/hooks/use-theme"
+import type { AppView } from "@/lib/types"
 
 interface SummitHeaderProps {
   totalSessions: number
   filteredCount: number
   hasLiveSessions: boolean
   onCommandOpen: () => void
+  view: AppView
+  onViewChange: (view: AppView) => void
 }
 
 export function SummitHeader({
@@ -18,6 +21,8 @@ export function SummitHeader({
   filteredCount,
   hasLiveSessions,
   onCommandOpen,
+  view,
+  onViewChange,
 }: SummitHeaderProps) {
   const { dark, toggle } = useTheme()
 
@@ -53,15 +58,42 @@ export function SummitHeader({
         </div>
 
         <div className="flex shrink-0 items-center gap-2">
-          {hasLiveSessions && (
+          {hasLiveSessions && view === "sessions" && (
             <Badge variant="destructive" className="gap-1">
               <Broadcast className="size-3 animate-pulse" />
               LIVE
             </Badge>
           )}
+
+          {/* View toggle */}
+          <div className="flex rounded-md border bg-muted/30">
+            <button
+              onClick={() => onViewChange("sessions")}
+              className={`inline-flex items-center gap-1 rounded-l-md px-2 py-1 text-xs transition-colors ${
+                view === "sessions"
+                  ? "bg-background font-medium text-foreground shadow-sm"
+                  : "text-muted-foreground hover:text-foreground"
+              }`}
+            >
+              <Presentation className="size-3.5" />
+              <span className="hidden sm:inline">Sessions</span>
+            </button>
+            <button
+              onClick={() => onViewChange("exhibitors")}
+              className={`inline-flex items-center gap-1 rounded-r-md px-2 py-1 text-xs transition-colors ${
+                view === "exhibitors"
+                  ? "bg-background font-medium text-foreground shadow-sm"
+                  : "text-muted-foreground hover:text-foreground"
+              }`}
+            >
+              <Storefront className="size-3.5" />
+              <span className="hidden sm:inline">Exhibitors</span>
+            </button>
+          </div>
+
           <span className="hidden text-xs tabular-nums text-muted-foreground sm:inline">
             {filteredCount === totalSessions
-              ? `${totalSessions} sessions`
+              ? `${totalSessions} ${view === "sessions" ? "sessions" : "exhibitors"}`
               : `${filteredCount} of ${totalSessions}`}
           </span>
           <span className="text-xs tabular-nums text-muted-foreground sm:hidden">

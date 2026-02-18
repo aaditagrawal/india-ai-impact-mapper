@@ -1,0 +1,2452 @@
+[
+  {
+    "sno": 1,
+    "exhibitor": "113A",
+    "booth_number": "9.108",
+    "hall_number": "8",
+    "tag": "Corporate (Domestic)"
+  },
+  {
+    "sno": 2,
+    "exhibitor": "3B Innovations Technology Services",
+    "booth_number": "",
+    "hall_number": "",
+    "tag": "Corporate (Domestic)"
+  },
+  {
+    "sno": 3,
+    "exhibitor": "Acrea Global Products And Services",
+    "booth_number": "4F.4",
+    "hall_number": "4",
+    "tag": "Corporate (Domestic)"
+  },
+  {
+    "sno": 4,
+    "exhibitor": "Aarna Tech Consultants Private Limited",
+    "booth_number": "1.35",
+    "hall_number": "1",
+    "tag": "Corporate (Domestic)"
+  },
+  {
+    "sno": 5,
+    "exhibitor": "Accenture-LearningEdge-Talentprint Private Limited",
+    "booth_number": "5F.28D",
+    "hall_number": "5",
+    "tag": "Corporate (International)"
+  },
+  {
+    "sno": 6,
+    "exhibitor": "Accops Solutions Private Limited",
+    "booth_number": "5F.28D",
+    "hall_number": "5",
+    "tag": "Corporate (Domestic)"
+  },
+  {
+    "sno": 7,
+    "exhibitor": "Accops Technologies LLP",
+    "booth_number": "1.32",
+    "hall_number": "1",
+    "tag": "Corporate (Domestic)"
+  },
+  {
+    "sno": 8,
+    "exhibitor": "Adconscious International",
+    "booth_number": "1.88",
+    "hall_number": "1",
+    "tag": "Corporate (Domestic)"
+  },
+  {
+    "sno": 9,
+    "exhibitor": "Adobe",
+    "booth_number": "3.8A",
+    "hall_number": "3",
+    "tag": "Corporate (Domestic)"
+  },
+  {
+    "sno": 10,
+    "exhibitor": "Adobe Digital",
+    "booth_number": "1.83",
+    "hall_number": "1",
+    "tag": "Corporate (Domestic)"
+  },
+  {
+    "sno": 11,
+    "exhibitor": "Africa AI Village (Ohata Trust)",
+    "booth_number": "14.8",
+    "hall_number": "14",
+    "tag": "Corporate (Domestic)"
+  },
+  {
+    "sno": 12,
+    "exhibitor": "Agami Technologies Limited",
+    "booth_number": "1.66",
+    "hall_number": "1",
+    "tag": "Corporate (Domestic)"
+  },
+  {
+    "sno": 13,
+    "exhibitor": "Airswet Research Foundation",
+    "booth_number": "6.64",
+    "hall_number": "6",
+    "tag": "Corporate (Domestic)"
+  },
+  {
+    "sno": 14,
+    "exhibitor": "Aizant",
+    "booth_number": "1.43",
+    "hall_number": "1",
+    "tag": "Corporate (Domestic)"
+  },
+  {
+    "sno": 15,
+    "exhibitor": "Alsact Limited",
+    "booth_number": "1.28",
+    "hall_number": "1",
+    "tag": "Corporate (Domestic)"
+  },
+  {
+    "sno": 16,
+    "exhibitor": "Alwin Limited",
+    "booth_number": "6.85",
+    "hall_number": "6",
+    "tag": "Corporate (Domestic)"
+  },
+  {
+    "sno": 17,
+    "exhibitor": "AXIS TECH, LIMITED (Russian Pavilion - Russia)",
+    "booth_number": "14.15",
+    "hall_number": "14",
+    "tag": "Country Representation"
+  },
+  {
+    "sno": 18,
+    "exhibitor": "AMD",
+    "booth_number": "5.55A",
+    "hall_number": "5",
+    "tag": "Corporate (Domestic)"
+  },
+  {
+    "sno": 19,
+    "exhibitor": "Amity University",
+    "booth_number": "6.85",
+    "hall_number": "6",
+    "tag": "Academia"
+  },
+  {
+    "sno": 20,
+    "exhibitor": "Amnot Digital Private Limited",
+    "booth_number": "4F.18B",
+    "hall_number": "4",
+    "tag": "Corporate (Domestic)"
+  },
+  {
+    "sno": 21,
+    "exhibitor": "Anant Raj Omnitech (JV)",
+    "booth_number": "5.17A & D&E",
+    "hall_number": "5",
+    "tag": "Corporate (Domestic)"
+  },
+  {
+    "sno": 22,
+    "exhibitor": "Andhra Pradesh Technologyservices Limited",
+    "booth_number": "",
+    "hall_number": "",
+    "tag": "Government (Ministries & States)"
+  },
+  {
+    "sno": 23,
+    "exhibitor": "Angelbeat AI Private Limited",
+    "booth_number": "5F.26D",
+    "hall_number": "5",
+    "tag": "Startups (Startup Pods)"
+  },
+  {
+    "sno": 24,
+    "exhibitor": "Annys Software Pvt. Ltd.",
+    "booth_number": "5F.18",
+    "hall_number": "5",
+    "tag": "Corporate (Domestic)"
+  },
+  {
+    "sno": 25,
+    "exhibitor": "Antier Solutions Private Limited",
+    "booth_number": "3F.24",
+    "hall_number": "3",
+    "tag": "Corporate (Domestic)"
+  },
+  {
+    "sno": 26,
+    "exhibitor": "Anusandhan National Research Foundation (ANRF)",
+    "booth_number": "3F.34",
+    "hall_number": "3",
+    "tag": "Government (Ministries & States)"
+  },
+  {
+    "sno": 27,
+    "exhibitor": "Aposid Technologies Private Limited",
+    "booth_number": "5F.58",
+    "hall_number": "5",
+    "tag": "Corporate (Domestic)"
+  },
+  {
+    "sno": 28,
+    "exhibitor": "Apogean Technologies Private Limited(Apogean)",
+    "booth_number": "4F.22A",
+    "hall_number": "4",
+    "tag": "Corporate (Domestic)"
+  },
+  {
+    "sno": 29,
+    "exhibitor": "Appsmahal.co",
+    "booth_number": "3F.24B",
+    "hall_number": "3",
+    "tag": "Corporate (International)"
+  },
+  {
+    "sno": 30,
+    "exhibitor": "Aprameva Oneworks Private Limited",
+    "booth_number": "3F.24B",
+    "hall_number": "3",
+    "tag": "Corporate (International)"
+  },
+  {
+    "sno": 31,
+    "exhibitor": "ABRAMS Consulting INC",
+    "booth_number": "6.58",
+    "hall_number": "6",
+    "tag": "Corporate (Domestic)"
+  },
+  {
+    "sno": 32,
+    "exhibitor": "Arista Networks India Private Limited",
+    "booth_number": "5.8A",
+    "hall_number": "5",
+    "tag": "Corporate (Domestic)"
+  },
+  {
+    "sno": 33,
+    "exhibitor": "Artificial Limbs Manufacturing Corporation Of India",
+    "booth_number": "3F.12A",
+    "hall_number": "3",
+    "tag": "Public Sector Undertaking"
+  },
+  {
+    "sno": 34,
+    "exhibitor": "ASUS Technology Private Limited",
+    "booth_number": "3.9",
+    "hall_number": "3",
+    "tag": "Corporate (Domestic)"
+  },
+  {
+    "sno": 35,
+    "exhibitor": "Atman Cloud Consultants Private Limited",
+    "booth_number": "1.34",
+    "hall_number": "1",
+    "tag": "Corporate (Domestic)"
+  },
+  {
+    "sno": 36,
+    "exhibitor": "Australian Government",
+    "booth_number": "14.12 C&D",
+    "hall_number": "14",
+    "tag": "Country Representation"
+  },
+  {
+    "sno": 37,
+    "exhibitor": "Aventisia Technologies Private Limited",
+    "booth_number": "6.94",
+    "hall_number": "6",
+    "tag": "Corporate (Domestic)"
+  },
+  {
+    "sno": 38,
+    "exhibitor": "AVESTA TECHNOLOGIES Pvt Ltd",
+    "booth_number": "1.47",
+    "hall_number": "1",
+    "tag": "Corporate (Domestic)"
+  },
+  {
+    "sno": 39,
+    "exhibitor": "Avamate Digital Technologies Private Limited",
+    "booth_number": "1.36",
+    "hall_number": "1",
+    "tag": "Corporate (International)"
+  },
+  {
+    "sno": 40,
+    "exhibitor": "AVPN",
+    "booth_number": "4.1",
+    "hall_number": "4",
+    "tag": "Corporate (Domestic)"
+  },
+  {
+    "sno": 41,
+    "exhibitor": "AWS/Amazon",
+    "booth_number": "4.1",
+    "hall_number": "4",
+    "tag": "Corporate (Domestic)"
+  },
+  {
+    "sno": 42,
+    "exhibitor": "Axis Bank Limited",
+    "booth_number": "1.41",
+    "hall_number": "1",
+    "tag": "Corporate (Domestic)"
+  },
+  {
+    "sno": 43,
+    "exhibitor": "Axis My India Ltd",
+    "booth_number": "4F.17",
+    "hall_number": "4",
+    "tag": "Corporate (Domestic)"
+  },
+  {
+    "sno": 44,
+    "exhibitor": "BANK OF BARODA",
+    "booth_number": "4F.36",
+    "hall_number": "4",
+    "tag": "Public Sector Undertaking"
+  },
+  {
+    "sno": 45,
+    "exhibitor": "Bansilal Ramnath Agarwal Charitable Trust (Vishkarma Institute)",
+    "booth_number": "6.85",
+    "hall_number": "6",
+    "tag": "Corporate (Domestic)"
+  },
+  {
+    "sno": 46,
+    "exhibitor": "Benchmarx Edu Private Limited",
+    "booth_number": "4F.6B & 4F.6C",
+    "hall_number": "4",
+    "tag": "Corporate (Domestic)"
+  },
+  {
+    "sno": 47,
+    "exhibitor": "BEYOND CODES",
+    "booth_number": "3F.30 & 3F.30A",
+    "hall_number": "3",
+    "tag": "Corporate (Domestic)"
+  },
+  {
+    "sno": 48,
+    "exhibitor": "Bharat Electronics Ltd",
+    "booth_number": "4F.20",
+    "hall_number": "4",
+    "tag": "Public Sector Undertaking"
+  },
+  {
+    "sno": 49,
+    "exhibitor": "BharatAI",
+    "booth_number": "6.25",
+    "hall_number": "6",
+    "tag": "Corporate (Domestic)"
+  },
+  {
+    "sno": 50,
+    "exhibitor": "BharatGen",
+    "booth_number": "1.17",
+    "hall_number": "1",
+    "tag": "Corporate (Domestic)"
+  },
+  {
+    "sno": 51,
+    "exhibitor": "Birla Institute of Technology and Science Pilani Hyderabad",
+    "booth_number": "6.9",
+    "hall_number": "6",
+    "tag": "Academia"
+  },
+  {
+    "sno": 52,
+    "exhibitor": "Biz-Tech Answers",
+    "booth_number": "1.42",
+    "hall_number": "1",
+    "tag": "Corporate (Domestic)"
+  },
+  {
+    "sno": 53,
+    "exhibitor": "Blockchain For Impact(IN Covid Support)",
+    "booth_number": "3F.10 & 3F.4",
+    "hall_number": "3",
+    "tag": "Corporate (Domestic)"
+  },
+  {
+    "sno": 54,
+    "exhibitor": "Bluemachines(Apna.com)",
+    "booth_number": "1.11",
+    "hall_number": "1",
+    "tag": "Corporate (Domestic)"
+  },
+  {
+    "sno": 55,
+    "exhibitor": "BML Munjal University",
+    "booth_number": "1.65",
+    "hall_number": "1",
+    "tag": "Academia"
+  },
+  {
+    "sno": 56,
+    "exhibitor": "Brandmeup Technologies",
+    "booth_number": "6.57",
+    "hall_number": "6",
+    "tag": "Corporate (Domestic)"
+  },
+  {
+    "sno": 57,
+    "exhibitor": "Brillio Technologies Private Limited",
+    "booth_number": "5F 13, 14 & 14.6",
+    "hall_number": "4",
+    "tag": "Country Representation"
+  },
+  {
+    "sno": 58,
+    "exhibitor": "Business France",
+    "booth_number": "",
+    "hall_number": "",
+    "tag": "Country Representation"
+  },
+  {
+    "sno": 59,
+    "exhibitor": "BUSINESSNEXT Acuitas Solutions Private Limited",
+    "booth_number": "1.65 & 1.66",
+    "hall_number": "1",
+    "tag": "Corporate (Domestic)"
+  },
+  {
+    "sno": 60,
+    "exhibitor": "CBS INFORMATION SYSTEMS INC",
+    "booth_number": "4F 4",
+    "hall_number": "4",
+    "tag": "Corporate (International)"
+  },
+  {
+    "sno": 61,
+    "exhibitor": "Center for Railway Information Systems",
+    "booth_number": "4F 13, 17, 18, 21, 22",
+    "hall_number": "4",
+    "tag": "Government (Ministries & States)"
+  },
+  {
+    "sno": 62,
+    "exhibitor": "Centre Expertise of Information Management (MIM)",
+    "booth_number": "",
+    "hall_number": "4",
+    "tag": "Government (Ministries & States)"
+  },
+  {
+    "sno": 63,
+    "exhibitor": "Centre for Development of Telematics (C-DOT)",
+    "booth_number": "SF 25",
+    "hall_number": "5",
+    "tag": "Government (Ministries & States)"
+  },
+  {
+    "sno": 64,
+    "exhibitor": "CGSI",
+    "booth_number": "",
+    "hall_number": "",
+    "tag": "Government (Ministries & States)"
+  },
+  {
+    "sno": 65,
+    "exhibitor": "Centre for Social Systems (CCSS) by IIT Bangalore (EkStep Foundation)",
+    "booth_number": "3F 2B & 3F 2D, 3F 22 & 3F 21",
+    "hall_number": "3",
+    "tag": "Academia"
+  },
+  {
+    "sno": 66,
+    "exhibitor": "Chennai Smart City Industrial development Corporation",
+    "booth_number": "SF 22A",
+    "hall_number": "5",
+    "tag": "Corporate (Domestic)"
+  },
+  {
+    "sno": 67,
+    "exhibitor": "Cisco Systems India Private Limited",
+    "booth_number": "6.8",
+    "hall_number": "6",
+    "tag": "Corporate (Domestic)"
+  },
+  {
+    "sno": 68,
+    "exhibitor": "ClavierLabs Private Limited",
+    "booth_number": "6.8",
+    "hall_number": "6",
+    "tag": "Corporate (Domestic)"
+  },
+  {
+    "sno": 69,
+    "exhibitor": "Clevelabs India Limited",
+    "booth_number": "6.8",
+    "hall_number": "6",
+    "tag": "Corporate (Domestic)"
+  },
+  {
+    "sno": 70,
+    "exhibitor": "CloudPi",
+    "booth_number": "6.86",
+    "hall_number": "6",
+    "tag": "Corporate (Domestic)"
+  },
+  {
+    "sno": 71,
+    "exhibitor": "Clover India Limited",
+    "booth_number": "SF 30 & SF 6",
+    "hall_number": "",
+    "tag": "Corporate (Domestic)"
+  },
+  {
+    "sno": 72,
+    "exhibitor": "Codesignix Solutions India Private Limited",
+    "booth_number": "",
+    "hall_number": "",
+    "tag": "Corporate (Domestic)"
+  },
+  {
+    "sno": 73,
+    "exhibitor": "Cognizant",
+    "booth_number": "1.5 & 1.9",
+    "hall_number": "1",
+    "tag": "Corporate (Domestic)"
+  },
+  {
+    "sno": 74,
+    "exhibitor": "Comverse Inc",
+    "booth_number": "1.25",
+    "hall_number": "1",
+    "tag": "Corporate (Domestic)"
+  },
+  {
+    "sno": 75,
+    "exhibitor": "Communique Marketing Solutions Private Limited (Google)",
+    "booth_number": "3A & 3A.4",
+    "hall_number": "",
+    "tag": "Corporate (Domestic)"
+  },
+  {
+    "sno": 76,
+    "exhibitor": "Conti",
+    "booth_number": "5.3",
+    "hall_number": "5",
+    "tag": "Corporate (Domestic)"
+  },
+  {
+    "sno": 77,
+    "exhibitor": "Coftover Private Limited",
+    "booth_number": "1.1",
+    "hall_number": "1",
+    "tag": "Corporate (Domestic)"
+  },
+  {
+    "sno": 78,
+    "exhibitor": "Cpl technologies",
+    "booth_number": "2.3",
+    "hall_number": "2",
+    "tag": "Corporate (Domestic)"
+  },
+  {
+    "sno": 79,
+    "exhibitor": "Cubation Consulting Private Limited",
+    "booth_number": "6.89",
+    "hall_number": "6",
+    "tag": "Corporate (Domestic)"
+  },
+  {
+    "sno": 80,
+    "exhibitor": "Cybersecurity Next Private Limited",
+    "booth_number": "6.78",
+    "hall_number": "6",
+    "tag": "Corporate (Domestic)"
+  },
+  {
+    "sno": 81,
+    "exhibitor": "Cyftune India Private Limited",
+    "booth_number": "6.78",
+    "hall_number": "6",
+    "tag": "Corporate (Domestic)"
+  },
+  {
+    "sno": 82,
+    "exhibitor": "Cypriot InfoTech Private Limited",
+    "booth_number": "4.17",
+    "hall_number": "4",
+    "tag": "Corporate (Domestic)"
+  },
+  {
+    "sno": 83,
+    "exhibitor": "Datadirect Networks India Private Limited(DDN)",
+    "booth_number": "5.13",
+    "hall_number": "5",
+    "tag": "Corporate (Domestic)"
+  },
+  {
+    "sno": 84,
+    "exhibitor": "Dayananda Sagar University",
+    "booth_number": "6.26, 27, 32 & 33",
+    "hall_number": "6",
+    "tag": "Academia"
+  },
+  {
+    "sno": 85,
+    "exhibitor": "dDriven",
+    "booth_number": "",
+    "hall_number": "5",
+    "tag": "Corporate (Domestic)"
+  },
+  {
+    "sno": 86,
+    "exhibitor": "Delhi Metro Rail Corporation Limited(DMRC)",
+    "booth_number": "4F 26A",
+    "hall_number": "4",
+    "tag": "Public Sector Undertaking"
+  },
+  {
+    "sno": 87,
+    "exhibitor": "Dell technologies",
+    "booth_number": "",
+    "hall_number": "1",
+    "tag": "Corporate (Domestic)"
+  },
+  {
+    "sno": 88,
+    "exhibitor": "Deloitte Touche Tohmatsu India LLP",
+    "booth_number": "1.3",
+    "hall_number": "1",
+    "tag": "Corporate (Domestic)"
+  },
+  {
+    "sno": 89,
+    "exhibitor": "Department of Food and Public Distribution, Ministry of Consumer Affairs",
+    "booth_number": "5F 19",
+    "hall_number": "",
+    "tag": "Government (Ministries & States)"
+  },
+  {
+    "sno": 90,
+    "exhibitor": "Department of Information Technology & Communication",
+    "booth_number": "4F 3 & 4F 4",
+    "hall_number": "4",
+    "tag": "Corporate (Domestic)"
+  },
+  {
+    "sno": 91,
+    "exhibitor": "Department Of Information Technology (Bihar)",
+    "booth_number": "5F 8 & 12",
+    "hall_number": "5",
+    "tag": "Corporate (Domestic)"
+  },
+  {
+    "sno": 92,
+    "exhibitor": "Department of IT & Electronics, Goa",
+    "booth_number": "6.12",
+    "hall_number": "4",
+    "tag": "Government (Ministries & States)"
+  },
+  {
+    "sno": 93,
+    "exhibitor": "Department of IT, Govt. of Assam",
+    "booth_number": "6.12",
+    "hall_number": "",
+    "tag": "Government (Ministries & States)"
+  },
+  {
+    "sno": 94,
+    "exhibitor": "Department of technical education, Govt of NCT of Delhi",
+    "booth_number": "5F 25D",
+    "hall_number": "",
+    "tag": "Government (Ministries & States)"
+  },
+  {
+    "sno": 95,
+    "exhibitor": "Devrev Cloud India Private Limited",
+    "booth_number": "6.47",
+    "hall_number": "6",
+    "tag": "Corporate (Domestic)"
+  },
+  {
+    "sno": 96,
+    "exhibitor": "Digital Health Association Limited",
+    "booth_number": "6.74",
+    "hall_number": "6",
+    "tag": "Corporate (Domestic)"
+  },
+  {
+    "sno": 97,
+    "exhibitor": "Digital India Bhashini Division",
+    "booth_number": "3F 5, 3F 11 & 3F 17",
+    "hall_number": "3",
+    "tag": "Government (Ministries & States)"
+  },
+  {
+    "sno": 98,
+    "exhibitor": "Directorate of Information and Technology, Govt. of Tripura",
+    "booth_number": "6.11",
+    "hall_number": "",
+    "tag": "Government (Ministries & States)"
+  },
+  {
+    "sno": 99,
+    "exhibitor": "DRDO",
+    "booth_number": "5F 23",
+    "hall_number": "5",
+    "tag": "Government (Ministries & States)"
+  },
+  {
+    "sno": 100,
+    "exhibitor": "EDU Vantage Private Limited",
+    "booth_number": "1.28",
+    "hall_number": "1",
+    "tag": "Corporate (Domestic)"
+  },
+  {
+    "sno": 101,
+    "exhibitor": "Electronics And Computer Software Export",
+    "booth_number": "1.61",
+    "hall_number": "1",
+    "tag": "Startups (Startup Pods)"
+  },
+  {
+    "sno": 102,
+    "exhibitor": "Electronics And Computer Software Export",
+    "booth_number": "5.25B",
+    "hall_number": "5",
+    "tag": "Startups (Startup Pods)"
+  },
+  {
+    "sno": 103,
+    "exhibitor": "Electronics Corporation Of Tamil Nadu Limited",
+    "booth_number": "4F 8 & 4F 14",
+    "hall_number": "4",
+    "tag": "Corporate (Domestic)"
+  },
+  {
+    "sno": 104,
+    "exhibitor": "Elevate.ph",
+    "booth_number": "6.101",
+    "hall_number": "6",
+    "tag": "Corporate (International)"
+  },
+  {
+    "sno": 105,
+    "exhibitor": "Enterprise Estonia",
+    "booth_number": "14.3",
+    "hall_number": "14",
+    "tag": "Country Representation"
+  },
+  {
+    "sno": 106,
+    "exhibitor": "ERA EDUCATION TRUST",
+    "booth_number": "4.778",
+    "hall_number": "4",
+    "tag": "Academia"
+  },
+  {
+    "sno": 107,
+    "exhibitor": "Ernst & Young LLP (EY)",
+    "booth_number": "5.8",
+    "hall_number": "5",
+    "tag": "Corporate (Domestic)"
+  },
+  {
+    "sno": 108,
+    "exhibitor": "ESOl Software Solutions Limited",
+    "booth_number": "4.25",
+    "hall_number": "4",
+    "tag": "Corporate (Domestic)"
+  },
+  {
+    "sno": 109,
+    "exhibitor": "ESIET Area Pvt Ltd",
+    "booth_number": "4F.41",
+    "hall_number": "4",
+    "tag": "Corporate (Domestic)"
+  },
+  {
+    "sno": 110,
+    "exhibitor": "E-Solutions It Services Private Limited",
+    "booth_number": "6.93",
+    "hall_number": "6",
+    "tag": "Corporate (Domestic)"
+  },
+  {
+    "sno": 111,
+    "exhibitor": "Evoaura",
+    "booth_number": "5.37",
+    "hall_number": "5",
+    "tag": "Startups (Startup Pods)"
+  },
+  {
+    "sno": 112,
+    "exhibitor": "Exotel Techcom Private Limited",
+    "booth_number": "3.15",
+    "hall_number": "3",
+    "tag": "Corporate (Domestic)"
+  },
+  {
+    "sno": 113,
+    "exhibitor": "Extroger",
+    "booth_number": "5F.A",
+    "hall_number": "5",
+    "tag": "Corporate (Domestic)"
+  },
+  {
+    "sno": 114,
+    "exhibitor": "Extramarks Online Services Pvt. Ltd.",
+    "booth_number": "",
+    "hall_number": "",
+    "tag": "Corporate (Domestic)"
+  },
+  {
+    "sno": 115,
+    "exhibitor": "Extramarks Education India Private Limited",
+    "booth_number": "SF.28",
+    "hall_number": "5",
+    "tag": "Corporate (Domestic)"
+  },
+  {
+    "sno": 116,
+    "exhibitor": "Facebook/Meta Online Services Pvt. Ltd.(Meta)",
+    "booth_number": "",
+    "hall_number": "",
+    "tag": "Corporate (Domestic)"
+  },
+  {
+    "sno": 117,
+    "exhibitor": "FISL",
+    "booth_number": "3.7",
+    "hall_number": "3",
+    "tag": "Corporate (Domestic)"
+  },
+  {
+    "sno": 118,
+    "exhibitor": "Flare Solutions Private Limited",
+    "booth_number": "6.90",
+    "hall_number": "6",
+    "tag": "Corporate (Domestic)"
+  },
+  {
+    "sno": 119,
+    "exhibitor": "Fractal",
+    "booth_number": "5.11",
+    "hall_number": "5",
+    "tag": "Corporate (Domestic)"
+  },
+  {
+    "sno": 120,
+    "exhibitor": "Fronect AI Private Limited",
+    "booth_number": "1.43",
+    "hall_number": "1",
+    "tag": "Startups (Startup Pods)"
+  },
+  {
+    "sno": 121,
+    "exhibitor": "Galgotias University",
+    "booth_number": "3.8 & 3.54",
+    "hall_number": "3",
+    "tag": "Academia"
+  },
+  {
+    "sno": 122,
+    "exhibitor": "Gates Foundation (Branch Office)",
+    "booth_number": "SF.33",
+    "hall_number": "5",
+    "tag": "Corporate (International)"
+  },
+  {
+    "sno": 123,
+    "exhibitor": "Gautam Solar Private Limited",
+    "booth_number": "3.35",
+    "hall_number": "3",
+    "tag": "Corporate (Domestic)"
+  },
+  {
+    "sno": 124,
+    "exhibitor": "Gazelle Information Technologies",
+    "booth_number": "1.31",
+    "hall_number": "1",
+    "tag": "Corporate (Domestic)"
+  },
+  {
+    "sno": 125,
+    "exhibitor": "George P Johnson Event Marketing Private Limited (IBM)",
+    "booth_number": "7.3",
+    "hall_number": "7",
+    "tag": "Corporate (Domestic)"
+  },
+  {
+    "sno": 126,
+    "exhibitor": "GIL Dept. of Science and Technology/Government",
+    "booth_number": "4F.9, 10, 15 & 16",
+    "hall_number": "4",
+    "tag": "Government (Ministries & States)"
+  },
+  {
+    "sno": 127,
+    "exhibitor": "Github India Private Limited",
+    "booth_number": "4F.27",
+    "hall_number": "4",
+    "tag": "Corporate (Domestic)"
+  },
+  {
+    "sno": 128,
+    "exhibitor": "GMR",
+    "booth_number": "5.36",
+    "hall_number": "5",
+    "tag": "Corporate (Domestic)"
+  },
+  {
+    "sno": 129,
+    "exhibitor": "Government of Japan",
+    "booth_number": "14.12",
+    "hall_number": "14",
+    "tag": "Country Representation"
+  },
+  {
+    "sno": 130,
+    "exhibitor": "Govt of Uttarakhand , Deprt of IT",
+    "booth_number": "SF.20",
+    "hall_number": "5",
+    "tag": "Government (Ministries & States)"
+  },
+  {
+    "sno": 131,
+    "exhibitor": "Govt. of Maharashtra",
+    "booth_number": "5.12 & 13",
+    "hall_number": "5",
+    "tag": "Government (Ministries & States)"
+  },
+  {
+    "sno": 132,
+    "exhibitor": "Govt. of Manipur(DIT, Manipur)",
+    "booth_number": "SF.1",
+    "hall_number": "5",
+    "tag": "Government (Ministries & States)"
+  },
+  {
+    "sno": 133,
+    "exhibitor": "Govt. of Odisha",
+    "booth_number": "",
+    "hall_number": "",
+    "tag": "Government (Ministries & States)"
+  },
+  {
+    "sno": 134,
+    "exhibitor": "Govt. of Uttar Pradesh",
+    "booth_number": "SF.29 & SF.30",
+    "hall_number": "5",
+    "tag": "Government (Ministries & States)"
+  },
+  {
+    "sno": 135,
+    "exhibitor": "Govt. of West Bengal",
+    "booth_number": "SF.1C",
+    "hall_number": "5",
+    "tag": "Government (Ministries & States)"
+  },
+  {
+    "sno": 136,
+    "exhibitor": "Grand Challenges India - Biotechnology Industry Research Assistance Council(BIRAC)",
+    "booth_number": "8F.7A",
+    "hall_number": "8",
+    "tag": "Public Sector Undertaking"
+  },
+  {
+    "sno": 137,
+    "exhibitor": "Hackerearth Technologies Private Limited",
+    "booth_number": "6.6",
+    "hall_number": "6",
+    "tag": "Corporate (Domestic)"
+  },
+  {
+    "sno": 138,
+    "exhibitor": "Hanumayamma Innovations and Technologies Inc",
+    "booth_number": "1.27",
+    "hall_number": "1",
+    "tag": "Corporate (International)"
+  },
+  {
+    "sno": 139,
+    "exhibitor": "Haptiik",
+    "booth_number": "6.108",
+    "hall_number": "6",
+    "tag": "Corporate (Domestic)"
+  },
+  {
+    "sno": 140,
+    "exhibitor": "HCl Technologies Limited(HCLSoftware)",
+    "booth_number": "4.5",
+    "hall_number": "4",
+    "tag": "Corporate (Domestic)"
+  },
+  {
+    "sno": 141,
+    "exhibitor": "Head Held High Foundation/ Jan AI",
+    "booth_number": "14.1",
+    "hall_number": "14",
+    "tag": "Non Profit Organization"
+  },
+  {
+    "sno": 142,
+    "exhibitor": "Hewlett Packard Enterprise (HPE)",
+    "booth_number": "6.12A",
+    "hall_number": "6",
+    "tag": "Corporate (International)"
+  },
+  {
+    "sno": 143,
+    "exhibitor": "Hindustan Institute of Technology And Science",
+    "booth_number": "6.79",
+    "hall_number": "6",
+    "tag": "Corporate (Domestic)"
+  },
+  {
+    "sno": 144,
+    "exhibitor": "HP India Sales Pvt Ltd",
+    "booth_number": "3.1",
+    "hall_number": "3",
+    "tag": "Corporate (Domestic)"
+  },
+  {
+    "sno": 145,
+    "exhibitor": "Hughes Systique Private Limited",
+    "booth_number": "3F.6",
+    "hall_number": "3",
+    "tag": "Corporate (Domestic)"
+  },
+  {
+    "sno": 146,
+    "exhibitor": "i2k2 Networks Private Limited",
+    "booth_number": "1.72 & 1.70",
+    "hall_number": "1",
+    "tag": "Corporate (Domestic)"
+  },
+  {
+    "sno": 147,
+    "exhibitor": "iConeva Creative Outreach Network Pvt Ltd",
+    "booth_number": "5.14A",
+    "hall_number": "5",
+    "tag": "Corporate (Domestic)"
+  },
+  {
+    "sno": 148,
+    "exhibitor": "iFutura AI Labs Private Limited",
+    "booth_number": "6.82",
+    "hall_number": "6",
+    "tag": "Corporate (Domestic)"
+  },
+  {
+    "sno": 149,
+    "exhibitor": "iHub For Robotics And Autonomous Systems",
+    "booth_number": "SF.24",
+    "hall_number": "5",
+    "tag": "Corporate (Domestic)"
+  },
+  {
+    "sno": 150,
+    "exhibitor": "IILM",
+    "booth_number": "6.2A",
+    "hall_number": "6",
+    "tag": "Academia"
+  },
+  {
+    "sno": 151,
+    "exhibitor": "IIT Gandhinagar",
+    "booth_number": "6.109",
+    "hall_number": "6",
+    "tag": "Academia"
+  },
+  {
+    "sno": 152,
+    "exhibitor": "IIT Kharagpur AI4icps I Hub Foundation",
+    "booth_number": "6.46",
+    "hall_number": "6",
+    "tag": "Academia"
+  },
+  {
+    "sno": 153,
+    "exhibitor": "IMerIT Technology",
+    "booth_number": "1.45",
+    "hall_number": "1",
+    "tag": "Corporate (Domestic)"
+  },
+  {
+    "sno": 154,
+    "exhibitor": "Indian Army (DGIS)",
+    "booth_number": "4F.33",
+    "hall_number": "4",
+    "tag": "Government (Ministries & States)"
+  },
+  {
+    "sno": 155,
+    "exhibitor": "Indian Institute of Technology Bombay",
+    "booth_number": "6.28",
+    "hall_number": "6",
+    "tag": "Academia"
+  },
+  {
+    "sno": 156,
+    "exhibitor": "Indian Institute of Technology Madras",
+    "booth_number": "6.49",
+    "hall_number": "6",
+    "tag": "Corporate (Domestic)"
+  },
+  {
+    "sno": 157,
+    "exhibitor": "Indian Navy",
+    "booth_number": "4F.1",
+    "hall_number": "4",
+    "tag": "Government (Ministries & States)"
+  },
+  {
+    "sno": 158,
+    "exhibitor": "INDO GERMAN CHAMBER OF COMMERCE",
+    "booth_number": "14.4",
+    "hall_number": "14",
+    "tag": "Country Representation"
+  },
+  {
+    "sno": 159,
+    "exhibitor": "Indrani Resecurity Pvt. Ltd.",
+    "booth_number": "103",
+    "hall_number": "6",
+    "tag": "Corporate (Domestic)"
+  },
+  {
+    "sno": 160,
+    "exhibitor": "India Intelligence and Intelligence Services Pvt Ltd",
+    "booth_number": "3C & 3D",
+    "hall_number": "6",
+    "tag": "Corporate (Domestic)"
+  },
+  {
+    "sno": 161,
+    "exhibitor": "Infosys Limited",
+    "booth_number": "",
+    "hall_number": "",
+    "tag": "Corporate (Domestic)"
+  },
+  {
+    "sno": 162,
+    "exhibitor": "Innovation Hub UP Foundation AKTU Dr. A.P.J. Abdul Kalam Technical University",
+    "booth_number": "B154 (spin) & 6-A154 (spin)",
+    "hall_number": "1",
+    "tag": "Academia"
+  },
+  {
+    "sno": 163,
+    "exhibitor": "Integra Micro Systems",
+    "booth_number": "8.3A",
+    "hall_number": "1",
+    "tag": "Corporate (Domestic)"
+  },
+  {
+    "sno": 164,
+    "exhibitor": "Intellect Design Aremed",
+    "booth_number": "1.83",
+    "hall_number": "1",
+    "tag": "Corporate (Domestic)"
+  },
+  {
+    "sno": 165,
+    "exhibitor": "Intensify Global Technologies Limited",
+    "booth_number": "23",
+    "hall_number": "1",
+    "tag": "Corporate (Domestic)"
+  },
+  {
+    "sno": 166,
+    "exhibitor": "International Neurological Disord",
+    "booth_number": "",
+    "hall_number": "",
+    "tag": "Non Profit Organization"
+  },
+  {
+    "sno": 167,
+    "exhibitor": "Research Center",
+    "booth_number": "8.76",
+    "hall_number": "6",
+    "tag": "Corporate (Domestic)"
+  },
+  {
+    "sno": 168,
+    "exhibitor": "Intronics Limited",
+    "booth_number": "5.13",
+    "hall_number": "6",
+    "tag": "Corporate (Domestic)"
+  },
+  {
+    "sno": 169,
+    "exhibitor": "Ishan Infotech Limited",
+    "booth_number": "4F.26A",
+    "hall_number": "4",
+    "tag": "Corporate (Domestic)"
+  },
+  {
+    "sno": 170,
+    "exhibitor": "ITC Infotech India Limited",
+    "booth_number": "5.22",
+    "hall_number": "14",
+    "tag": "Corporate (Domestic)"
+  },
+  {
+    "sno": 171,
+    "exhibitor": "Italian Trade Agency (Embassy of Italy)",
+    "booth_number": "5.68",
+    "hall_number": "5",
+    "tag": "Country Representation"
+  },
+  {
+    "sno": 172,
+    "exhibitor": "Jai Institute",
+    "booth_number": "6.99",
+    "hall_number": "6",
+    "tag": "Corporate (Domestic)"
+  },
+  {
+    "sno": 173,
+    "exhibitor": "Josh Talk Private Limited",
+    "booth_number": "",
+    "hall_number": "",
+    "tag": "Corporate (Domestic)"
+  },
+  {
+    "sno": 174,
+    "exhibitor": "Karmayogi Bharat-Department of Personnel and Training (Dopt)",
+    "booth_number": "5F.18",
+    "hall_number": "5",
+    "tag": "Government (Ministries & States)"
+  },
+  {
+    "sno": 175,
+    "exhibitor": "Karnataka Pavilion(IT&T)",
+    "booth_number": "5.3 & 5F.4",
+    "hall_number": "5",
+    "tag": "Government (Ministries & States)"
+  },
+  {
+    "sno": 176,
+    "exhibitor": "Karyam Technologies Private Limited",
+    "booth_number": "",
+    "hall_number": "",
+    "tag": "Corporate (Domestic)"
+  },
+  {
+    "sno": 177,
+    "exhibitor": "Kerala State IT Mission",
+    "booth_number": "5F.25A",
+    "hall_number": "5",
+    "tag": "Government (Ministries & States)"
+  },
+  {
+    "sno": 178,
+    "exhibitor": "Kgryin AI Solutions Private Limited",
+    "booth_number": "6.97",
+    "hall_number": "6",
+    "tag": "Startups (Startup Pods)"
+  },
+  {
+    "sno": 179,
+    "exhibitor": "Knight Fintech Private Limited",
+    "booth_number": "1.59",
+    "hall_number": "1",
+    "tag": "Startups (Startup Pods)"
+  },
+  {
+    "sno": 180,
+    "exhibitor": "Krontinds",
+    "booth_number": "5.98",
+    "hall_number": "6",
+    "tag": "Corporate (Domestic)"
+  },
+  {
+    "sno": 181,
+    "exhibitor": "Kyndral Solutions Pvt Ltd",
+    "booth_number": "1.4",
+    "hall_number": "1",
+    "tag": "Corporate (Domestic)"
+  },
+  {
+    "sno": 182,
+    "exhibitor": "Larsen & Toubro Limited",
+    "booth_number": "2.11",
+    "hall_number": "2",
+    "tag": "Corporate (Domestic)"
+  },
+  {
+    "sno": 183,
+    "exhibitor": "Leelegics Solutions Private Limited",
+    "booth_number": "5",
+    "hall_number": "6",
+    "tag": "Corporate (Domestic)"
+  },
+  {
+    "sno": 184,
+    "exhibitor": "Limited Consulting Information Private Limited",
+    "booth_number": "4.7",
+    "hall_number": "",
+    "tag": "Corporate (Domestic)"
+  },
+  {
+    "sno": 185,
+    "exhibitor": "Lords Education And Health Society(Wadhwani AI)",
+    "booth_number": "1.6",
+    "hall_number": "6",
+    "tag": "Corporate (Domestic)"
+  },
+  {
+    "sno": 186,
+    "exhibitor": "Lotusproperties Front",
+    "booth_number": "5.46",
+    "hall_number": "4",
+    "tag": "Corporate (Domestic)"
+  },
+  {
+    "sno": 187,
+    "exhibitor": "Madhya Pradesh State Electronics Development Corporation",
+    "booth_number": "4F.32 & 4F.34",
+    "hall_number": "4",
+    "tag": "Government (Ministries & States)"
+  },
+  {
+    "sno": 188,
+    "exhibitor": "MasterCard",
+    "booth_number": "5.11",
+    "hall_number": "5",
+    "tag": "Corporate (International)"
+  },
+  {
+    "sno": 189,
+    "exhibitor": "Meerut Institute of Engineering & Technology",
+    "booth_number": "6.35",
+    "hall_number": "6",
+    "tag": "Academia"
+  },
+  {
+    "sno": 190,
+    "exhibitor": "Meesho",
+    "booth_number": "5.67",
+    "hall_number": "5",
+    "tag": "Corporate (Domestic)"
+  },
+  {
+    "sno": 191,
+    "exhibitor": "Megamet Technologies Global Limited",
+    "booth_number": "5.32",
+    "hall_number": "5",
+    "tag": "Corporate (Domestic)"
+  },
+  {
+    "sno": 192,
+    "exhibitor": "Meghalaya Information Technology Society",
+    "booth_number": "4F.35",
+    "hall_number": "4",
+    "tag": "Corporate (Domestic)"
+  },
+  {
+    "sno": 193,
+    "exhibitor": "Microsoft Corporation (India) Private Limited(Microsoft)",
+    "booth_number": "4.6",
+    "hall_number": "4",
+    "tag": "Corporate (International)"
+  },
+  {
+    "sno": 194,
+    "exhibitor": "Mindtrons Private Limited",
+    "booth_number": "4F.12",
+    "hall_number": "4",
+    "tag": "Corporate (Domestic)"
+  },
+  {
+    "sno": 195,
+    "exhibitor": "Ministry of Agriculture",
+    "booth_number": "4F.31",
+    "hall_number": "4",
+    "tag": "Government (Ministries & States)"
+  },
+  {
+    "sno": 196,
+    "exhibitor": "Ministry of Ayush",
+    "booth_number": "5F.25C",
+    "hall_number": "5",
+    "tag": "Government (Ministries & States)"
+  },
+  {
+    "sno": 197,
+    "exhibitor": "Ministry of Earth Sciences(Indian Institute of Tropical Sciences)",
+    "booth_number": "6.96",
+    "hall_number": "6",
+    "tag": "Government (Ministries & States)"
+  },
+  {
+    "sno": 198,
+    "exhibitor": "Ministry of Education (electricity)",
+    "booth_number": "1.2, 3F.8, 3F.9, 3F.14 & 3F.1",
+    "hall_number": "1",
+    "tag": "Government (Ministries & States)"
+  },
+  {
+    "sno": 199,
+    "exhibitor": "Ministry of Health & Family Welfare",
+    "booth_number": "1.63 & 1.64",
+    "hall_number": "1",
+    "tag": "Government (Ministries & States)"
+  },
+  {
+    "sno": 200,
+    "exhibitor": "Ministry of Panchayati Raj",
+    "booth_number": "5F.5 & 5F.9",
+    "hall_number": "5",
+    "tag": "Government (Ministries & States)"
+  },
+  {
+    "sno": 201,
+    "exhibitor": "Ministry of Rural Development",
+    "booth_number": "4F.31 & 4F.31A",
+    "hall_number": "4",
+    "tag": "Government (Ministries & States)"
+  },
+  {
+    "sno": 202,
+    "exhibitor": "Ministry of Skill Development and Entrepreneurship",
+    "booth_number": "3F.26 & 3F.20",
+    "hall_number": "3",
+    "tag": "Government (Ministries & States)"
+  },
+  {
+    "sno": 203,
+    "exhibitor": "Ministry of Steel (Joint Plant Committee)",
+    "booth_number": "5F.27",
+    "hall_number": "5",
+    "tag": "Government (Ministries & States)"
+  },
+  {
+    "sno": 204,
+    "exhibitor": "Ministry of Tribal Affairs",
+    "booth_number": "4F.22",
+    "hall_number": "4",
+    "tag": "Government (Ministries & States)"
+  },
+  {
+    "sno": 205,
+    "exhibitor": "Mio AI/NoPaperForms",
+    "booth_number": "6.7",
+    "hall_number": "6",
+    "tag": "Corporate (Domestic)"
+  },
+  {
+    "sno": 206,
+    "exhibitor": "Mirror Security Private Limited",
+    "booth_number": "3F.12A",
+    "hall_number": "3",
+    "tag": "Startups (Startup Pods)"
+  },
+  {
+    "sno": 207,
+    "exhibitor": "MobilePe Fintech Private Limited",
+    "booth_number": "1.62, 1.68",
+    "hall_number": "1",
+    "tag": "Startups (Startup Pods)"
+  },
+  {
+    "sno": 208,
+    "exhibitor": "n9m AI VENTURES",
+    "booth_number": "6.63",
+    "hall_number": "6",
+    "tag": "Corporate (Domestic)"
+  },
+  {
+    "sno": 209,
+    "exhibitor": "Nasscom (National Association of Software and Service Companies)",
+    "booth_number": "1.24",
+    "hall_number": "1",
+    "tag": "Corporate (Domestic)"
+  },
+  {
+    "sno": 210,
+    "exhibitor": "National Payments Corporation of India (NPCI)",
+    "booth_number": "",
+    "hall_number": "",
+    "tag": "Public Sector Undertaking"
+  },
+  {
+    "sno": 211,
+    "exhibitor": "NCRPEP",
+    "booth_number": "14.13",
+    "hall_number": "",
+    "tag": "Public Sector Undertaking"
+  },
+  {
+    "sno": 212,
+    "exhibitor": "Netsol (Supervise) Private Limited",
+    "booth_number": "2.4",
+    "hall_number": "8",
+    "tag": "Corporate (Domestic)"
+  },
+  {
+    "sno": 213,
+    "exhibitor": "Netradyne Private Limited",
+    "booth_number": "1.4",
+    "hall_number": "4",
+    "tag": "Corporate (Domestic)"
+  },
+  {
+    "sno": 214,
+    "exhibitor": "Newmero",
+    "booth_number": "2.1",
+    "hall_number": "3",
+    "tag": "Government (Ministries & States)"
+  },
+  {
+    "sno": 215,
+    "exhibitor": "Newgen Technologies India Limited",
+    "booth_number": "",
+    "hall_number": "",
+    "tag": "Corporate (Domestic)"
+  },
+  {
+    "sno": 216,
+    "exhibitor": "Nextbrain MAP Pvt Ltd",
+    "booth_number": "4.11 & 4.13",
+    "hall_number": "5",
+    "tag": "Corporate (Domestic)"
+  },
+  {
+    "sno": 217,
+    "exhibitor": "Niramai Health Analytix Private Limited",
+    "booth_number": "5.54 & 1.30",
+    "hall_number": "",
+    "tag": "Corporate (Domestic)"
+  },
+  {
+    "sno": 218,
+    "exhibitor": "NjStar AI",
+    "booth_number": "",
+    "hall_number": "",
+    "tag": "Corporate (International)"
+  },
+  {
+    "sno": 219,
+    "exhibitor": "Nomad AI",
+    "booth_number": "4F.18A",
+    "hall_number": "",
+    "tag": "Startups (Startup Pods)"
+  },
+  {
+    "sno": 220,
+    "exhibitor": "N Kor Private Limited(Kaksin.ai)",
+    "booth_number": "4F.18A",
+    "hall_number": "",
+    "tag": "Startups (Startup Pods)"
+  },
+  {
+    "sno": 221,
+    "exhibitor": "Infrastructure",
+    "booth_number": "",
+    "hall_number": "",
+    "tag": "Corporate (Domestic)"
+  },
+  {
+    "sno": 222,
+    "exhibitor": "Niqo Robotics Private Limited",
+    "booth_number": "5F.18",
+    "hall_number": "",
+    "tag": "Corporate (Domestic)"
+  },
+  {
+    "sno": 223,
+    "exhibitor": "NexMia",
+    "booth_number": "3.5",
+    "hall_number": "",
+    "tag": "Corporate (Domestic)"
+  },
+  {
+    "sno": 224,
+    "exhibitor": "Odisha State Pavilion",
+    "booth_number": "SF.10 & SF.11",
+    "hall_number": "",
+    "tag": "Government (Ministries & States)"
+  },
+  {
+    "sno": 225,
+    "exhibitor": "Olinine Netsys (India) Pvt Ltd (Corning Technologies India Private Limited)",
+    "booth_number": "1.33",
+    "hall_number": "",
+    "tag": "Corporate (Domestic)"
+  },
+  {
+    "sno": 226,
+    "exhibitor": "OPC MJB India",
+    "booth_number": "6.84",
+    "hall_number": "",
+    "tag": "Corporate (Domestic)"
+  },
+  {
+    "sno": 227,
+    "exhibitor": "OpenAI",
+    "booth_number": "SF.33A & SF.36C",
+    "hall_number": "",
+    "tag": "Corporate (International)"
+  },
+  {
+    "sno": 228,
+    "exhibitor": "OpenAI OpCo, LLC",
+    "booth_number": "SF.33A & SF.36C",
+    "hall_number": "",
+    "tag": "Corporate (International)"
+  },
+  {
+    "sno": 229,
+    "exhibitor": "Orla Health Private Limited(Eika Care)",
+    "booth_number": "",
+    "hall_number": "",
+    "tag": "Corporate (Domestic)"
+  },
+  {
+    "sno": 230,
+    "exhibitor": "Paradigod Technology Services Private Limited",
+    "booth_number": "3.16A",
+    "hall_number": "",
+    "tag": "Corporate (Domestic)"
+  },
+  {
+    "sno": 231,
+    "exhibitor": "Paytm",
+    "booth_number": "5.17C",
+    "hall_number": "5",
+    "tag": "Corporate (Domestic)"
+  },
+  {
+    "sno": 232,
+    "exhibitor": "People Prime / People Prime Worldwide",
+    "booth_number": "3.30A",
+    "hall_number": "",
+    "tag": "Corporate (Domestic)"
+  },
+  {
+    "sno": 233,
+    "exhibitor": "Pianalytical Technologies Private Limited",
+    "booth_number": "1.22",
+    "hall_number": "6",
+    "tag": "Corporate (Domestic)"
+  },
+  {
+    "sno": 234,
+    "exhibitor": "Pitchseat Foundation",
+    "booth_number": "1.14",
+    "hall_number": "6",
+    "tag": "Corporate (Domestic)"
+  },
+  {
+    "sno": 235,
+    "exhibitor": "Fitch my Venture (GHC Limited)",
+    "booth_number": "6.105",
+    "hall_number": "6",
+    "tag": "Corporate (Domestic)"
+  },
+  {
+    "sno": 236,
+    "exhibitor": "Planetarium",
+    "booth_number": "",
+    "hall_number": "",
+    "tag": "Government (Ministries & States)"
+  },
+  {
+    "sno": 237,
+    "exhibitor": "Planetmeds Foundation",
+    "booth_number": "Open Air Museum opp Hall 5",
+    "hall_number": "NA",
+    "tag": "Non Profit Organization"
+  },
+  {
+    "sno": 238,
+    "exhibitor": "Plivo Services India Private Limited",
+    "booth_number": "5.32",
+    "hall_number": "",
+    "tag": "Corporate (Domestic)"
+  },
+  {
+    "sno": 239,
+    "exhibitor": "PRAG Integrated Communication Private Limited (HP India)",
+    "booth_number": "3.A1",
+    "hall_number": "",
+    "tag": "Corporate (Domestic)"
+  },
+  {
+    "sno": 240,
+    "exhibitor": "Population Council Institute",
+    "booth_number": "6.71",
+    "hall_number": "3",
+    "tag": "Non Profit Organization"
+  },
+  {
+    "sno": 241,
+    "exhibitor": "Posidex Technologies Private Limited",
+    "booth_number": "6.45",
+    "hall_number": "6",
+    "tag": "Corporate (Domestic)"
+  },
+  {
+    "sno": 242,
+    "exhibitor": "Power Grid Corporation of India Private Limited",
+    "booth_number": "9F.3",
+    "hall_number": "6",
+    "tag": "Corporate (Domestic)"
+  },
+  {
+    "sno": 243,
+    "exhibitor": "Prama India Private Limited",
+    "booth_number": "4F.36A",
+    "hall_number": "4",
+    "tag": "Corporate (Domestic)"
+  },
+  {
+    "sno": 244,
+    "exhibitor": "Predaxis Technology Private Limited",
+    "booth_number": "4F.12B",
+    "hall_number": "4",
+    "tag": "Corporate (Domestic)"
+  },
+  {
+    "sno": 245,
+    "exhibitor": "Prisma AI",
+    "booth_number": "1.1",
+    "hall_number": "1",
+    "tag": "Corporate (Domestic)"
+  },
+  {
+    "sno": 246,
+    "exhibitor": "Prombery Technologies (Eyantra Ventures)",
+    "booth_number": "6.87",
+    "hall_number": "6",
+    "tag": "Corporate (Domestic)"
+  },
+  {
+    "sno": 247,
+    "exhibitor": "Protean eGov Technologies Limited",
+    "booth_number": "4F.6A",
+    "hall_number": "4",
+    "tag": "Startups (Startup Pods)"
+  },
+  {
+    "sno": 248,
+    "exhibitor": "Proximal Cloud (Proximal Cloud Private Limited)",
+    "booth_number": "6.30",
+    "hall_number": "6",
+    "tag": "Startups (Startup Pods)"
+  },
+  {
+    "sno": 249,
+    "exhibitor": "Punjab Information & Communication Technology Corp Ltd (State Of Punjab)",
+    "booth_number": "5F.26",
+    "hall_number": "5",
+    "tag": "Government (Ministries & States)"
+  },
+  {
+    "sno": 250,
+    "exhibitor": "Qualcomm India Pvt Ltd.",
+    "booth_number": "4.2 & 4.3",
+    "hall_number": "4",
+    "tag": "Corporate (Domestic)"
+  },
+  {
+    "sno": 251,
+    "exhibitor": "R Promote",
+    "booth_number": "5F.24A",
+    "hall_number": "5",
+    "tag": "Corporate (Domestic)"
+  },
+  {
+    "sno": 252,
+    "exhibitor": "Railtel Corporation of India Limited",
+    "booth_number": "3F.21",
+    "hall_number": "3",
+    "tag": "Corporate (Domestic)"
+  },
+  {
+    "sno": 253,
+    "exhibitor": "Rapiduz Private Limited",
+    "booth_number": "1.52",
+    "hall_number": "1",
+    "tag": "Corporate (Domestic)"
+  },
+  {
+    "sno": 254,
+    "exhibitor": "Razorpay",
+    "booth_number": "1.12",
+    "hall_number": "1",
+    "tag": "Corporate (Domestic)"
+  },
+  {
+    "sno": 255,
+    "exhibitor": "Real Time Governance Society (RTGS)/Government of A.P. under ITE&C Department",
+    "booth_number": "5F.26D",
+    "hall_number": "5",
+    "tag": "Corporate (Domestic)"
+  },
+  {
+    "sno": 256,
+    "exhibitor": "REC LIMITED",
+    "booth_number": "4F.19 & 4D.25",
+    "hall_number": "4",
+    "tag": "Corporate (Domestic)"
+  },
+  {
+    "sno": 257,
+    "exhibitor": "Red Hat India Private Limited.",
+    "booth_number": "",
+    "hall_number": "5",
+    "tag": "Corporate (Domestic)"
+  },
+  {
+    "sno": 258,
+    "exhibitor": "Redington Limited",
+    "booth_number": "",
+    "hall_number": "",
+    "tag": "Academia"
+  },
+  {
+    "sno": 259,
+    "exhibitor": "Refroid Technologies Private Limited",
+    "booth_number": "3F.1B",
+    "hall_number": "3",
+    "tag": "Startups (Startup Pods)"
+  },
+  {
+    "sno": 260,
+    "exhibitor": "Reliance Industries Limited(Jio Intelligence)",
+    "booth_number": "5.2",
+    "hall_number": "5",
+    "tag": "Corporate (Domestic)"
+  },
+  {
+    "sno": 261,
+    "exhibitor": "Ribo AI Systems Private Limited",
+    "booth_number": "1.37",
+    "hall_number": "",
+    "tag": "Corporate (Domestic)"
+  },
+  {
+    "sno": 262,
+    "exhibitor": "Rapro India Limited",
+    "booth_number": "6.49",
+    "hall_number": "6",
+    "tag": "Corporate (Domestic)"
+  },
+  {
+    "sno": 263,
+    "exhibitor": "Ripik technology pvt ltd",
+    "booth_number": "6.104",
+    "hall_number": "6",
+    "tag": "Corporate (Domestic)"
+  },
+  {
+    "sno": 264,
+    "exhibitor": "Rodic Consultants Private Limited",
+    "booth_number": "1.44",
+    "hall_number": "1",
+    "tag": "Corporate (Domestic)"
+  },
+  {
+    "sno": 265,
+    "exhibitor": "Mountainz Technologies Pvt Ltd",
+    "booth_number": "4F.25",
+    "hall_number": "4",
+    "tag": "Corporate (Domestic)"
+  },
+  {
+    "sno": 266,
+    "exhibitor": "Banswara Syntex Industries Private Limited",
+    "booth_number": "4F.23",
+    "hall_number": "4",
+    "tag": "Corporate (Domestic)"
+  },
+  {
+    "sno": 267,
+    "exhibitor": "Barracuda Outsourcing Technologies Private Limited",
+    "booth_number": "4F.24",
+    "hall_number": "4",
+    "tag": "Corporate (Domestic)"
+  },
+  {
+    "sno": 268,
+    "exhibitor": "S S STEFAN FOR ABAYANS LLP",
+    "booth_number": "3F.26A",
+    "hall_number": "3",
+    "tag": "Corporate (Domestic)"
+  },
+  {
+    "sno": 269,
+    "exhibitor": "Sakal",
+    "booth_number": "1.9B",
+    "hall_number": "1",
+    "tag": "Corporate (Domestic)"
+  },
+  {
+    "sno": 270,
+    "exhibitor": "Samagra",
+    "booth_number": "",
+    "hall_number": "",
+    "tag": "Corporate (Domestic)"
+  },
+  {
+    "sno": 271,
+    "exhibitor": "Samhitaone Systems India Private Limited",
+    "booth_number": "3.09B",
+    "hall_number": "3",
+    "tag": "Corporate (Domestic)"
+  },
+  {
+    "sno": 272,
+    "exhibitor": "Sanjam Al",
+    "booth_number": "",
+    "hall_number": "",
+    "tag": "Corporate (Domestic)"
+  },
+  {
+    "sno": 273,
+    "exhibitor": "SAS Institute India Pvt Ltd",
+    "booth_number": "2.25",
+    "hall_number": "2",
+    "tag": "Corporate (Domestic)"
+  },
+  {
+    "sno": 274,
+    "exhibitor": "School of Technology",
+    "booth_number": "6.52",
+    "hall_number": "6",
+    "tag": "Corporate (Domestic)"
+  },
+  {
+    "sno": 275,
+    "exhibitor": "Schneider Electric & Business India Private Limited",
+    "booth_number": "",
+    "hall_number": "",
+    "tag": "Academia"
+  },
+  {
+    "sno": 276,
+    "exhibitor": "Sekio Data Private Limited",
+    "booth_number": "6F.3A",
+    "hall_number": "6",
+    "tag": "Corporate (Domestic)"
+  },
+  {
+    "sno": 277,
+    "exhibitor": "Sekel Tech",
+    "booth_number": "5.18",
+    "hall_number": "5",
+    "tag": "Corporate (Domestic)"
+  },
+  {
+    "sno": 278,
+    "exhibitor": "SECUAI SOLUTIONS PRIVATE LIMITED",
+    "booth_number": "1.70 A",
+    "hall_number": "1",
+    "tag": "Corporate (Domestic)"
+  },
+  {
+    "sno": 279,
+    "exhibitor": "SFTWARE SOLUTIONS PRIVATE LIMITED",
+    "booth_number": "",
+    "hall_number": "",
+    "tag": "Corporate (Domestic)"
+  },
+  {
+    "sno": 280,
+    "exhibitor": "INDIA PRIVATE LIMITED",
+    "booth_number": "5.7",
+    "hall_number": "5",
+    "tag": "Corporate (Domestic)"
+  },
+  {
+    "sno": 281,
+    "exhibitor": "mode",
+    "booth_number": "5.35",
+    "hall_number": "5",
+    "tag": "Corporate (Domestic)"
+  },
+  {
+    "sno": 282,
+    "exhibitor": "Shobiz Experiential Communications Private Limited (Intel)",
+    "booth_number": "4.4",
+    "hall_number": "4",
+    "tag": "Corporate (Domestic)"
+  },
+  {
+    "sno": 283,
+    "exhibitor": "Shoah",
+    "booth_number": "5.20C",
+    "hall_number": "5",
+    "tag": "Startups (Startup Pods)"
+  },
+  {
+    "sno": 284,
+    "exhibitor": "Sify Technologies Limited",
+    "booth_number": "4F.S",
+    "hall_number": "4",
+    "tag": "Corporate (Domestic)"
+  },
+  {
+    "sno": 285,
+    "exhibitor": "Simpliinark",
+    "booth_number": "4F.5",
+    "hall_number": "4",
+    "tag": "Startups (Startup Pods)"
+  },
+  {
+    "sno": 286,
+    "exhibitor": "Skorvest",
+    "booth_number": "1.7",
+    "hall_number": "1",
+    "tag": "Corporate (Domestic)"
+  },
+  {
+    "sno": 287,
+    "exhibitor": "Smooth AI Private Limited",
+    "booth_number": "1.4B",
+    "hall_number": "1",
+    "tag": "Corporate (Domestic)"
+  },
+  {
+    "sno": 288,
+    "exhibitor": "Softnautics Technology Advanced Research Private Limited",
+    "booth_number": "",
+    "hall_number": "",
+    "tag": "Corporate (Domestic)"
+  },
+  {
+    "sno": 289,
+    "exhibitor": "SOLBIX PRIVATE LIMITED",
+    "booth_number": "4F.30A",
+    "hall_number": "4",
+    "tag": "Corporate (Domestic)"
+  },
+  {
+    "sno": 290,
+    "exhibitor": "SpectraCINE",
+    "booth_number": "6.103",
+    "hall_number": "6",
+    "tag": "Corporate (Domestic)"
+  },
+  {
+    "sno": 291,
+    "exhibitor": "Squadron Solutions Private Limited",
+    "booth_number": "1.56",
+    "hall_number": "1",
+    "tag": "Corporate (Domestic)"
+  },
+  {
+    "sno": 292,
+    "exhibitor": "SquadStack.ai",
+    "booth_number": "5F.12",
+    "hall_number": "5",
+    "tag": "Corporate (Domestic)"
+  },
+  {
+    "sno": 293,
+    "exhibitor": "State Bank of India, Mumbai",
+    "booth_number": "3F.13",
+    "hall_number": "3",
+    "tag": "Public Sector Undertaking"
+  },
+  {
+    "sno": 294,
+    "exhibitor": "Strata Hire",
+    "booth_number": "",
+    "hall_number": "",
+    "tag": "Startups (Startup Pods)"
+  },
+  {
+    "sno": 295,
+    "exhibitor": "Diamastel Technology Ventures Private Limited",
+    "booth_number": "3F.19",
+    "hall_number": "3",
+    "tag": "Corporate (Domestic)"
+  },
+  {
+    "sno": 296,
+    "exhibitor": "Super Micro Computer INC",
+    "booth_number": "5.15",
+    "hall_number": "5",
+    "tag": "Corporate (Domestic)"
+  },
+  {
+    "sno": 297,
+    "exhibitor": "Soronee and Zero Forg",
+    "booth_number": "3.1A",
+    "hall_number": "3",
+    "tag": "Startups (Startup Pods)"
+  },
+  {
+    "sno": 298,
+    "exhibitor": "Swiss Confederation",
+    "booth_number": "14.1.11",
+    "hall_number": "14",
+    "tag": "Country Representation"
+  },
+  {
+    "sno": 299,
+    "exhibitor": "4G Lab",
+    "booth_number": "5.20D",
+    "hall_number": "5",
+    "tag": "Corporate (Domestic)"
+  },
+  {
+    "sno": 300,
+    "exhibitor": "Synna TechBiz AI Hardware Solution",
+    "booth_number": "6.36B",
+    "hall_number": "6",
+    "tag": "Corporate (International)"
+  },
+  {
+    "sno": 301,
+    "exhibitor": "Tata Consultancy Services Limited",
+    "booth_number": "5.1",
+    "hall_number": "5",
+    "tag": "Corporate (Domestic)"
+  },
+  {
+    "sno": 302,
+    "exhibitor": "TCO DIGITAL SOLUTIONS PVT. LTD.",
+    "booth_number": "1.69",
+    "hall_number": "1",
+    "tag": "Corporate (Domestic)"
+  },
+  {
+    "sno": 303,
+    "exhibitor": "Tech Mahindra",
+    "booth_number": "2.1",
+    "hall_number": "2",
+    "tag": "Corporate (Domestic)"
+  },
+  {
+    "sno": 304,
+    "exhibitor": "Technology Services Industry Association",
+    "booth_number": "4F.28",
+    "hall_number": "4",
+    "tag": "Corporate (Domestic)"
+  },
+  {
+    "sno": 305,
+    "exhibitor": "The Chemours India Private Limited",
+    "booth_number": "5.20E",
+    "hall_number": "5",
+    "tag": "Corporate (Domestic)"
+  },
+  {
+    "sno": 306,
+    "exhibitor": "The cutting edge group",
+    "booth_number": "6.30A",
+    "hall_number": "6",
+    "tag": "Corporate (Domestic)"
+  },
+  {
+    "sno": 307,
+    "exhibitor": "The Institute of Chartered Accountants of India",
+    "booth_number": "6.67",
+    "hall_number": "6",
+    "tag": "Corporate (Domestic)"
+  },
+  {
+    "sno": 308,
+    "exhibitor": "The International Solar Alliance (ISA)",
+    "booth_number": "14.7",
+    "hall_number": "14",
+    "tag": "Corporate (International)"
+  },
+  {
+    "sno": 309,
+    "exhibitor": "The LEGO Group",
+    "booth_number": "3F.3",
+    "hall_number": "3",
+    "tag": "Corporate (International)"
+  },
+  {
+    "sno": 310,
+    "exhibitor": "The LNM Institute of Information Technology, Jaipur",
+    "booth_number": "6.111",
+    "hall_number": "6",
+    "tag": "Startups (Startup Pods)"
+  },
+  {
+    "sno": 311,
+    "exhibitor": "The Netherlands",
+    "booth_number": "14.11A",
+    "hall_number": "14",
+    "tag": "Country Representation"
+  },
+  {
+    "sno": 312,
+    "exhibitor": "The STEM Practice Company",
+    "booth_number": "6.46",
+    "hall_number": "6",
+    "tag": "Corporate (Domestic)"
+  },
+  {
+    "sno": 313,
+    "exhibitor": "Thoughtworks",
+    "booth_number": "1.6A",
+    "hall_number": "1",
+    "tag": "Corporate (Domestic)"
+  },
+  {
+    "sno": 314,
+    "exhibitor": "T-Hub Foundation (Telangana)",
+    "booth_number": "3F.27",
+    "hall_number": "3",
+    "tag": "Non Profit Organization"
+  },
+  {
+    "sno": 315,
+    "exhibitor": "Transline Technologies Limited",
+    "booth_number": "6.97",
+    "hall_number": "6",
+    "tag": "Corporate (Domestic)"
+  },
+  {
+    "sno": 316,
+    "exhibitor": "Transport Corporation Of India limited",
+    "booth_number": "4F.30",
+    "hall_number": "4",
+    "tag": "Corporate (Domestic)"
+  },
+  {
+    "sno": 317,
+    "exhibitor": "Trestle Labs Private Limited",
+    "booth_number": "1.71",
+    "hall_number": "1",
+    "tag": "Corporate (Domestic)"
+  },
+  {
+    "sno": 318,
+    "exhibitor": "Truefan AI(Hogwarts E-Learning Universe)",
+    "booth_number": "6.42A",
+    "hall_number": "6",
+    "tag": "Startups (Startup Pods)"
+  },
+  {
+    "sno": 319,
+    "exhibitor": "Turing Enterprises",
+    "booth_number": "6.7",
+    "hall_number": "6",
+    "tag": "Corporate (Domestic)"
+  },
+  {
+    "sno": 320,
+    "exhibitor": "Turiya Semiconductors Private Limited",
+    "booth_number": "1.16",
+    "hall_number": "1",
+    "tag": "Corporate (Domestic)"
+  },
+  {
+    "sno": 321,
+    "exhibitor": "Ultimedia E-Solutions Private Limited",
+    "booth_number": "1.16",
+    "hall_number": "1",
+    "tag": "Corporate (Domestic)"
+  },
+  {
+    "sno": 322,
+    "exhibitor": "Unique Identification Authority of India",
+    "booth_number": "5.5B",
+    "hall_number": "1",
+    "tag": "Corporate (Domestic)"
+  },
+  {
+    "sno": 323,
+    "exhibitor": "United Tyrekrafts Private Limited",
+    "booth_number": "4F.2",
+    "hall_number": "5",
+    "tag": "Corporate (Domestic)"
+  },
+  {
+    "sno": 324,
+    "exhibitor": "Unlock Future Fintech Private Limited",
+    "booth_number": "4F.24C",
+    "hall_number": "4",
+    "tag": "Government (Ministries & States)"
+  },
+  {
+    "sno": 325,
+    "exhibitor": "Utho",
+    "booth_number": "6.8B",
+    "hall_number": "6",
+    "tag": "Corporate (Domestic)"
+  },
+  {
+    "sno": 326,
+    "exhibitor": "VAST DATA",
+    "booth_number": "1.57",
+    "hall_number": "1",
+    "tag": "Corporate (Domestic)"
+  },
+  {
+    "sno": 327,
+    "exhibitor": "Velanakani Information",
+    "booth_number": "1.57",
+    "hall_number": "1",
+    "tag": "Corporate (Domestic)"
+  },
+  {
+    "sno": 328,
+    "exhibitor": "Vertiv Energy Private Limited",
+    "booth_number": "1.18",
+    "hall_number": "1",
+    "tag": "Corporate (Domestic)"
+  },
+  {
+    "sno": 329,
+    "exhibitor": "Vicharak Computers Pvt Ltd",
+    "booth_number": "4.1",
+    "hall_number": "1",
+    "tag": "Corporate (Domestic)"
+  },
+  {
+    "sno": 330,
+    "exhibitor": "VIRSA.AI",
+    "booth_number": "4F.18C 6.73",
+    "hall_number": "4",
+    "tag": "Corporate (Domestic)"
+  },
+  {
+    "sno": 331,
+    "exhibitor": "Virtual Height IT Services Private Limited",
+    "booth_number": "6.107",
+    "hall_number": "6",
+    "tag": "Corporate (Domestic)"
+  },
+  {
+    "sno": 332,
+    "exhibitor": "Vishwananda Global University, Jaipur",
+    "booth_number": "6.87A",
+    "hall_number": "6",
+    "tag": "Academia"
+  },
+  {
+    "sno": 333,
+    "exhibitor": "VLADA REPUBLIKE SRBIJE - Generalni sekretarijat",
+    "booth_number": "6.8",
+    "hall_number": "6",
+    "tag": "Academia"
+  },
+  {
+    "sno": 334,
+    "exhibitor": "VVON Technologies Private Limited",
+    "booth_number": "14.12A&B",
+    "hall_number": "",
+    "tag": "Corporate (International)"
+  },
+  {
+    "sno": 335,
+    "exhibitor": "W3villa Technologies Pvt Ltd",
+    "booth_number": "4.4A",
+    "hall_number": "4",
+    "tag": "Corporate (Domestic)"
+  },
+  {
+    "sno": 336,
+    "exhibitor": "Wadhwani Foundation",
+    "booth_number": "1.39",
+    "hall_number": "1",
+    "tag": "Corporate (Domestic)"
+  },
+  {
+    "sno": 337,
+    "exhibitor": "Waisl",
+    "booth_number": "3F.13A & 3F.13D",
+    "hall_number": "3",
+    "tag": "Corporate (Domestic)"
+  },
+  {
+    "sno": 338,
+    "exhibitor": "Webspiders Interweb Pvt. Ltd",
+    "booth_number": "1.18 A",
+    "hall_number": "1",
+    "tag": "Corporate (Domestic)"
+  },
+  {
+    "sno": 339,
+    "exhibitor": "Wekalo India Private Limited(WEKA)",
+    "booth_number": "3F.13C",
+    "hall_number": "3",
+    "tag": "Corporate (Domestic)"
+  },
+  {
+    "sno": 340,
+    "exhibitor": "Whiz Meeting India Private Limited",
+    "booth_number": "4F.12A",
+    "hall_number": "1",
+    "tag": "Corporate (Domestic)"
+  },
+  {
+    "sno": 341,
+    "exhibitor": "Wipro Limited",
+    "booth_number": "4F.12A",
+    "hall_number": "4",
+    "tag": "Corporate (Domestic)"
+  },
+  {
+    "sno": 342,
+    "exhibitor": "World Bank Group - Development Impact Department (DEC), DIME AI Lab",
+    "booth_number": "1.73",
+    "hall_number": "1",
+    "tag": "Corporate (International)"
+  },
+  {
+    "sno": 343,
+    "exhibitor": "World Food Programme India",
+    "booth_number": "5F.15",
+    "hall_number": "5",
+    "tag": "Country Representation"
+  },
+  {
+    "sno": 344,
+    "exhibitor": "Xiscout Xipat Private Limited",
+    "booth_number": "4F.11",
+    "hall_number": "4",
+    "tag": "Corporate (Domestic)"
+  },
+  {
+    "sno": 345,
+    "exhibitor": "Yo Doozy! Media Private Limited",
+    "booth_number": "4F.12C",
+    "hall_number": "4",
+    "tag": "Corporate (Domestic)"
+  },
+  {
+    "sno": 346,
+    "exhibitor": "Yotta Data Services Pvt Ltd",
+    "booth_number": "2.5A",
+    "hall_number": "2",
+    "tag": "Corporate (Domestic)"
+  },
+  {
+    "sno": 347,
+    "exhibitor": "YuVerse",
+    "booth_number": "3F.12",
+    "hall_number": "3",
+    "tag": "Corporate (Domestic)"
+  },
+  {
+    "sno": 348,
+    "exhibitor": "ZingHR (CNERGYIS INFOTECH INDIA PRIVATE LIMITED)",
+    "booth_number": "6.92",
+    "hall_number": "6",
+    "tag": "Startups (Startup Pods)"
+  },
+  {
+    "sno": 349,
+    "exhibitor": "Zoho Corporation Pvt. Ltd.",
+    "booth_number": "5.8",
+    "hall_number": "5",
+    "tag": "Corporate (Domestic)"
+  },
+  {
+    "sno": 350,
+    "exhibitor": "Zypl Holding Ltd",
+    "booth_number": "14.11C",
+    "hall_number": "14",
+    "tag": "Corporate (International)"
+  }
+]

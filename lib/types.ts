@@ -1,5 +1,7 @@
 export type SessionStatus = "past" | "live" | "upcoming"
 
+export type AppView = "sessions" | "exhibitors"
+
 export type VenueZone =
   | "plenary-hall-a"
   | "plenary-hall-b"
@@ -20,9 +22,15 @@ export type VenueZone =
   | "l1-mr-19"
   | "west-wing"
   | "amphitheatre"
+  | "expo-hall-1"
+  | "expo-hall-2"
   | "expo-hall-3"
   | "expo-hall-4"
   | "expo-hall-5"
+  | "expo-hall-6"
+  | "expo-hall-7"
+  | "expo-hall-8"
+  | "expo-hall-14"
   | "ssb-chanakya"
   | "ssb-nalanda"
   | "ssb-shakuntalam"
@@ -80,3 +88,27 @@ export interface FilterState {
 }
 
 export type TimeSlot = "morning" | "afternoon" | "evening"
+
+export type ExhibitorTag =
+  | "Academia"
+  | "Corporate (Domestic)"
+  | "Corporate (International)"
+  | "Country Representation"
+  | "Government (Ministries & States)"
+  | "Non Profit Organization"
+  | "Public Sector Undertaking"
+  | "Startups (Startup Pods)"
+
+export interface Exhibitor {
+  sno: number
+  exhibitor: string
+  booth_number: string
+  hall_number: string
+  tag: string
+}
+
+export interface ExhibitorFilterState {
+  query: string
+  tag: string
+  hall: string
+}

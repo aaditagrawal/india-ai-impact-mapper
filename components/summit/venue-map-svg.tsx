@@ -6,7 +6,7 @@ import {
   TooltipContent,
   TooltipTrigger,
 } from "@/components/ui/tooltip"
-import type { VenueZone } from "@/lib/types"
+import type { VenueZone, AppView } from "@/lib/types"
 import { ZONE_LABELS } from "@/lib/auditorium-map"
 
 interface ZoneData {
@@ -21,6 +21,7 @@ interface VenueMapSvgProps {
   onZoneClick: (zone: VenueZone) => void
   onZoneHover: (zone: VenueZone | null) => void
   maxCount: number
+  view?: AppView
 }
 
 function getDensityColor(count: number, max: number): string {
@@ -48,6 +49,7 @@ interface ZoneRectProps {
   label?: string
   compact?: boolean
   rx?: number
+  countLabel?: string
 }
 
 function ZoneRect({
@@ -65,6 +67,7 @@ function ZoneRect({
   label,
   compact,
   rx,
+  countLabel = "session",
 }: ZoneRectProps) {
   const fill = getDensityColor(data.count, maxCount)
   const displayLabel = label ?? ZONE_LABELS[zone]
@@ -169,7 +172,7 @@ function ZoneRect({
                 className="fill-muted-foreground text-[6px]"
                 style={{ pointerEvents: "none" }}
               >
-                {data.count} {data.count === 1 ? "session" : "sessions"}
+                {data.count} {data.count === 1 ? countLabel : `${countLabel}s`}
               </text>
             </>
           )}
@@ -178,7 +181,7 @@ function ZoneRect({
       <TooltipContent side="top" sideOffset={6}>
         <p className="font-medium">{ZONE_LABELS[zone]}</p>
         <p className="text-muted-foreground">
-          {data.count} {data.count === 1 ? "session" : "sessions"}
+          {data.count} {data.count === 1 ? countLabel : `${countLabel}s`}
           {data.hasLive ? " · live now" : ""}
         </p>
       </TooltipContent>
@@ -298,7 +301,11 @@ export const VenueMapSvg = memo(function VenueMapSvg({
   onZoneClick,
   onZoneHover,
   maxCount,
+  view = "sessions",
 }: VenueMapSvgProps) {
+  const isExhibitorView = view === "exhibitors"
+  const itemLabel = isExhibitorView ? "exhibitor" : "session"
+
   const z = (zone: VenueZone) => ({
     zone,
     data: zoneData[zone] ?? { count: 0, hasLive: false },
@@ -307,6 +314,7 @@ export const VenueMapSvg = memo(function VenueMapSvg({
     maxCount,
     onZoneClick,
     onZoneHover,
+    countLabel: itemLabel,
   })
 
   // BM building
@@ -321,9 +329,11 @@ export const VenueMapSvg = memo(function VenueMapSvg({
   // Expo area
   const ex = { x: 500 }
 
+  const svgHeight = isExhibitorView ? 660 : 660
+
   return (
     <svg
-      viewBox="0 0 920 660"
+      viewBox={`0 0 920 ${svgHeight}`}
       className="w-full"
       xmlns="http://www.w3.org/2000/svg"
     >
@@ -459,8 +469,12 @@ export const VenueMapSvg = memo(function VenueMapSvg({
         EXPO AREA
       </SectionLabel>
 
-      {/* Hall 6 (decorative) */}
-      <DecoBuilding x={ex.x} y={42} width={385} height={88} label="Hall 6" />
+      {/* Hall 6 */}
+      {isExhibitorView ? (
+        <ZoneRect x={ex.x} y={42} width={385} height={88} label="Hall 6" {...z("expo-hall-6")} />
+      ) : (
+        <DecoBuilding x={ex.x} y={42} width={385} height={88} label="Hall 6" />
+      )}
 
       {/* Hall 5 (interactive) */}
       <ZoneRect
@@ -492,11 +506,19 @@ export const VenueMapSvg = memo(function VenueMapSvg({
         {...z("expo-hall-3")}
       />
 
-      {/* Hall 2 (decorative) */}
-      <DecoBuilding x={ex.x} y={265} width={200} height={95} label="Hall 2" />
+      {/* Hall 2 */}
+      {isExhibitorView ? (
+        <ZoneRect x={ex.x} y={265} width={200} height={95} label="Hall 2" {...z("expo-hall-2")} />
+      ) : (
+        <DecoBuilding x={ex.x} y={265} width={200} height={95} label="Hall 2" />
+      )}
 
-      {/* Hall 1 (decorative) */}
-      <DecoBuilding x={ex.x + 30} y={385} width={325} height={140} label="Hall 1" rx={50} />
+      {/* Hall 1 */}
+      {isExhibitorView ? (
+        <ZoneRect x={ex.x + 30} y={385} width={325} height={140} label="Hall 1" rx={50} {...z("expo-hall-1")} />
+      ) : (
+        <DecoBuilding x={ex.x + 30} y={385} width={325} height={140} label="Hall 1" rx={50} />
+      )}
 
       {/* Food Court markers */}
       {[
@@ -511,6 +533,18 @@ export const VenueMapSvg = memo(function VenueMapSvg({
           </text>
         </g>
       ))}
+
+      {/* Halls 7, 8, 14 — only in exhibitor view */}
+      {isExhibitorView && (
+        <>
+          <SectionLabel x={690} y={555}>
+            ADDITIONAL HALLS
+          </SectionLabel>
+          <ZoneRect x={ex.x} y={568} width={120} height={60} label="Hall 7" {...z("expo-hall-7")} />
+          <ZoneRect x={ex.x + 120 + gap} y={568} width={120} height={60} label="Hall 8" {...z("expo-hall-8")} />
+          <ZoneRect x={ex.x + 240 + gap * 2} y={568} width={140} height={60} label="Hall 14" {...z("expo-hall-14")} />
+        </>
+      )}
 
       {/* ═══ GATES ═══ */}
       <Gate x={5} y={275} label="Gate 10" />

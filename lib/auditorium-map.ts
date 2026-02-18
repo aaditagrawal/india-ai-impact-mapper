@@ -81,9 +81,15 @@ export const ZONE_LABELS: Record<VenueZone, string> = {
   "l1-mr-19": "MR 19",
   "west-wing": "West Wing",
   "amphitheatre": "Amphitheatre",
+  "expo-hall-1": "Hall 1",
+  "expo-hall-2": "Hall 2",
   "expo-hall-3": "Expo Hall 3",
   "expo-hall-4": "Expo Hall 4",
   "expo-hall-5": "Expo Hall 5",
+  "expo-hall-6": "Hall 6",
+  "expo-hall-7": "Hall 7",
+  "expo-hall-8": "Hall 8",
+  "expo-hall-14": "Hall 14",
   "ssb-chanakya": "Chanakya Auditorium",
   "ssb-nalanda": "Nalanda Banquet",
   "ssb-shakuntalam": "Shakuntalam Banquet",
@@ -109,9 +115,15 @@ export const ZONE_VENUE: Record<VenueZone, string> = {
   "l1-mr-19": "Bharat Mandapam · L1",
   "west-wing": "Bharat Mandapam",
   "amphitheatre": "Bharat Mandapam",
+  "expo-hall-1": "Bharat Mandapam · Expo",
+  "expo-hall-2": "Bharat Mandapam · Expo",
   "expo-hall-3": "Bharat Mandapam · Expo",
   "expo-hall-4": "Bharat Mandapam · Expo",
   "expo-hall-5": "Bharat Mandapam · Expo",
+  "expo-hall-6": "Bharat Mandapam · Expo",
+  "expo-hall-7": "Bharat Mandapam · Expo",
+  "expo-hall-8": "Bharat Mandapam · Expo",
+  "expo-hall-14": "Bharat Mandapam · Expo",
   "ssb-chanakya": "Sushma Swaraj Bhawan",
   "ssb-nalanda": "Sushma Swaraj Bhawan",
   "ssb-shakuntalam": "Sushma Swaraj Bhawan",
@@ -137,10 +149,39 @@ export const ALL_ZONES: VenueZone[] = [
   "l1-mr-19",
   "west-wing",
   "amphitheatre",
+  "expo-hall-1",
+  "expo-hall-2",
   "expo-hall-3",
   "expo-hall-4",
   "expo-hall-5",
+  "expo-hall-6",
+  "expo-hall-7",
+  "expo-hall-8",
+  "expo-hall-14",
   "ssb-chanakya",
   "ssb-nalanda",
   "ssb-shakuntalam",
 ]
+
+export const EXPO_HALL_ZONES: VenueZone[] = [
+  "expo-hall-1",
+  "expo-hall-2",
+  "expo-hall-3",
+  "expo-hall-4",
+  "expo-hall-5",
+  "expo-hall-6",
+  "expo-hall-7",
+  "expo-hall-8",
+  "expo-hall-14",
+]
+
+export function hallNumberToZone(hall: string): VenueZone | null {
+  if (!hall || hall === "NA") return null
+  const zone = `expo-hall-${hall}` as VenueZone
+  return EXPO_HALL_ZONES.includes(zone) ? zone : null
+}
+
+export function zoneToHallNumber(zone: VenueZone): string | null {
+  const match = zone.match(/^expo-hall-(\d+)$/)
+  return match ? match[1] : null
+}

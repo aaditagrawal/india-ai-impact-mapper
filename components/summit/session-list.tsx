@@ -21,18 +21,32 @@ interface TimeGroup {
   sessions: Session[]
 }
 
-function groupByStartTime(sessions: Session[]): TimeGroup[] {
+function groupByDateTime(sessions: Session[]): TimeGroup[] {
+  // Sort sessions by date, then by start time
+  const sorted = [...sessions].sort((a, b) => {
+    const dateCompare = a.date.localeCompare(b.date)
+    if (dateCompare !== 0) return dateCompare
+    return (a.startTime ?? "").localeCompare(b.startTime ?? "")
+  })
+
   const groups = new Map<string, Session[]>()
-  for (const session of sessions) {
-    const key = session.formattedStartTime ?? "TBD"
+  for (const session of sorted) {
+    const time = session.formattedStartTime ?? "TBD"
+    const key = `${session.date}|${time}`
     if (!groups.has(key)) groups.set(key, [])
     groups.get(key)!.push(session)
   }
-  return Array.from(groups.entries()).map(([key, sessions]) => ({
-    key,
-    label: key,
-    sessions,
-  }))
+
+  const dates = new Set(sessions.map((s) => s.date))
+  const multiDate = dates.size > 1
+
+  return Array.from(groups.entries()).map(([key, groupSessions]) => {
+    const time = key.split("|")[1]
+    const label = multiDate
+      ? `${groupSessions[0].formattedDate} · ${time}`
+      : time
+    return { key, label, sessions: groupSessions }
+  })
 }
 
 export function SessionList({
@@ -44,7 +58,7 @@ export function SessionList({
   const [selectedSession, setSelectedSession] = useState<Session | null>(null)
   const [dialogOpen, setDialogOpen] = useState(false)
 
-  const groups = useMemo(() => groupByStartTime(sessions), [sessions])
+  const groups = useMemo(() => groupByDateTime(sessions), [sessions])
 
   const handleCardClick = useCallback((session: Session) => {
     setSelectedSession(session)

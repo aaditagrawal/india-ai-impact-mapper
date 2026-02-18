@@ -41,7 +41,7 @@ export function SessionDetailDialog({
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent className="max-h-[85vh] overflow-y-auto sm:max-w-lg">
         <DialogHeader>
-          <div className="flex items-start gap-2">
+          <div className="flex items-start gap-2 pr-8">
             <DialogTitle className="font-serif text-lg leading-snug">
               {session.title}
             </DialogTitle>

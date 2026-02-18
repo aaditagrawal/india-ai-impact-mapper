@@ -61,5 +61,5 @@ export const DEFAULT_FILTERS: FilterState = {
   zone: "",
   tag: "",
   timeSlot: "",
-  showPast: true,
+  showPast: false,
 }

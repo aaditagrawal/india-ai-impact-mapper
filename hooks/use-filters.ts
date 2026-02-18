@@ -13,7 +13,7 @@ function parseFiltersFromURL(): FilterState {
     zone: (params.get("zone") as VenueZone | "") ?? DEFAULT_FILTERS.zone,
     tag: params.get("tag") ?? DEFAULT_FILTERS.tag,
     timeSlot: params.get("time") ?? DEFAULT_FILTERS.timeSlot,
-    showPast: params.get("past") !== "0",
+    showPast: params.get("past") === "1",
   }
 }
 
@@ -25,7 +25,7 @@ function filtersToSearchString(filters: FilterState): string {
   if (filters.zone) params.set("zone", filters.zone)
   if (filters.tag) params.set("tag", filters.tag)
   if (filters.timeSlot) params.set("time", filters.timeSlot)
-  if (!filters.showPast) params.set("past", "0")
+  if (filters.showPast) params.set("past", "1")
   const str = params.toString()
   return str ? `?${str}` : ""
 }

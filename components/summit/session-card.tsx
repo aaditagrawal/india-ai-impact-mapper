@@ -29,7 +29,8 @@ export const SessionCard = memo(function SessionCard({
     <Card
       size="sm"
       className={cn(
-        "cursor-pointer transition-subtle hover:bg-accent/50",
+        "cursor-pointer transition-subtle hover:bg-accent/50 flex flex-col sm:block",
+        "max-h-[9rem] sm:max-h-none",
         status === "past" && "opacity-50",
         status === "live" && "border-l-2 border-l-primary",
         isHighlighted && "bg-accent/50 ring-1 ring-primary/30"
@@ -38,7 +39,7 @@ export const SessionCard = memo(function SessionCard({
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}
     >
-      <CardHeader>
+      <CardHeader className="shrink-0">
         <div className="flex items-start justify-between gap-2">
           <CardTitle className="line-clamp-3 font-serif text-[11px] leading-snug">
             {session.title}
@@ -51,7 +52,7 @@ export const SessionCard = memo(function SessionCard({
           )}
         </div>
       </CardHeader>
-      <CardContent className="space-y-1">
+      <CardContent className="space-y-1 overflow-y-auto sm:overflow-y-visible">
         <div className="flex items-center gap-1.5 text-[11px] text-muted-foreground">
           <Clock className="size-3 shrink-0" />
           <span>{formatTimeRange(session)} (IST)</span>

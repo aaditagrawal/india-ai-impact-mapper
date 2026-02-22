@@ -37,10 +37,10 @@ export function ActiveFilters({ filters, onUpdate }: ActiveFiltersProps) {
       onRemove: () => onUpdate({ timeSlot: "" }),
     })
   }
-  if (!filters.showPast) {
+  if (filters.showPast) {
     chips.push({
-      label: "Hiding past events",
-      onRemove: () => onUpdate({ showPast: true }),
+      label: "Showing past events",
+      onRemove: () => onUpdate({ showPast: false }),
     })
   }
 

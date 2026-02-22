@@ -230,10 +230,10 @@ function SummitAppInner({ data, exhibitors }: SummitAppProps) {
 
         <div className="flex min-h-0 flex-1 flex-col lg:flex-row">
           {/* Map panel */}
-          <div className="shrink-0 border-b lg:w-1/2 lg:border-r lg:border-b-0">
+          <div className={`shrink-0 border-b ${mapExpanded ? "lg:w-1/2 lg:border-r lg:border-b-0" : ""}`}>
             <button
               onClick={() => setMapExpanded((v) => !v)}
-              className="flex w-full items-center justify-between px-4 py-2 text-xs text-muted-foreground transition-colors hover:bg-accent/50 lg:hidden"
+              className="flex w-full items-center justify-between px-4 py-2 text-xs text-muted-foreground transition-colors hover:bg-accent/50"
             >
               <span className="inline-flex items-center gap-1.5 font-medium">
                 <MapTrifold className="size-3.5" />
@@ -241,7 +241,7 @@ function SummitAppInner({ data, exhibitors }: SummitAppProps) {
               </span>
               {mapExpanded ? <CaretUp className="size-3.5" /> : <CaretDown className="size-3.5" />}
             </button>
-            <div className={`overflow-y-auto p-4 sm:p-6 ${mapExpanded ? "block" : "hidden"} lg:block`}>
+            <div className={`overflow-y-auto p-4 sm:p-6 ${mapExpanded ? "block" : "hidden"}`}>
               <VenueMap
                 sessions={filtered}
                 exhibitors={view === "exhibitors" ? filteredExhibitors : undefined}

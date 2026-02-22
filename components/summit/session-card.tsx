@@ -31,7 +31,7 @@ export const SessionCard = memo(function SessionCard({
       className={cn(
         "cursor-pointer transition-subtle hover:bg-accent/50 flex flex-col sm:block",
         "max-h-[9rem] sm:max-h-none",
-        status === "past" && "opacity-50",
+
         status === "live" && "border-l-2 border-l-primary",
         isHighlighted && "bg-accent/50 ring-1 ring-primary/30"
       )}

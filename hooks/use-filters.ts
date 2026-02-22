@@ -13,7 +13,7 @@ function parseFiltersFromURL(): FilterState {
     zone: (params.get("zone") as VenueZone | "") ?? DEFAULT_FILTERS.zone,
     tag: params.get("tag") ?? DEFAULT_FILTERS.tag,
     timeSlot: params.get("time") ?? DEFAULT_FILTERS.timeSlot,
-    showPast: params.get("past") === "1",
+    showPast: params.get("past") !== "0",
   }
 }
 

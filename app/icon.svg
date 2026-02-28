@@ -1,10 +1,18 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
-  <rect width="32" height="32" fill="#17120d"/>
-  <path d="M4 11.5 16 5l12 6.5V26H4Z" fill="none" stroke="#efb257" stroke-width="1.6" stroke-linejoin="miter"/>
-  <path d="M9.5 14.5 16 10.5l6.5 4" fill="none" stroke="#f3d49a" stroke-width="1.2" stroke-linejoin="miter"/>
-  <circle cx="10.5" cy="20.5" r="2.25" fill="#df6b39"/>
-  <circle cx="16" cy="17.5" r="2.25" fill="#f1c768"/>
-  <circle cx="21.5" cy="20.5" r="2.25" fill="#a9c47f"/>
-  <line x1="12.8" y1="19.2" x2="14.2" y2="18.2" stroke="#f6e8c8" stroke-width="0.9" opacity="0.55"/>
-  <line x1="17.9" y1="18.2" x2="19.7" y2="19.6" stroke="#f6e8c8" stroke-width="0.9" opacity="0.55"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">
+  <rect width="256" height="256" fill="#17120d" />
+  
+  <defs>
+    <linearGradient id="ai-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#df6b39" />
+      <stop offset="50%" stop-color="#f1c768" />
+      <stop offset="100%" stop-color="#a9c47f" />
+    </linearGradient>
+  </defs>
+
+  <!-- Large AI spark representing the summit's impact -->
+  <path d="M128 32 C 128 85, 171 128, 224 128 C 171 128, 128 171, 128 224 C 128 171, 85 128, 32 128 C 85 128, 128 85, 128 32 Z" fill="url(#ai-grad)" />
+  
+  <!-- Central node representing intelligence / convergence -->
+  <circle cx="128" cy="128" r="28" fill="#17120d" />
+  <circle cx="128" cy="128" r="12" fill="#f6e8c8" />
 </svg>

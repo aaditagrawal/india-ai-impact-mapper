@@ -17,7 +17,8 @@ const geistPixel = GeistPixelSquare;
 
 export const metadata: Metadata = {
   title: "India AI Impact Summit 2026",
-  description: "Browse 679 sessions at the India AI Impact Summit 2026, Feb 16–20 at Bharat Mandapam, New Delhi. Interactive venue map, search, and filters.",
+  description:
+    "Browse 679 sessions at the India AI Impact Summit 2026, Feb 16–20 at Bharat Mandapam, New Delhi. Interactive venue map, search, and filters.",
 };
 
 export default function RootLayout({
@@ -26,14 +27,20 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${geistSans.variable} ${geistMono.variable} ${geistPixel.variable}`} suppressHydrationWarning>
+    <html
+      lang="en"
+      className={`${geistSans.variable} ${geistMono.variable} ${geistPixel.variable}`}
+      suppressHydrationWarning
+    >
       <head>
-        <script dangerouslySetInnerHTML={{ __html: `(function(){try{var s=localStorage.getItem("theme");if(s==="dark"||(!s&&matchMedia("(prefers-color-scheme:dark)").matches))document.documentElement.classList.add("dark")}catch(e){}})()` }} />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `(function(){try{var s=localStorage.getItem("theme");if(s==="dark"||(!s&&matchMedia("(prefers-color-scheme:dark)").matches))document.documentElement.classList.add("dark")}catch(e){}})()`,
+          }}
+        />
         <script defer src="https://stat.sys256.com/script.js"></script>
       </head>
-      <body className="antialiased">
-        {children}
-      </body>
+      <body className="antialiased">{children}</body>
     </html>
   );
 }

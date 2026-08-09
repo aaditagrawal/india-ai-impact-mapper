@@ -1,20 +1,20 @@
-"use client"
+"use client";
 
-import { memo } from "react"
-import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card"
-import { Badge } from "@/components/ui/badge"
-import { Clock, MapPin, User, Broadcast } from "@phosphor-icons/react"
-import type { Session, SessionStatus } from "@/lib/types"
-import { formatTimeRange } from "@/lib/time-utils"
-import { cn } from "@/lib/utils"
+import { memo } from "react";
+import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import { Clock, MapPin, User, Broadcast } from "@phosphor-icons/react";
+import type { Session, SessionStatus } from "@/lib/types";
+import { formatTimeRange } from "@/lib/time-utils";
+import { cn } from "@/lib/utils";
 
 interface SessionCardProps {
-  session: Session
-  status: SessionStatus
-  isHighlighted: boolean
-  onClick: () => void
-  onMouseEnter: () => void
-  onMouseLeave: () => void
+  session: Session;
+  status: SessionStatus;
+  isHighlighted: boolean;
+  onClick: () => void;
+  onMouseEnter: () => void;
+  onMouseLeave: () => void;
 }
 
 export const SessionCard = memo(function SessionCard({
@@ -33,7 +33,7 @@ export const SessionCard = memo(function SessionCard({
         "max-h-[9rem] sm:max-h-none",
 
         status === "live" && "border-l-2 border-l-primary",
-        isHighlighted && "bg-accent/50 ring-1 ring-primary/30"
+        isHighlighted && "bg-accent/50 ring-1 ring-primary/30",
       )}
       onClick={onClick}
       onMouseEnter={onMouseEnter}
@@ -69,8 +69,7 @@ export const SessionCard = memo(function SessionCard({
                 .slice(0, 2)
                 .map((s) => s.name.split(",")[0])
                 .join(", ")}
-              {session.speakers.length > 2 &&
-                ` +${session.speakers.length - 2}`}
+              {session.speakers.length > 2 && ` +${session.speakers.length - 2}`}
             </span>
           </div>
         )}
@@ -85,5 +84,5 @@ export const SessionCard = memo(function SessionCard({
         )}
       </CardContent>
     </Card>
-  )
-})
+  );
+});

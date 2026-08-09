@@ -1,6 +1,6 @@
-export type SessionStatus = "past" | "live" | "upcoming"
+export type SessionStatus = "past" | "live" | "upcoming";
 
-export type AppView = "sessions" | "exhibitors"
+export type AppView = "sessions" | "exhibitors";
 
 export type VenueZone =
   | "plenary-hall-a"
@@ -33,61 +33,61 @@ export type VenueZone =
   | "expo-hall-14"
   | "ssb-chanakya"
   | "ssb-nalanda"
-  | "ssb-shakuntalam"
+  | "ssb-shakuntalam";
 
 export interface Speaker {
-  id: number
-  name: string
-  title: string
-  bio: string
+  id: number;
+  name: string;
+  title: string;
+  bio: string;
 }
 
 export interface KnowledgePartner {
-  id: number
-  name: string
-  image: string | null
+  id: number;
+  name: string;
+  image: string | null;
 }
 
 export interface Session {
-  id: number
-  title: string
-  description: string
-  date: string
-  formattedDate: string
-  startTime: string | null
-  formattedStartTime: string | null
-  endTime: string | null
-  formattedEndTime: string | null
-  venue: string
-  auditorium: string
-  speakers: Speaker[]
-  knowledgePartners: KnowledgePartner[]
-  tags: string[]
-  watchLiveUrl: string
+  id: number;
+  title: string;
+  description: string;
+  date: string;
+  formattedDate: string;
+  startTime: string | null;
+  formattedStartTime: string | null;
+  endTime: string | null;
+  formattedEndTime: string | null;
+  venue: string;
+  auditorium: string;
+  speakers: Speaker[];
+  knowledgePartners: KnowledgePartner[];
+  tags: string[];
+  watchLiveUrl: string;
 }
 
 export interface SummitData {
-  event: string
-  location: string
-  dates: string
-  sourceUrl: string
-  scrapedAt: string
-  totalSessions: number
-  sessionsByDate: Record<string, number>
-  sessions: Session[]
+  event: string;
+  location: string;
+  dates: string;
+  sourceUrl: string;
+  scrapedAt: string;
+  totalSessions: number;
+  sessionsByDate: Record<string, number>;
+  sessions: Session[];
 }
 
 export interface FilterState {
-  query: string
-  date: string
-  venue: string
-  zone: VenueZone | ""
-  tag: string
-  timeSlot: string
-  showPast: boolean
+  query: string;
+  date: string;
+  venue: string;
+  zone: VenueZone | "";
+  tag: string;
+  timeSlot: string;
+  showPast: boolean;
 }
 
-export type TimeSlot = "morning" | "afternoon" | "evening"
+export type TimeSlot = "morning" | "afternoon" | "evening";
 
 export type ExhibitorTag =
   | "Academia"
@@ -97,18 +97,18 @@ export type ExhibitorTag =
   | "Government (Ministries & States)"
   | "Non Profit Organization"
   | "Public Sector Undertaking"
-  | "Startups (Startup Pods)"
+  | "Startups (Startup Pods)";
 
 export interface Exhibitor {
-  sno: number
-  exhibitor: string
-  booth_number: string
-  hall_number: string
-  tag: string
+  sno: number;
+  exhibitor: string;
+  booth_number: string;
+  hall_number: string;
+  tag: string;
 }
 
 export interface ExhibitorFilterState {
-  query: string
-  tag: string
-  hall: string
+  query: string;
+  tag: string;
+  hall: string;
 }

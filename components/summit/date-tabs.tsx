@@ -1,14 +1,14 @@
-"use client"
+"use client";
 
-import { cn } from "@/lib/utils"
+import { cn } from "@/lib/utils";
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/components/ui/select"
-import type { Session } from "@/lib/types"
+} from "@/components/ui/select";
+import type { Session } from "@/lib/types";
 
 const DATES = [
   { value: "", label: "All" },
@@ -17,19 +17,17 @@ const DATES = [
   { value: "2026-02-18", label: "Feb 18" },
   { value: "2026-02-19", label: "Feb 19" },
   { value: "2026-02-20", label: "Feb 20" },
-]
+];
 
 interface DateTabsProps {
-  sessions: Session[]
-  activeDate: string
-  onDateChange: (date: string) => void
+  sessions: Session[];
+  activeDate: string;
+  onDateChange: (date: string) => void;
 }
 
 export function DateTabs({ sessions, activeDate, onDateChange }: DateTabsProps) {
   const countByDate = (date: string) =>
-    date ? sessions.filter((s) => s.date === date).length : sessions.length
-
-  const activeLabel = DATES.find((d) => d.value === activeDate)?.label ?? "All"
+    date ? sessions.filter((s) => s.date === date).length : sessions.length;
 
   return (
     <>
@@ -55,7 +53,7 @@ export function DateTabs({ sessions, activeDate, onDateChange }: DateTabsProps) 
       {/* Desktop: tab buttons */}
       <div className="hidden gap-1.5 sm:flex" role="tablist">
         {DATES.map((d) => {
-          const isActive = activeDate === d.value
+          const isActive = activeDate === d.value;
           return (
             <button
               key={d.value}
@@ -66,17 +64,22 @@ export function DateTabs({ sessions, activeDate, onDateChange }: DateTabsProps) 
                 "inline-flex items-center gap-1.5 rounded-md px-2.5 py-1.5 text-xs font-medium transition-colors",
                 isActive
                   ? "bg-foreground text-background"
-                  : "bg-muted text-muted-foreground hover:bg-accent hover:text-accent-foreground"
+                  : "bg-muted text-muted-foreground hover:bg-accent hover:text-accent-foreground",
               )}
             >
               {d.label}
-              <span className={cn("tabular-nums", isActive ? "text-background/60" : "text-muted-foreground/60")}>
+              <span
+                className={cn(
+                  "tabular-nums",
+                  isActive ? "text-background/60" : "text-muted-foreground/60",
+                )}
+              >
                 {countByDate(d.value)}
               </span>
             </button>
-          )
+          );
         })}
       </div>
     </>
-  )
+  );
 }

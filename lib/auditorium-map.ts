@@ -1,4 +1,4 @@
-import type { VenueZone } from "./types"
+import type { VenueZone } from "./types";
 
 const AUDITORIUM_MAP: Record<string, VenueZone> = {
   "plenary hall - a": "plenary-hall-a",
@@ -9,56 +9,56 @@ const AUDITORIUM_MAP: Record<string, VenueZone> = {
   "l2 audi 2": "l2-audi-2",
   "l2 audi ii": "l2-audi-2",
   "l2 summit room": "l2-summit-room",
-  "amphitheatre": "amphitheatre",
-  "amphitheater": "amphitheatre",
+  amphitheatre: "amphitheatre",
+  amphitheater: "amphitheatre",
   "chanakya auditorium": "ssb-chanakya",
   "nalanda banquet": "ssb-nalanda",
   "shakuntalam banquet": "ssb-shakuntalam",
-}
+};
 
-const VALID_L1_ROOMS = [6, 7, 8, 9, 10, 14, 15, 16, 17, 18, 19]
+const VALID_L1_ROOMS = [6, 7, 8, 9, 10, 14, 15, 16, 17, 18, 19];
 
 function extractL1RoomNumber(cleaned: string): number | null {
-  let match: RegExpMatchArray | null
+  let match: RegExpMatchArray | null;
 
-  match = cleaned.match(/l1 meeting room (?:no\.\s*)?(\d+)/)
-  if (match) return parseInt(match[1], 10)
+  match = cleaned.match(/l1 meeting room (?:no\.\s*)?(\d+)/);
+  if (match) return parseInt(match[1], 10);
 
-  match = cleaned.match(/l1 mr (\d+)/)
-  if (match) return parseInt(match[1], 10)
+  match = cleaned.match(/l1 mr (\d+)/);
+  if (match) return parseInt(match[1], 10);
 
-  match = cleaned.match(/meeting room (\d+),?\s*level 1/)
-  if (match) return parseInt(match[1], 10)
+  match = cleaned.match(/meeting room (\d+),?\s*level 1/);
+  if (match) return parseInt(match[1], 10);
 
-  match = cleaned.match(/room number (\d+)/)
-  if (match) return parseInt(match[1], 10)
+  match = cleaned.match(/room number (\d+)/);
+  if (match) return parseInt(match[1], 10);
 
-  return null
+  return null;
 }
 
 export function normalizeAuditorium(raw: string): VenueZone | null {
-  const cleaned = raw.replace(/\s+/g, " ").trim().toLowerCase()
+  const cleaned = raw.replace(/\s+/g, " ").trim().toLowerCase();
 
-  if (!cleaned || cleaned === "#n/a") return null
+  if (!cleaned || cleaned === "#n/a") return null;
 
-  const direct = AUDITORIUM_MAP[cleaned]
-  if (direct) return direct
+  const direct = AUDITORIUM_MAP[cleaned];
+  if (direct) return direct;
 
   // L1 Meeting Room variants → individual zones
-  const roomNum = extractL1RoomNumber(cleaned)
+  const roomNum = extractL1RoomNumber(cleaned);
   if (roomNum && VALID_L1_ROOMS.includes(roomNum)) {
-    return `l1-mr-${roomNum}` as VenueZone
+    return `l1-mr-${roomNum}` as VenueZone;
   }
 
-  if (cleaned.startsWith("west wing")) return "west-wing"
+  if (cleaned.startsWith("west wing")) return "west-wing";
 
   if (cleaned.startsWith("hall no.")) {
-    if (cleaned.includes("3")) return "expo-hall-3"
-    if (cleaned.includes("4")) return "expo-hall-4"
-    if (cleaned.includes("5")) return "expo-hall-5"
+    if (cleaned.includes("3")) return "expo-hall-3";
+    if (cleaned.includes("4")) return "expo-hall-4";
+    if (cleaned.includes("5")) return "expo-hall-5";
   }
 
-  return null
+  return null;
 }
 
 export const ZONE_LABELS: Record<VenueZone, string> = {
@@ -80,7 +80,7 @@ export const ZONE_LABELS: Record<VenueZone, string> = {
   "l1-mr-18": "MR 18",
   "l1-mr-19": "MR 19",
   "west-wing": "West Wing",
-  "amphitheatre": "Amphitheatre",
+  amphitheatre: "Amphitheatre",
   "expo-hall-1": "Hall 1",
   "expo-hall-2": "Hall 2",
   "expo-hall-3": "Expo Hall 3",
@@ -93,7 +93,7 @@ export const ZONE_LABELS: Record<VenueZone, string> = {
   "ssb-chanakya": "Chanakya Auditorium",
   "ssb-nalanda": "Nalanda Banquet",
   "ssb-shakuntalam": "Shakuntalam Banquet",
-}
+};
 
 export const ZONE_VENUE: Record<VenueZone, string> = {
   "plenary-hall-a": "Bharat Mandapam",
@@ -114,7 +114,7 @@ export const ZONE_VENUE: Record<VenueZone, string> = {
   "l1-mr-18": "Bharat Mandapam · L1",
   "l1-mr-19": "Bharat Mandapam · L1",
   "west-wing": "Bharat Mandapam",
-  "amphitheatre": "Bharat Mandapam",
+  amphitheatre: "Bharat Mandapam",
   "expo-hall-1": "Bharat Mandapam · Expo",
   "expo-hall-2": "Bharat Mandapam · Expo",
   "expo-hall-3": "Bharat Mandapam · Expo",
@@ -127,7 +127,7 @@ export const ZONE_VENUE: Record<VenueZone, string> = {
   "ssb-chanakya": "Sushma Swaraj Bhawan",
   "ssb-nalanda": "Sushma Swaraj Bhawan",
   "ssb-shakuntalam": "Sushma Swaraj Bhawan",
-}
+};
 
 export const ALL_ZONES: VenueZone[] = [
   "plenary-hall-a",
@@ -161,7 +161,7 @@ export const ALL_ZONES: VenueZone[] = [
   "ssb-chanakya",
   "ssb-nalanda",
   "ssb-shakuntalam",
-]
+];
 
 export const EXPO_HALL_ZONES: VenueZone[] = [
   "expo-hall-1",
@@ -173,15 +173,15 @@ export const EXPO_HALL_ZONES: VenueZone[] = [
   "expo-hall-7",
   "expo-hall-8",
   "expo-hall-14",
-]
+];
 
 export function hallNumberToZone(hall: string): VenueZone | null {
-  if (!hall || hall === "NA") return null
-  const zone = `expo-hall-${hall}` as VenueZone
-  return EXPO_HALL_ZONES.includes(zone) ? zone : null
+  if (!hall || hall === "NA") return null;
+  const zone = `expo-hall-${hall}` as VenueZone;
+  return EXPO_HALL_ZONES.includes(zone) ? zone : null;
 }
 
 export function zoneToHallNumber(zone: VenueZone): string | null {
-  const match = zone.match(/^expo-hall-(\d+)$/)
-  return match ? match[1] : null
+  const match = zone.match(/^expo-hall-(\d+)$/);
+  return match ? match[1] : null;
 }

@@ -1,35 +1,44 @@
-"use client"
+"use client";
 
-import { useMemo, useCallback, useState } from "react"
-import { ScrollArea } from "@/components/ui/scroll-area"
-import { ExhibitorCard } from "./exhibitor-card"
-import { ExhibitorDetailDialog } from "./exhibitor-detail-dialog"
-import type { Exhibitor, VenueZone } from "@/lib/types"
-import { hallNumberToZone } from "@/lib/auditorium-map"
+import { useMemo, useCallback, useState } from "react";
+import { ScrollArea } from "@/components/ui/scroll-area";
+import { ExhibitorCard } from "./exhibitor-card";
+import { ExhibitorDetailDialog } from "./exhibitor-detail-dialog";
+import type { Exhibitor, VenueZone } from "@/lib/types";
+import { hallNumberToZone } from "@/lib/auditorium-map";
 
 interface ExhibitorListProps {
-  exhibitors: Exhibitor[]
-  hoveredZone: VenueZone | null
-  onHoverExhibitor: (zone: VenueZone | null) => void
+  exhibitors: Exhibitor[];
+  hoveredZone: VenueZone | null;
+  onHoverExhibitor: (zone: VenueZone | null) => void;
 }
 
 interface HallGroup {
-  hall: string
-  label: string
-  exhibitors: Exhibitor[]
+  hall: string;
+  label: string;
+  exhibitors: Exhibitor[];
 }
 
 const HALL_SORT_ORDER: Record<string, number> = {
-  "1": 1, "2": 2, "3": 3, "4": 4, "5": 5, "6": 6, "7": 7, "8": 8, "14": 14, "Unassigned": 99,
-}
+  "1": 1,
+  "2": 2,
+  "3": 3,
+  "4": 4,
+  "5": 5,
+  "6": 6,
+  "7": 7,
+  "8": 8,
+  "14": 14,
+  Unassigned: 99,
+};
 
 function groupByHall(exhibitors: Exhibitor[]): HallGroup[] {
-  const groups = new Map<string, Exhibitor[]>()
+  const groups = new Map<string, Exhibitor[]>();
 
   for (const ex of exhibitors) {
-    const hall = ex.hall_number && ex.hall_number !== "NA" ? ex.hall_number : "Unassigned"
-    if (!groups.has(hall)) groups.set(hall, [])
-    groups.get(hall)!.push(ex)
+    const hall = ex.hall_number && ex.hall_number !== "NA" ? ex.hall_number : "Unassigned";
+    if (!groups.has(hall)) groups.set(hall, []);
+    groups.get(hall)!.push(ex);
   }
 
   return Array.from(groups.entries())
@@ -38,31 +47,29 @@ function groupByHall(exhibitors: Exhibitor[]): HallGroup[] {
       hall,
       label: hall === "Unassigned" ? "Unassigned" : `Hall ${hall}`,
       exhibitors: exs.sort((a, b) => a.exhibitor.localeCompare(b.exhibitor)),
-    }))
+    }));
 }
 
-export function ExhibitorList({
-  exhibitors,
-  hoveredZone,
-  onHoverExhibitor,
-}: ExhibitorListProps) {
-  const [selectedExhibitor, setSelectedExhibitor] = useState<Exhibitor | null>(null)
-  const [dialogOpen, setDialogOpen] = useState(false)
+export function ExhibitorList({ exhibitors, hoveredZone, onHoverExhibitor }: ExhibitorListProps) {
+  const [selectedExhibitor, setSelectedExhibitor] = useState<Exhibitor | null>(null);
+  const [dialogOpen, setDialogOpen] = useState(false);
 
-  const groups = useMemo(() => groupByHall(exhibitors), [exhibitors])
+  const groups = useMemo(() => groupByHall(exhibitors), [exhibitors]);
 
   const handleCardClick = useCallback((exhibitor: Exhibitor) => {
-    setSelectedExhibitor(exhibitor)
-    setDialogOpen(true)
-  }, [])
+    setSelectedExhibitor(exhibitor);
+    setDialogOpen(true);
+  }, []);
 
   if (exhibitors.length === 0) {
     return (
       <div className="flex flex-col items-center justify-center py-20 text-center">
         <p className="text-sm text-muted-foreground">No exhibitors match your filters.</p>
-        <p className="mt-1 text-xs text-muted-foreground/70">Try adjusting your search or filters.</p>
+        <p className="mt-1 text-xs text-muted-foreground/70">
+          Try adjusting your search or filters.
+        </p>
       </div>
-    )
+    );
   }
 
   return (
@@ -87,7 +94,7 @@ export function ExhibitorList({
         onOpenChange={setDialogOpen}
       />
     </>
-  )
+  );
 }
 
 function ExhibitorHallGroup({
@@ -96,10 +103,10 @@ function ExhibitorHallGroup({
   onCardClick,
   onHoverExhibitor,
 }: {
-  group: HallGroup
-  hoveredZone: VenueZone | null
-  onCardClick: (exhibitor: Exhibitor) => void
-  onHoverExhibitor: (zone: VenueZone | null) => void
+  group: HallGroup;
+  hoveredZone: VenueZone | null;
+  onCardClick: (exhibitor: Exhibitor) => void;
+  onHoverExhibitor: (zone: VenueZone | null) => void;
 }) {
   return (
     <div>
@@ -108,8 +115,8 @@ function ExhibitorHallGroup({
       </div>
       <div className="grid grid-cols-1 gap-2 pt-2 sm:grid-cols-2 xl:grid-cols-3">
         {group.exhibitors.map((exhibitor) => {
-          const zone = hallNumberToZone(exhibitor.hall_number)
-          const isHighlighted = hoveredZone !== null && zone === hoveredZone
+          const zone = hallNumberToZone(exhibitor.hall_number);
+          const isHighlighted = hoveredZone !== null && zone === hoveredZone;
           return (
             <ExhibitorCard
               key={exhibitor.sno}
@@ -119,9 +126,9 @@ function ExhibitorHallGroup({
               onMouseEnter={() => onHoverExhibitor(zone)}
               onMouseLeave={() => onHoverExhibitor(null)}
             />
-          )
+          );
         })}
       </div>
     </div>
-  )
+  );
 }

@@ -1,28 +1,24 @@
-"use client"
+"use client";
 
-import { memo, useState, useRef, useCallback, useEffect, useMemo } from "react"
-import { MagnifyingGlass, X } from "@phosphor-icons/react"
-import {
-  InputGroup,
-  InputGroupAddon,
-  InputGroupInput,
-} from "@/components/ui/input-group"
+import { memo, useState, useRef, useCallback, useEffect, useMemo } from "react";
+import { MagnifyingGlass, X } from "@phosphor-icons/react";
+import { InputGroup, InputGroupAddon, InputGroupInput } from "@/components/ui/input-group";
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/components/ui/select"
-import { Button } from "@/components/ui/button"
-import type { Exhibitor, ExhibitorFilterState } from "@/lib/types"
+} from "@/components/ui/select";
+import { Button } from "@/components/ui/button";
+import type { Exhibitor, ExhibitorFilterState } from "@/lib/types";
 
 interface ExhibitorFiltersBarProps {
-  filters: ExhibitorFilterState
-  exhibitors: Exhibitor[]
-  onUpdate: (updates: Partial<ExhibitorFilterState>) => void
-  onClear: () => void
-  hasActiveFilters: boolean
+  filters: ExhibitorFilterState;
+  exhibitors: Exhibitor[];
+  onUpdate: (updates: Partial<ExhibitorFilterState>) => void;
+  onClear: () => void;
+  hasActiveFilters: boolean;
 }
 
 export const ExhibitorFiltersBar = memo(function ExhibitorFiltersBar({
@@ -32,62 +28,62 @@ export const ExhibitorFiltersBar = memo(function ExhibitorFiltersBar({
   onClear,
   hasActiveFilters,
 }: ExhibitorFiltersBarProps) {
-  const [localQuery, setLocalQuery] = useState(filters.query)
-  const debounceRef = useRef<ReturnType<typeof setTimeout>>(null)
-  const lastSentRef = useRef(filters.query)
+  const [localQuery, setLocalQuery] = useState(filters.query);
+  const debounceRef = useRef<ReturnType<typeof setTimeout>>(null);
+  const lastSentRef = useRef(filters.query);
 
   if (filters.query !== lastSentRef.current) {
-    lastSentRef.current = filters.query
+    lastSentRef.current = filters.query;
     if (localQuery !== filters.query) {
-      setLocalQuery(filters.query)
+      setLocalQuery(filters.query);
     }
   }
 
   useEffect(() => {
     return () => {
-      if (debounceRef.current) clearTimeout(debounceRef.current)
-    }
-  }, [])
+      if (debounceRef.current) clearTimeout(debounceRef.current);
+    };
+  }, []);
 
   const handleQueryChange = useCallback(
     (value: string) => {
-      setLocalQuery(value)
-      if (debounceRef.current) clearTimeout(debounceRef.current)
+      setLocalQuery(value);
+      if (debounceRef.current) clearTimeout(debounceRef.current);
       debounceRef.current = setTimeout(() => {
-        debounceRef.current = null
-        lastSentRef.current = value
-        onUpdate({ query: value })
-      }, 300)
+        debounceRef.current = null;
+        lastSentRef.current = value;
+        onUpdate({ query: value });
+      }, 300);
     },
-    [onUpdate]
-  )
+    [onUpdate],
+  );
 
   const handleQueryClear = useCallback(() => {
-    setLocalQuery("")
+    setLocalQuery("");
     if (debounceRef.current) {
-      clearTimeout(debounceRef.current)
-      debounceRef.current = null
+      clearTimeout(debounceRef.current);
+      debounceRef.current = null;
     }
-    lastSentRef.current = ""
-    onUpdate({ query: "" })
-  }, [onUpdate])
+    lastSentRef.current = "";
+    onUpdate({ query: "" });
+  }, [onUpdate]);
 
   const uniqueTags = useMemo(() => {
-    const tags = new Set(exhibitors.map((e) => e.tag))
-    return Array.from(tags).sort()
-  }, [exhibitors])
+    const tags = new Set(exhibitors.map((e) => e.tag));
+    return Array.from(tags).sort();
+  }, [exhibitors]);
 
   const uniqueHalls = useMemo(() => {
-    const halls = new Set<string>()
+    const halls = new Set<string>();
     for (const e of exhibitors) {
-      halls.add(e.hall_number && e.hall_number !== "NA" ? e.hall_number : "Unassigned")
+      halls.add(e.hall_number && e.hall_number !== "NA" ? e.hall_number : "Unassigned");
     }
     return Array.from(halls).sort((a, b) => {
-      if (a === "Unassigned") return 1
-      if (b === "Unassigned") return -1
-      return parseInt(a) - parseInt(b)
-    })
-  }, [exhibitors])
+      if (a === "Unassigned") return 1;
+      if (b === "Unassigned") return -1;
+      return parseInt(a) - parseInt(b);
+    });
+  }, [exhibitors]);
 
   return (
     <div className="flex flex-wrap items-center gap-2 px-4 sm:px-6">
@@ -155,5 +151,5 @@ export const ExhibitorFiltersBar = memo(function ExhibitorFiltersBar({
         )}
       </div>
     </div>
-  )
-})
+  );
+});

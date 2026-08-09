@@ -1,13 +1,8 @@
-import { SummitApp } from "@/components/summit/summit-app"
-import summitData from "@/data/india_ai_impact_summit_2026_sessions.json"
-import exhibitorsData from "@/data/exhibitors.json"
-import type { SummitData, Exhibitor } from "@/lib/types"
+import { SummitApp } from "@/components/summit/summit-app";
+import summitData from "@/data/india_ai_impact_summit_2026_sessions.json";
+import exhibitorsData from "@/data/exhibitors.json";
+import type { SummitData, Exhibitor } from "@/lib/types";
 
 export default function Page() {
-  return (
-    <SummitApp
-      data={summitData as SummitData}
-      exhibitors={exhibitorsData as Exhibitor[]}
-    />
-  )
+  return <SummitApp data={summitData as SummitData} exhibitors={exhibitorsData as Exhibitor[]} />;
 }

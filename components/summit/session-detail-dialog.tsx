@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import {
   Dialog,
@@ -6,10 +6,10 @@ import {
   DialogHeader,
   DialogTitle,
   DialogDescription,
-} from "@/components/ui/dialog"
-import { Badge } from "@/components/ui/badge"
-import { Button } from "@/components/ui/button"
-import { Separator } from "@/components/ui/separator"
+} from "@/components/ui/dialog";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import { Separator } from "@/components/ui/separator";
 import {
   Clock,
   MapPin,
@@ -18,15 +18,15 @@ import {
   Buildings,
   Tag,
   Handshake,
-} from "@phosphor-icons/react"
-import type { Session, SessionStatus } from "@/lib/types"
-import { formatTimeRange } from "@/lib/time-utils"
+} from "@phosphor-icons/react";
+import type { Session, SessionStatus } from "@/lib/types";
+import { formatTimeRange } from "@/lib/time-utils";
 
 interface SessionDetailDialogProps {
-  session: Session | null
-  status: SessionStatus | null
-  open: boolean
-  onOpenChange: (open: boolean) => void
+  session: Session | null;
+  status: SessionStatus | null;
+  open: boolean;
+  onOpenChange: (open: boolean) => void;
 }
 
 export function SessionDetailDialog({
@@ -35,16 +35,14 @@ export function SessionDetailDialog({
   open,
   onOpenChange,
 }: SessionDetailDialogProps) {
-  if (!session) return null
+  if (!session) return null;
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent className="max-h-[85vh] overflow-y-auto sm:max-w-lg">
         <DialogHeader>
           <div className="flex items-start gap-2 pr-8">
-            <DialogTitle className="font-serif text-base leading-snug">
-              {session.title}
-            </DialogTitle>
+            <DialogTitle className="font-serif text-base leading-snug">{session.title}</DialogTitle>
             {status === "live" && (
               <Badge variant="destructive" className="shrink-0 text-[10px]">
                 LIVE
@@ -57,9 +55,7 @@ export function SessionDetailDialog({
             )}
           </div>
           {session.description && (
-            <DialogDescription className="mt-1.5">
-              {session.description}
-            </DialogDescription>
+            <DialogDescription className="mt-1.5">{session.description}</DialogDescription>
           )}
         </DialogHeader>
 
@@ -129,11 +125,7 @@ export function SessionDetailDialog({
           <>
             <Separator className="my-1" />
             <Button asChild variant="outline" className="w-full">
-              <a
-                href={session.watchLiveUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
+              <a href={session.watchLiveUrl} target="_blank" rel="noopener noreferrer">
                 Watch Live
                 <ArrowSquareOut data-icon="inline-end" className="size-4" />
               </a>
@@ -142,5 +134,5 @@ export function SessionDetailDialog({
         )}
       </DialogContent>
     </Dialog>
-  )
+  );
 }

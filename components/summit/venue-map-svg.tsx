@@ -1,55 +1,51 @@
-"use client"
+"use client";
 
-import { memo } from "react"
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipTrigger,
-} from "@/components/ui/tooltip"
-import type { VenueZone, AppView } from "@/lib/types"
-import { ZONE_LABELS } from "@/lib/auditorium-map"
+import { memo } from "react";
+import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
+import type { VenueZone, AppView } from "@/lib/types";
+import { ZONE_LABELS } from "@/lib/auditorium-map";
 
 interface ZoneData {
-  count: number
-  hasLive: boolean
+  count: number;
+  hasLive: boolean;
 }
 
 interface VenueMapSvgProps {
-  zoneData: Record<VenueZone, ZoneData>
-  activeZone: VenueZone | ""
-  hoveredZone: VenueZone | null
-  onZoneClick: (zone: VenueZone) => void
-  onZoneHover: (zone: VenueZone | null) => void
-  maxCount: number
-  view?: AppView
+  zoneData: Record<VenueZone, ZoneData>;
+  activeZone: VenueZone | "";
+  hoveredZone: VenueZone | null;
+  onZoneClick: (zone: VenueZone) => void;
+  onZoneHover: (zone: VenueZone | null) => void;
+  maxCount: number;
+  view?: AppView;
 }
 
 function getDensityColor(count: number, max: number): string {
-  if (max === 0 || count === 0) return "var(--muted)"
-  const ratio = count / max
-  if (ratio > 0.8) return "var(--chart-5)"
-  if (ratio > 0.6) return "var(--chart-4)"
-  if (ratio > 0.4) return "var(--chart-3)"
-  if (ratio > 0.2) return "var(--chart-2)"
-  return "var(--chart-1)"
+  if (max === 0 || count === 0) return "var(--muted)";
+  const ratio = count / max;
+  if (ratio > 0.8) return "var(--chart-5)";
+  if (ratio > 0.6) return "var(--chart-4)";
+  if (ratio > 0.4) return "var(--chart-3)";
+  if (ratio > 0.2) return "var(--chart-2)";
+  return "var(--chart-1)";
 }
 
 interface ZoneRectProps {
-  zone: VenueZone
-  x: number
-  y: number
-  width: number
-  height: number
-  data: ZoneData
-  isActive: boolean
-  isHovered: boolean
-  maxCount: number
-  onZoneClick: (zone: VenueZone) => void
-  onZoneHover: (zone: VenueZone | null) => void
-  label?: string
-  compact?: boolean
-  rx?: number
-  countLabel?: string
+  zone: VenueZone;
+  x: number;
+  y: number;
+  width: number;
+  height: number;
+  data: ZoneData;
+  isActive: boolean;
+  isHovered: boolean;
+  maxCount: number;
+  onZoneClick: (zone: VenueZone) => void;
+  onZoneHover: (zone: VenueZone | null) => void;
+  label?: string;
+  compact?: boolean;
+  rx?: number;
+  countLabel?: string;
 }
 
 function ZoneRect({
@@ -69,11 +65,11 @@ function ZoneRect({
   rx,
   countLabel = "session",
 }: ZoneRectProps) {
-  const fill = getDensityColor(data.count, maxCount)
-  const displayLabel = label ?? ZONE_LABELS[zone]
-  const emphasized = isActive || isHovered
-  const isEmpty = data.count === 0
-  const cornerRadius = rx ?? 2
+  const fill = getDensityColor(data.count, maxCount);
+  const displayLabel = label ?? ZONE_LABELS[zone];
+  const emphasized = isActive || isHovered;
+  const isEmpty = data.count === 0;
+  const cornerRadius = rx ?? 2;
 
   return (
     <Tooltip>
@@ -180,9 +176,7 @@ function ZoneRect({
                 className="fill-foreground text-[7px] font-medium"
                 style={{ pointerEvents: "none" }}
               >
-                {displayLabel.length > 18
-                  ? displayLabel.slice(0, 18) + "..."
-                  : displayLabel}
+                {displayLabel.length > 18 ? displayLabel.slice(0, 18) + "..." : displayLabel}
               </text>
               <text
                 x={x + width / 2}
@@ -206,12 +200,12 @@ function ZoneRect({
         </p>
       </TooltipContent>
     </Tooltip>
-  )
+  );
 }
 
 function Gate({ x, y, label, accent }: { x: number; y: number; label: string; accent?: boolean }) {
-  const gateColor = accent ? "var(--primary)" : "var(--chart-2)"
-  const gateOpacity = accent ? 0.65 : 0.5
+  const gateColor = accent ? "var(--primary)" : "var(--chart-2)";
+  const gateOpacity = accent ? 0.65 : 0.5;
   return (
     <g style={{ pointerEvents: "none" }}>
       {/* Gate base */}
@@ -231,8 +225,24 @@ function Gate({ x, y, label, accent }: { x: number; y: number; label: string; ac
         opacity={gateOpacity}
       />
       {/* Door opening lines */}
-      <line x1={x + 5} y1={y + 4} x2={x + 5} y2={y + 10} stroke="var(--card)" strokeWidth={0.5} opacity={0.6} />
-      <line x1={x + 9} y1={y + 4} x2={x + 9} y2={y + 10} stroke="var(--card)" strokeWidth={0.5} opacity={0.6} />
+      <line
+        x1={x + 5}
+        y1={y + 4}
+        x2={x + 5}
+        y2={y + 10}
+        stroke="var(--card)"
+        strokeWidth={0.5}
+        opacity={0.6}
+      />
+      <line
+        x1={x + 9}
+        y1={y + 4}
+        x2={x + 9}
+        y2={y + 10}
+        stroke="var(--card)"
+        strokeWidth={0.5}
+        opacity={0.6}
+      />
       <text
         x={x + 7}
         y={y + 8}
@@ -253,7 +263,7 @@ function Gate({ x, y, label, accent }: { x: number; y: number; label: string; ac
         {label}
       </text>
     </g>
-  )
+  );
 }
 
 function DecoBuilding({
@@ -264,15 +274,15 @@ function DecoBuilding({
   label,
   rx,
 }: {
-  x: number
-  y: number
-  width: number
-  height: number
-  label: string
-  rx?: number
+  x: number;
+  y: number;
+  width: number;
+  height: number;
+  label: string;
+  rx?: number;
 }) {
-  const r = rx ?? 2
-  const cornerSize = 6
+  const r = rx ?? 2;
+  const cornerSize = 6;
   return (
     <g style={{ pointerEvents: "none" }}>
       <rect
@@ -307,13 +317,37 @@ function DecoBuilding({
       {r < 10 && (
         <>
           {/* Top-left */}
-          <path d={`M${x},${y + cornerSize} L${x},${y} L${x + cornerSize},${y}`} fill="none" stroke="var(--border)" strokeWidth={0.8} opacity={0.35} />
+          <path
+            d={`M${x},${y + cornerSize} L${x},${y} L${x + cornerSize},${y}`}
+            fill="none"
+            stroke="var(--border)"
+            strokeWidth={0.8}
+            opacity={0.35}
+          />
           {/* Top-right */}
-          <path d={`M${x + width - cornerSize},${y} L${x + width},${y} L${x + width},${y + cornerSize}`} fill="none" stroke="var(--border)" strokeWidth={0.8} opacity={0.35} />
+          <path
+            d={`M${x + width - cornerSize},${y} L${x + width},${y} L${x + width},${y + cornerSize}`}
+            fill="none"
+            stroke="var(--border)"
+            strokeWidth={0.8}
+            opacity={0.35}
+          />
           {/* Bottom-left */}
-          <path d={`M${x},${y + height - cornerSize} L${x},${y + height} L${x + cornerSize},${y + height}`} fill="none" stroke="var(--border)" strokeWidth={0.8} opacity={0.35} />
+          <path
+            d={`M${x},${y + height - cornerSize} L${x},${y + height} L${x + cornerSize},${y + height}`}
+            fill="none"
+            stroke="var(--border)"
+            strokeWidth={0.8}
+            opacity={0.35}
+          />
           {/* Bottom-right */}
-          <path d={`M${x + width - cornerSize},${y + height} L${x + width},${y + height} L${x + width},${y + height - cornerSize}`} fill="none" stroke="var(--border)" strokeWidth={0.8} opacity={0.35} />
+          <path
+            d={`M${x + width - cornerSize},${y + height} L${x + width},${y + height} L${x + width},${y + height - cornerSize}`}
+            fill="none"
+            stroke="var(--border)"
+            strokeWidth={0.8}
+            opacity={0.35}
+          />
         </>
       )}
       <text
@@ -327,7 +361,7 @@ function DecoBuilding({
         {label}
       </text>
     </g>
-  )
+  );
 }
 
 function SectionLabel({
@@ -337,14 +371,14 @@ function SectionLabel({
   sub,
   lineWidth = 40,
 }: {
-  x: number
-  y: number
-  children: string
-  sub?: string
-  lineWidth?: number
+  x: number;
+  y: number;
+  children: string;
+  sub?: string;
+  lineWidth?: number;
 }) {
   // Approximate half-width of text for line placement
-  const textHalfW = children.length * 3.2
+  const textHalfW = children.length * 3.2;
   return (
     <g style={{ pointerEvents: "none" }}>
       {/* Decorative lines flanking the label */}
@@ -390,17 +424,12 @@ function SectionLabel({
         {children}
       </text>
       {sub && (
-        <text
-          x={x}
-          y={y + 11}
-          className="fill-muted-foreground text-[5.5px]"
-          textAnchor="middle"
-        >
+        <text x={x} y={y + 11} className="fill-muted-foreground text-[5.5px]" textAnchor="middle">
           {sub}
         </text>
       )}
     </g>
-  )
+  );
 }
 
 export const VenueMapSvg = memo(function VenueMapSvg({
@@ -412,8 +441,8 @@ export const VenueMapSvg = memo(function VenueMapSvg({
   maxCount,
   view = "sessions",
 }: VenueMapSvgProps) {
-  const isExhibitorView = view === "exhibitors"
-  const itemLabel = isExhibitorView ? "exhibitor" : "session"
+  const isExhibitorView = view === "exhibitors";
+  const itemLabel = isExhibitorView ? "exhibitor" : "session";
 
   const z = (zone: VenueZone) => ({
     zone,
@@ -424,33 +453,43 @@ export const VenueMapSvg = memo(function VenueMapSvg({
     onZoneClick,
     onZoneHover,
     countLabel: itemLabel,
-  })
+  });
 
   // BM building
-  const bm = { x: 22, y: 80, w: 370, h: 405 }
+  const bm = { x: 22, y: 80, w: 370, h: 405 };
   // Internal zone start
-  const zi = { x: 40, y: 112 }
-  const gap = 5
-  const rowH = 42
-  const mrW = 51
-  const mrH = 34
+  const zi = { x: 40, y: 112 };
+  const gap = 5;
+  const rowH = 42;
+  const mrW = 51;
+  const mrH = 34;
 
   // Expo area
-  const ex = { x: 500 }
+  const ex = { x: 500 };
 
-  const svgHeight = isExhibitorView ? 660 : 660
+  const svgHeight = isExhibitorView ? 660 : 660;
 
   return (
-    <svg
-      viewBox={`0 0 920 ${svgHeight}`}
-      className="w-full"
-      xmlns="http://www.w3.org/2000/svg"
-    >
+    <svg viewBox={`0 0 920 ${svgHeight}`} className="w-full" xmlns="http://www.w3.org/2000/svg">
       <defs>
         {/* Diagonal stripe pattern for empty zones (count === 0) */}
-        <pattern id="empty-zone-pattern" width="8" height="8" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+        <pattern
+          id="empty-zone-pattern"
+          width="8"
+          height="8"
+          patternUnits="userSpaceOnUse"
+          patternTransform="rotate(45)"
+        >
           <rect width="8" height="8" fill="var(--muted)" />
-          <line x1="0" y1="0" x2="0" y2="8" stroke="var(--border)" strokeWidth="0.75" opacity="0.25" />
+          <line
+            x1="0"
+            y1="0"
+            x2="0"
+            y2="8"
+            stroke="var(--border)"
+            strokeWidth="0.75"
+            opacity="0.25"
+          />
         </pattern>
       </defs>
 
@@ -503,28 +542,72 @@ export const VenueMapSvg = memo(function VenueMapSvg({
       </SectionLabel>
 
       {/* Level labels */}
-      <text x={zi.x - 14} y={zi.y + rowH / 2} className="fill-muted-foreground text-[5.5px] font-bold" textAnchor="middle" dominantBaseline="middle" style={{ pointerEvents: "none" }}>
+      <text
+        x={zi.x - 14}
+        y={zi.y + rowH / 2}
+        className="fill-muted-foreground text-[5.5px] font-bold"
+        textAnchor="middle"
+        dominantBaseline="middle"
+        style={{ pointerEvents: "none" }}
+      >
         L3
       </text>
-      <text x={zi.x - 14} y={zi.y + rowH + gap + rowH / 2} className="fill-muted-foreground text-[5.5px] font-bold" textAnchor="middle" dominantBaseline="middle" style={{ pointerEvents: "none" }}>
+      <text
+        x={zi.x - 14}
+        y={zi.y + rowH + gap + rowH / 2}
+        className="fill-muted-foreground text-[5.5px] font-bold"
+        textAnchor="middle"
+        dominantBaseline="middle"
+        style={{ pointerEvents: "none" }}
+      >
         L2
       </text>
-      <text x={zi.x - 14} y={zi.y + (rowH + gap) * 2 + mrH + 4} className="fill-muted-foreground text-[5.5px] font-bold" textAnchor="middle" dominantBaseline="middle" style={{ pointerEvents: "none" }}>
+      <text
+        x={zi.x - 14}
+        y={zi.y + (rowH + gap) * 2 + mrH + 4}
+        className="fill-muted-foreground text-[5.5px] font-bold"
+        textAnchor="middle"
+        dominantBaseline="middle"
+        style={{ pointerEvents: "none" }}
+      >
         L1
       </text>
 
       {/* Level 3 zones */}
       <ZoneRect x={zi.x} y={zi.y} width={107} height={rowH} {...z("plenary-hall-a")} />
       <ZoneRect x={zi.x + 107 + gap} y={zi.y} width={107} height={rowH} {...z("l3-plenary")} />
-      <ZoneRect x={zi.x + 214 + gap * 2} y={zi.y} width={113} height={rowH} {...z("amphitheatre")} />
+      <ZoneRect
+        x={zi.x + 214 + gap * 2}
+        y={zi.y}
+        width={113}
+        height={rowH}
+        {...z("amphitheatre")}
+      />
 
       {/* Level 2 zones */}
       <ZoneRect x={zi.x} y={zi.y + rowH + gap} width={107} height={rowH} {...z("l2-audi-1")} />
-      <ZoneRect x={zi.x + 107 + gap} y={zi.y + rowH + gap} width={107} height={rowH} {...z("l2-audi-2")} />
-      <ZoneRect x={zi.x + 214 + gap * 2} y={zi.y + rowH + gap} width={113} height={rowH} {...z("l2-summit-room")} />
+      <ZoneRect
+        x={zi.x + 107 + gap}
+        y={zi.y + rowH + gap}
+        width={107}
+        height={rowH}
+        {...z("l2-audi-2")}
+      />
+      <ZoneRect
+        x={zi.x + 214 + gap * 2}
+        y={zi.y + rowH + gap}
+        width={113}
+        height={rowH}
+        {...z("l2-summit-room")}
+      />
 
       {/* Level 1 ─── Meeting Rooms */}
-      <text x={zi.x} y={zi.y + (rowH + gap) * 2 + 2} className="fill-muted-foreground text-[5px]" style={{ pointerEvents: "none" }}>
+      <text
+        x={zi.x}
+        y={zi.y + (rowH + gap) * 2 + 2}
+        className="fill-muted-foreground text-[5px]"
+        style={{ pointerEvents: "none" }}
+      >
         Meeting Rooms
       </text>
 
@@ -595,17 +678,69 @@ export const VenueMapSvg = memo(function VenueMapSvg({
 
       {/* ═══ WALKWAY BM to Expo ═══ */}
       {/* Wide path background */}
-      <line x1={bm.x + bm.w - 20} y1={250} x2={410} y2={250} stroke="var(--border)" strokeWidth={10} strokeLinecap="round" opacity={0.12} />
-      <line x1={468} y1={250} x2={ex.x} y2={200} stroke="var(--border)" strokeWidth={10} strokeLinecap="round" opacity={0.12} />
+      <line
+        x1={bm.x + bm.w - 20}
+        y1={250}
+        x2={410}
+        y2={250}
+        stroke="var(--border)"
+        strokeWidth={10}
+        strokeLinecap="round"
+        opacity={0.12}
+      />
+      <line
+        x1={468}
+        y1={250}
+        x2={ex.x}
+        y2={200}
+        stroke="var(--border)"
+        strokeWidth={10}
+        strokeLinecap="round"
+        opacity={0.12}
+      />
       {/* Path edge lines for walkway feel */}
-      <line x1={bm.x + bm.w - 20} y1={245} x2={410} y2={245} stroke="var(--muted-foreground)" strokeWidth={0.4} opacity={0.2} />
-      <line x1={bm.x + bm.w - 20} y1={255} x2={410} y2={255} stroke="var(--muted-foreground)" strokeWidth={0.4} opacity={0.2} />
+      <line
+        x1={bm.x + bm.w - 20}
+        y1={245}
+        x2={410}
+        y2={245}
+        stroke="var(--muted-foreground)"
+        strokeWidth={0.4}
+        opacity={0.2}
+      />
+      <line
+        x1={bm.x + bm.w - 20}
+        y1={255}
+        x2={410}
+        y2={255}
+        stroke="var(--muted-foreground)"
+        strokeWidth={0.4}
+        opacity={0.2}
+      />
       {/* Dashed center line */}
-      <line x1={bm.x + bm.w - 20} y1={250} x2={410} y2={250} stroke="var(--muted-foreground)" strokeWidth={0.8} strokeDasharray="4 3" opacity={0.4} />
-      <line x1={468} y1={250} x2={ex.x} y2={200} stroke="var(--muted-foreground)" strokeWidth={0.8} strokeDasharray="4 3" opacity={0.4} />
+      <line
+        x1={bm.x + bm.w - 20}
+        y1={250}
+        x2={410}
+        y2={250}
+        stroke="var(--muted-foreground)"
+        strokeWidth={0.8}
+        strokeDasharray="4 3"
+        opacity={0.4}
+      />
+      <line
+        x1={468}
+        y1={250}
+        x2={ex.x}
+        y2={200}
+        stroke="var(--muted-foreground)"
+        strokeWidth={0.8}
+        strokeDasharray="4 3"
+        opacity={0.4}
+      />
       {/* Directional chevrons along horizontal segment */}
       {[0, 1, 2, 3].map((i) => {
-        const cx = bm.x + bm.w - 10 + i * 22
+        const cx = bm.x + bm.w - 10 + i * 22;
         return (
           <path
             key={`chev-${i}`}
@@ -615,7 +750,7 @@ export const VenueMapSvg = memo(function VenueMapSvg({
             strokeWidth={0.6}
             opacity={0.25}
           />
-        )
+        );
       })}
       {/* Walking figure icon */}
       <g style={{ pointerEvents: "none" }} opacity={0.35} transform="translate(420,240)">
@@ -624,14 +759,28 @@ export const VenueMapSvg = memo(function VenueMapSvg({
         {/* Body */}
         <line x1={0} y1={2} x2={0} y2={7} stroke="var(--muted-foreground)" strokeWidth={0.8} />
         {/* Arms */}
-        <line x1={-2.5} y1={3.5} x2={2.5} y2={5} stroke="var(--muted-foreground)" strokeWidth={0.7} />
+        <line
+          x1={-2.5}
+          y1={3.5}
+          x2={2.5}
+          y2={5}
+          stroke="var(--muted-foreground)"
+          strokeWidth={0.7}
+        />
         {/* Left leg */}
         <line x1={0} y1={7} x2={-2} y2={11} stroke="var(--muted-foreground)" strokeWidth={0.7} />
         {/* Right leg */}
         <line x1={0} y1={7} x2={2.5} y2={10.5} stroke="var(--muted-foreground)" strokeWidth={0.7} />
       </g>
       {/* Walkway label */}
-      <text x={440} y={236} className="fill-muted-foreground text-[4.5px]" textAnchor="middle" style={{ pointerEvents: "none" }} opacity={0.5}>
+      <text
+        x={440}
+        y={236}
+        className="fill-muted-foreground text-[4.5px]"
+        textAnchor="middle"
+        style={{ pointerEvents: "none" }}
+        opacity={0.5}
+      >
         Walkway
       </text>
 
@@ -648,14 +797,7 @@ export const VenueMapSvg = memo(function VenueMapSvg({
       )}
 
       {/* Hall 5 (interactive) */}
-      <ZoneRect
-        x={ex.x}
-        y={148}
-        width={200}
-        height={100}
-        label="Hall 5"
-        {...z("expo-hall-5")}
-      />
+      <ZoneRect x={ex.x} y={148} width={200} height={100} label="Hall 5" {...z("expo-hall-5")} />
 
       {/* Hall 4 (interactive) */}
       <ZoneRect
@@ -686,7 +828,15 @@ export const VenueMapSvg = memo(function VenueMapSvg({
 
       {/* Hall 1 */}
       {isExhibitorView ? (
-        <ZoneRect x={ex.x + 30} y={385} width={325} height={140} label="Hall 1" rx={50} {...z("expo-hall-1")} />
+        <ZoneRect
+          x={ex.x + 30}
+          y={385}
+          width={325}
+          height={140}
+          label="Hall 1"
+          rx={50}
+          {...z("expo-hall-1")}
+        />
       ) : (
         <DecoBuilding x={ex.x + 30} y={385} width={325} height={140} label="Hall 1" rx={50} />
       )}
@@ -700,15 +850,71 @@ export const VenueMapSvg = memo(function VenueMapSvg({
         <g key={i} style={{ pointerEvents: "none" }}>
           {/* Plate circle */}
           <circle cx={fc.x + 8} cy={fc.y + 7} r={8} fill="var(--chart-2)" opacity={0.2} />
-          <circle cx={fc.x + 8} cy={fc.y + 7} r={8} fill="none" stroke="var(--chart-2)" strokeWidth={0.5} opacity={0.35} />
+          <circle
+            cx={fc.x + 8}
+            cy={fc.y + 7}
+            r={8}
+            fill="none"
+            stroke="var(--chart-2)"
+            strokeWidth={0.5}
+            opacity={0.35}
+          />
           {/* Fork icon (left) */}
-          <line x1={fc.x + 4} y1={fc.y + 3} x2={fc.x + 4} y2={fc.y + 11} stroke="var(--foreground)" strokeWidth={0.5} opacity={0.4} />
-          <line x1={fc.x + 3} y1={fc.y + 3} x2={fc.x + 3} y2={fc.y + 5.5} stroke="var(--foreground)" strokeWidth={0.4} opacity={0.35} />
-          <line x1={fc.x + 5} y1={fc.y + 3} x2={fc.x + 5} y2={fc.y + 5.5} stroke="var(--foreground)" strokeWidth={0.4} opacity={0.35} />
+          <line
+            x1={fc.x + 4}
+            y1={fc.y + 3}
+            x2={fc.x + 4}
+            y2={fc.y + 11}
+            stroke="var(--foreground)"
+            strokeWidth={0.5}
+            opacity={0.4}
+          />
+          <line
+            x1={fc.x + 3}
+            y1={fc.y + 3}
+            x2={fc.x + 3}
+            y2={fc.y + 5.5}
+            stroke="var(--foreground)"
+            strokeWidth={0.4}
+            opacity={0.35}
+          />
+          <line
+            x1={fc.x + 5}
+            y1={fc.y + 3}
+            x2={fc.x + 5}
+            y2={fc.y + 5.5}
+            stroke="var(--foreground)"
+            strokeWidth={0.4}
+            opacity={0.35}
+          />
           {/* Knife icon (right) */}
-          <line x1={fc.x + 12} y1={fc.y + 3} x2={fc.x + 12} y2={fc.y + 11} stroke="var(--foreground)" strokeWidth={0.5} opacity={0.4} />
-          <ellipse cx={fc.x + 12} cy={fc.y + 4.5} rx={1} ry={2} fill="none" stroke="var(--foreground)" strokeWidth={0.4} opacity={0.35} />
-          <text x={fc.x + 8} y={fc.y + 7.5} textAnchor="middle" dominantBaseline="middle" className="fill-foreground text-[3.5px] font-bold" opacity={0.45}>
+          <line
+            x1={fc.x + 12}
+            y1={fc.y + 3}
+            x2={fc.x + 12}
+            y2={fc.y + 11}
+            stroke="var(--foreground)"
+            strokeWidth={0.5}
+            opacity={0.4}
+          />
+          <ellipse
+            cx={fc.x + 12}
+            cy={fc.y + 4.5}
+            rx={1}
+            ry={2}
+            fill="none"
+            stroke="var(--foreground)"
+            strokeWidth={0.4}
+            opacity={0.35}
+          />
+          <text
+            x={fc.x + 8}
+            y={fc.y + 7.5}
+            textAnchor="middle"
+            dominantBaseline="middle"
+            className="fill-foreground text-[3.5px] font-bold"
+            opacity={0.45}
+          >
             FC
           </text>
         </g>
@@ -721,8 +927,22 @@ export const VenueMapSvg = memo(function VenueMapSvg({
             ADDITIONAL HALLS
           </SectionLabel>
           <ZoneRect x={ex.x} y={568} width={120} height={60} label="Hall 7" {...z("expo-hall-7")} />
-          <ZoneRect x={ex.x + 120 + gap} y={568} width={120} height={60} label="Hall 8" {...z("expo-hall-8")} />
-          <ZoneRect x={ex.x + 240 + gap * 2} y={568} width={140} height={60} label="Hall 14" {...z("expo-hall-14")} />
+          <ZoneRect
+            x={ex.x + 120 + gap}
+            y={568}
+            width={120}
+            height={60}
+            label="Hall 8"
+            {...z("expo-hall-8")}
+          />
+          <ZoneRect
+            x={ex.x + 240 + gap * 2}
+            y={568}
+            width={140}
+            height={60}
+            label="Hall 14"
+            {...z("expo-hall-14")}
+          />
         </>
       )}
 
@@ -763,10 +983,34 @@ export const VenueMapSvg = memo(function VenueMapSvg({
         opacity={0.2}
       />
       {/* Corner bracket accents */}
-      <path d="M22,565 L22,555 L32,555" fill="none" stroke="var(--border)" strokeWidth={1} opacity={0.4} />
-      <path d="M382,555 L392,555 L392,565" fill="none" stroke="var(--border)" strokeWidth={1} opacity={0.4} />
-      <path d="M22,640 L22,650 L32,650" fill="none" stroke="var(--border)" strokeWidth={1} opacity={0.4} />
-      <path d="M382,650 L392,650 L392,640" fill="none" stroke="var(--border)" strokeWidth={1} opacity={0.4} />
+      <path
+        d="M22,565 L22,555 L32,555"
+        fill="none"
+        stroke="var(--border)"
+        strokeWidth={1}
+        opacity={0.4}
+      />
+      <path
+        d="M382,555 L392,555 L392,565"
+        fill="none"
+        stroke="var(--border)"
+        strokeWidth={1}
+        opacity={0.4}
+      />
+      <path
+        d="M22,640 L22,650 L32,650"
+        fill="none"
+        stroke="var(--border)"
+        strokeWidth={1}
+        opacity={0.4}
+      />
+      <path
+        d="M382,650 L392,650 L392,640"
+        fill="none"
+        stroke="var(--border)"
+        strokeWidth={1}
+        opacity={0.4}
+      />
       <SectionLabel x={207} y={570} sub="Off-site venue">
         SUSHMA SWARAJ BHAWAN
       </SectionLabel>
@@ -775,5 +1019,5 @@ export const VenueMapSvg = memo(function VenueMapSvg({
       <ZoneRect x={32 + 110 + gap} y={586} width={110} height={50} {...z("ssb-nalanda")} />
       <ZoneRect x={32 + 220 + gap * 2} y={586} width={130} height={50} {...z("ssb-shakuntalam")} />
     </svg>
-  )
-})
+  );
+});

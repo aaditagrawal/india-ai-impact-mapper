@@ -1,20 +1,15 @@
-"use client"
+"use client";
 
-import {
-  Dialog,
-  DialogContent,
-  DialogHeader,
-  DialogTitle,
-} from "@/components/ui/dialog"
-import { Badge } from "@/components/ui/badge"
-import { Separator } from "@/components/ui/separator"
-import { MapPin, Hash, Tag, NumberSquareOne } from "@phosphor-icons/react"
-import type { Exhibitor } from "@/lib/types"
+import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
+import { Badge } from "@/components/ui/badge";
+import { Separator } from "@/components/ui/separator";
+import { MapPin, Hash, Tag, NumberSquareOne } from "@phosphor-icons/react";
+import type { Exhibitor } from "@/lib/types";
 
 interface ExhibitorDetailDialogProps {
-  exhibitor: Exhibitor | null
-  open: boolean
-  onOpenChange: (open: boolean) => void
+  exhibitor: Exhibitor | null;
+  open: boolean;
+  onOpenChange: (open: boolean) => void;
 }
 
 export function ExhibitorDetailDialog({
@@ -22,7 +17,7 @@ export function ExhibitorDetailDialog({
   open,
   onOpenChange,
 }: ExhibitorDetailDialogProps) {
-  if (!exhibitor) return null
+  if (!exhibitor) return null;
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
@@ -51,9 +46,7 @@ export function ExhibitorDetailDialog({
           <div className="flex items-center gap-2 text-sm">
             <MapPin className="size-4 shrink-0 text-muted-foreground" />
             <span>
-              {exhibitor.hall_number
-                ? `Hall ${exhibitor.hall_number}`
-                : "Hall not assigned"}
+              {exhibitor.hall_number ? `Hall ${exhibitor.hall_number}` : "Hall not assigned"}
             </span>
           </div>
 
@@ -64,5 +57,5 @@ export function ExhibitorDetailDialog({
         </div>
       </DialogContent>
     </Dialog>
-  )
+  );
 }

@@ -1,19 +1,29 @@
-"use client"
+"use client";
 
-import { useEffect } from "react"
-import { Badge } from "@/components/ui/badge"
-import { Button } from "@/components/ui/button"
-import { Broadcast, MapPin, CalendarBlank, Moon, Sun, MagnifyingGlass, Command, Storefront, Presentation } from "@phosphor-icons/react"
-import { useTheme } from "@/hooks/use-theme"
-import type { AppView } from "@/lib/types"
+import { useEffect } from "react";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import {
+  Broadcast,
+  MapPin,
+  CalendarBlank,
+  Moon,
+  Sun,
+  MagnifyingGlass,
+  Command,
+  Storefront,
+  Presentation,
+} from "@phosphor-icons/react";
+import { useTheme } from "@/hooks/use-theme";
+import type { AppView } from "@/lib/types";
 
 interface SummitHeaderProps {
-  totalSessions: number
-  filteredCount: number
-  hasLiveSessions: boolean
-  onCommandOpen: () => void
-  view: AppView
-  onViewChange: (view: AppView) => void
+  totalSessions: number;
+  filteredCount: number;
+  hasLiveSessions: boolean;
+  onCommandOpen: () => void;
+  view: AppView;
+  onViewChange: (view: AppView) => void;
 }
 
 export function SummitHeader({
@@ -24,19 +34,19 @@ export function SummitHeader({
   view,
   onViewChange,
 }: SummitHeaderProps) {
-  const { dark, toggle } = useTheme()
+  const { dark, toggle } = useTheme();
 
   // Global Cmd+K / Ctrl+K listener
   useEffect(() => {
     function handleKeyDown(e: KeyboardEvent) {
       if ((e.metaKey || e.ctrlKey) && e.key === "k") {
-        e.preventDefault()
-        onCommandOpen()
+        e.preventDefault();
+        onCommandOpen();
       }
     }
-    document.addEventListener("keydown", handleKeyDown)
-    return () => document.removeEventListener("keydown", handleKeyDown)
-  }, [onCommandOpen])
+    document.addEventListener("keydown", handleKeyDown);
+    return () => document.removeEventListener("keydown", handleKeyDown);
+  }, [onCommandOpen]);
 
   return (
     <header className="border-b px-4 py-3 sm:px-6 sm:py-4">
@@ -130,5 +140,5 @@ export function SummitHeader({
         </div>
       </div>
     </header>
-  )
+  );
 }

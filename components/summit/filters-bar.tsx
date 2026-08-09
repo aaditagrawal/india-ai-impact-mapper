@@ -1,30 +1,26 @@
-"use client"
+"use client";
 
-import { memo, useState, useRef, useCallback, useEffect } from "react"
-import { MagnifyingGlass, X, EyeSlash, Eye } from "@phosphor-icons/react"
-import {
-  InputGroup,
-  InputGroupAddon,
-  InputGroupInput,
-} from "@/components/ui/input-group"
+import { memo, useState, useRef, useCallback, useEffect } from "react";
+import { MagnifyingGlass, X, EyeSlash, Eye } from "@phosphor-icons/react";
+import { InputGroup, InputGroupAddon, InputGroupInput } from "@/components/ui/input-group";
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/components/ui/select"
-import { Toggle } from "@/components/ui/toggle"
-import { Button } from "@/components/ui/button"
-import { DateTabs } from "./date-tabs"
-import type { FilterState, Session } from "@/lib/types"
+} from "@/components/ui/select";
+import { Toggle } from "@/components/ui/toggle";
+import { Button } from "@/components/ui/button";
+import { DateTabs } from "./date-tabs";
+import type { FilterState, Session } from "@/lib/types";
 
 interface FiltersBarProps {
-  filters: FilterState
-  sessions: Session[]
-  onUpdate: (updates: Partial<FilterState>) => void
-  onClear: () => void
-  hasActiveFilters: boolean
+  filters: FilterState;
+  sessions: Session[];
+  onUpdate: (updates: Partial<FilterState>) => void;
+  onClear: () => void;
+  hasActiveFilters: boolean;
 }
 
 export const FiltersBar = memo(function FiltersBar({
@@ -34,49 +30,49 @@ export const FiltersBar = memo(function FiltersBar({
   onClear,
   hasActiveFilters,
 }: FiltersBarProps) {
-  const [localQuery, setLocalQuery] = useState(filters.query)
-  const debounceRef = useRef<ReturnType<typeof setTimeout>>(null)
+  const [localQuery, setLocalQuery] = useState(filters.query);
+  const debounceRef = useRef<ReturnType<typeof setTimeout>>(null);
   // Track the last query value we sent to parent so we can distinguish
   // external changes (e.g. "Clear all") from our own debounced updates
-  const lastSentRef = useRef(filters.query)
+  const lastSentRef = useRef(filters.query);
 
   // Sync from parent only when query changes externally
   if (filters.query !== lastSentRef.current) {
-    lastSentRef.current = filters.query
+    lastSentRef.current = filters.query;
     if (localQuery !== filters.query) {
-      setLocalQuery(filters.query)
+      setLocalQuery(filters.query);
     }
   }
 
   // Cleanup debounce on unmount
   useEffect(() => {
     return () => {
-      if (debounceRef.current) clearTimeout(debounceRef.current)
-    }
-  }, [])
+      if (debounceRef.current) clearTimeout(debounceRef.current);
+    };
+  }, []);
 
   const handleQueryChange = useCallback(
     (value: string) => {
-      setLocalQuery(value)
-      if (debounceRef.current) clearTimeout(debounceRef.current)
+      setLocalQuery(value);
+      if (debounceRef.current) clearTimeout(debounceRef.current);
       debounceRef.current = setTimeout(() => {
-        debounceRef.current = null
-        lastSentRef.current = value
-        onUpdate({ query: value })
-      }, 300)
+        debounceRef.current = null;
+        lastSentRef.current = value;
+        onUpdate({ query: value });
+      }, 300);
     },
-    [onUpdate]
-  )
+    [onUpdate],
+  );
 
   const handleQueryClear = useCallback(() => {
-    setLocalQuery("")
+    setLocalQuery("");
     if (debounceRef.current) {
-      clearTimeout(debounceRef.current)
-      debounceRef.current = null
+      clearTimeout(debounceRef.current);
+      debounceRef.current = null;
     }
-    lastSentRef.current = ""
-    onUpdate({ query: "" })
-  }, [onUpdate])
+    lastSentRef.current = "";
+    onUpdate({ query: "" });
+  }, [onUpdate]);
 
   return (
     <div className="flex flex-wrap items-center gap-2 px-4 sm:px-6">
@@ -148,11 +144,7 @@ export const FiltersBar = memo(function FiltersBar({
           onPressedChange={(pressed) => onUpdate({ showPast: !pressed })}
           aria-label="Hide past events"
         >
-          {filters.showPast ? (
-            <Eye className="size-3.5" />
-          ) : (
-            <EyeSlash className="size-3.5" />
-          )}
+          {filters.showPast ? <Eye className="size-3.5" /> : <EyeSlash className="size-3.5" />}
           <span className="hidden sm:inline">Past</span>
         </Toggle>
 
@@ -164,5 +156,5 @@ export const FiltersBar = memo(function FiltersBar({
         )}
       </div>
     </div>
-  )
-})
+  );
+});

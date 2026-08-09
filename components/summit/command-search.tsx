@@ -1,6 +1,6 @@
-"use client"
+"use client";
 
-import { useCallback, useEffect, useMemo, useRef, useState } from "react"
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import {
   MagnifyingGlass,
   Clock,
@@ -10,56 +10,56 @@ import {
   ArrowElbowDownLeft,
   Hash,
   Tag,
-} from "@phosphor-icons/react"
-import { Badge } from "@/components/ui/badge"
-import type { Session, SessionStatus, Exhibitor, AppView } from "@/lib/types"
-import { getSessionStatus, formatTimeRange } from "@/lib/time-utils"
-import { cn } from "@/lib/utils"
+} from "@phosphor-icons/react";
+import { Badge } from "@/components/ui/badge";
+import type { Session, SessionStatus, Exhibitor, AppView } from "@/lib/types";
+import { getSessionStatus, formatTimeRange } from "@/lib/time-utils";
+import { cn } from "@/lib/utils";
 
 type SearchResult =
   | { type: "session"; session: Session }
-  | { type: "exhibitor"; exhibitor: Exhibitor }
+  | { type: "exhibitor"; exhibitor: Exhibitor };
 
 interface CommandSearchProps {
-  sessions: Session[]
-  exhibitors: Exhibitor[]
-  now: Date
-  open: boolean
-  onOpenChange: (open: boolean) => void
-  onSelectSession: (session: Session) => void
-  onSelectExhibitor: (exhibitor: Exhibitor) => void
-  view: AppView
+  sessions: Session[];
+  exhibitors: Exhibitor[];
+  now: Date;
+  open: boolean;
+  onOpenChange: (open: boolean) => void;
+  onSelectSession: (session: Session) => void;
+  onSelectExhibitor: (exhibitor: Exhibitor) => void;
+  view: AppView;
 }
 
 function scoreMatch(session: Session, query: string): number {
-  const q = query.toLowerCase()
-  const title = session.title.toLowerCase()
+  const q = query.toLowerCase();
+  const title = session.title.toLowerCase();
 
-  if (title === q) return 100
-  if (title.startsWith(q)) return 90
-  const words = title.split(/\s+/)
-  if (words.some((w) => w.startsWith(q))) return 80
-  if (title.includes(q)) return 70
-  if (session.speakers.some((s) => s.name.toLowerCase().includes(q))) return 60
-  if (session.tags.some((t) => t.toLowerCase().includes(q))) return 50
-  if (session.description.toLowerCase().includes(q)) return 30
+  if (title === q) return 100;
+  if (title.startsWith(q)) return 90;
+  const words = title.split(/\s+/);
+  if (words.some((w) => w.startsWith(q))) return 80;
+  if (title.includes(q)) return 70;
+  if (session.speakers.some((s) => s.name.toLowerCase().includes(q))) return 60;
+  if (session.tags.some((t) => t.toLowerCase().includes(q))) return 50;
+  if (session.description.toLowerCase().includes(q)) return 30;
 
-  return 0
+  return 0;
 }
 
 function scoreExhibitorMatch(exhibitor: Exhibitor, query: string): number {
-  const q = query.toLowerCase()
-  const name = exhibitor.exhibitor.toLowerCase()
+  const q = query.toLowerCase();
+  const name = exhibitor.exhibitor.toLowerCase();
 
-  if (name === q) return 100
-  if (name.startsWith(q)) return 90
-  const words = name.split(/\s+/)
-  if (words.some((w) => w.startsWith(q))) return 80
-  if (name.includes(q)) return 70
-  if (exhibitor.tag.toLowerCase().includes(q)) return 50
-  if (exhibitor.booth_number.toLowerCase().includes(q)) return 40
+  if (name === q) return 100;
+  if (name.startsWith(q)) return 90;
+  const words = name.split(/\s+/);
+  if (words.some((w) => w.startsWith(q))) return 80;
+  if (name.includes(q)) return 70;
+  if (exhibitor.tag.toLowerCase().includes(q)) return 50;
+  if (exhibitor.booth_number.toLowerCase().includes(q)) return 40;
 
-  return 0
+  return 0;
 }
 
 export function CommandSearch({
@@ -72,134 +72,137 @@ export function CommandSearch({
   onSelectExhibitor,
   view,
 }: CommandSearchProps) {
-  const [query, setQuery] = useState("")
-  const [activeIndex, setActiveIndex] = useState(0)
-  const [prevOpen, setPrevOpen] = useState(false)
-  const [prevResultsLen, setPrevResultsLen] = useState(0)
-  const inputRef = useRef<HTMLInputElement>(null)
-  const listRef = useRef<HTMLDivElement>(null)
+  const [query, setQuery] = useState("");
+  const [activeIndex, setActiveIndex] = useState(0);
+  const [prevOpen, setPrevOpen] = useState(false);
+  const [prevResultsLen, setPrevResultsLen] = useState(0);
+  const inputRef = useRef<HTMLInputElement>(null);
+  const listRef = useRef<HTMLDivElement>(null);
 
   const results = useMemo(() => {
     if (view === "exhibitors") {
       if (!query.trim()) {
         const items: SearchResult[] = exhibitors
           .slice(0, 12)
-          .map((e) => ({ type: "exhibitor" as const, exhibitor: e }))
-        return { items, isDefault: true }
+          .map((e) => ({ type: "exhibitor" as const, exhibitor: e }));
+        return { items, isDefault: true };
       }
       const scored = exhibitors
         .map((e) => ({ exhibitor: e, score: scoreExhibitorMatch(e, query.trim()) }))
         .filter((r) => r.score > 0)
         .sort((a, b) => b.score - a.score)
-        .slice(0, 20)
+        .slice(0, 20);
       return {
         items: scored.map((r): SearchResult => ({ type: "exhibitor", exhibitor: r.exhibitor })),
         isDefault: false,
-      }
+      };
     }
 
     if (!query.trim()) {
-      const live = sessions
-        .filter((s) => getSessionStatus(s, now) === "live")
-        .slice(0, 6)
+      const live = sessions.filter((s) => getSessionStatus(s, now) === "live").slice(0, 6);
       const upcoming = sessions
         .filter((s) => getSessionStatus(s, now) === "upcoming")
-        .slice(0, 12 - live.length)
-      const items: SearchResult[] = [...live, ...upcoming].map((s) => ({ type: "session" as const, session: s }))
-      return { items, isDefault: true }
+        .slice(0, 12 - live.length);
+      const items: SearchResult[] = [...live, ...upcoming].map((s) => ({
+        type: "session" as const,
+        session: s,
+      }));
+      return { items, isDefault: true };
     }
 
     const scored = sessions
       .map((s) => ({ session: s, score: scoreMatch(s, query.trim()) }))
       .filter((r) => r.score > 0)
       .sort((a, b) => b.score - a.score)
-      .slice(0, 20)
+      .slice(0, 20);
 
     return {
       items: scored.map((r): SearchResult => ({ type: "session", session: r.session })),
       isDefault: false,
-    }
-  }, [sessions, exhibitors, query, now, view])
+    };
+  }, [sessions, exhibitors, query, now, view]);
 
   // Reset state when opening (during render, not in effect)
   if (open && !prevOpen) {
-    setQuery("")
-    setActiveIndex(0)
+    setQuery("");
+    setActiveIndex(0);
   }
   if (open !== prevOpen) {
-    setPrevOpen(open)
+    setPrevOpen(open);
   }
 
   // Reset active index when results change (during render)
   if (results.items.length !== prevResultsLen) {
-    setPrevResultsLen(results.items.length)
-    setActiveIndex(0)
+    setPrevResultsLen(results.items.length);
+    setActiveIndex(0);
   }
 
   // Focus input when opening
   useEffect(() => {
     if (open) {
-      requestAnimationFrame(() => inputRef.current?.focus())
+      requestAnimationFrame(() => inputRef.current?.focus());
     }
-  }, [open])
+  }, [open]);
 
   // Scroll active item into view
   useEffect(() => {
-    if (!listRef.current) return
-    const active = listRef.current.querySelector("[data-active='true']")
-    active?.scrollIntoView({ block: "nearest" })
-  }, [activeIndex])
+    if (!listRef.current) return;
+    const active = listRef.current.querySelector("[data-active='true']");
+    active?.scrollIntoView({ block: "nearest" });
+  }, [activeIndex]);
 
   const handleSelect = useCallback(
     (result: SearchResult) => {
       if (result.type === "session") {
-        onSelectSession(result.session)
+        onSelectSession(result.session);
       } else {
-        onSelectExhibitor(result.exhibitor)
+        onSelectExhibitor(result.exhibitor);
       }
-      onOpenChange(false)
+      onOpenChange(false);
     },
-    [onSelectSession, onSelectExhibitor, onOpenChange]
-  )
+    [onSelectSession, onSelectExhibitor, onOpenChange],
+  );
 
   const handleKeyDown = useCallback(
     (e: React.KeyboardEvent) => {
       switch (e.key) {
         case "ArrowDown":
-          e.preventDefault()
-          setActiveIndex((i) => Math.min(i + 1, results.items.length - 1))
-          break
+          e.preventDefault();
+          setActiveIndex((i) => Math.min(i + 1, results.items.length - 1));
+          break;
         case "ArrowUp":
-          e.preventDefault()
-          setActiveIndex((i) => Math.max(i - 1, 0))
-          break
+          e.preventDefault();
+          setActiveIndex((i) => Math.max(i - 1, 0));
+          break;
         case "Enter": {
-          e.preventDefault()
-          const item = results.items[activeIndex]
-          if (item) handleSelect(item)
-          break
+          e.preventDefault();
+          const item = results.items[activeIndex];
+          if (item) handleSelect(item);
+          break;
         }
         case "Escape":
-          e.preventDefault()
-          onOpenChange(false)
-          break
+          e.preventDefault();
+          onOpenChange(false);
+          break;
       }
     },
-    [results.items, activeIndex, handleSelect, onOpenChange]
-  )
+    [results.items, activeIndex, handleSelect, onOpenChange],
+  );
 
-  if (!open) return null
+  if (!open) return null;
 
   return (
-    <div className="fixed inset-0 z-50" onClick={() => onOpenChange(false)}>
+    <div className="fixed inset-0 z-50">
       {/* Backdrop */}
-      <div className="absolute inset-0 bg-black/20 backdrop-blur-xs" />
+      <button
+        type="button"
+        aria-label="Close search"
+        className="absolute inset-0 bg-black/20 backdrop-blur-xs"
+        onClick={() => onOpenChange(false)}
+      />
 
       {/* Dialog */}
-      <div
-        className="absolute left-1/2 top-[min(20%,8rem)] w-full max-w-lg -translate-x-1/2 px-4"
-        onClick={(e) => e.stopPropagation()}
-      >
+      <div className="absolute left-1/2 top-[min(20%,8rem)] w-full max-w-lg -translate-x-1/2 px-4">
         <div className="overflow-hidden rounded-lg border bg-background shadow-2xl ring-1 ring-foreground/5">
           {/* Search input */}
           <div className="flex items-center gap-2 border-b px-3">
@@ -210,7 +213,11 @@ export function CommandSearch({
               value={query}
               onChange={(e) => setQuery(e.target.value)}
               onKeyDown={handleKeyDown}
-              placeholder={view === "exhibitors" ? "Search exhibitors..." : "Search sessions, speakers, topics..."}
+              placeholder={
+                view === "exhibitors"
+                  ? "Search exhibitors..."
+                  : "Search sessions, speakers, topics..."
+              }
               className="flex-1 bg-transparent py-3 text-sm outline-none placeholder:text-muted-foreground/60"
               autoComplete="off"
               autoCorrect="off"
@@ -230,7 +237,8 @@ export function CommandSearch({
           <div ref={listRef} className="max-h-[min(60vh,24rem)] overflow-y-auto p-1.5">
             {results.items.length === 0 ? (
               <div className="px-3 py-8 text-center text-sm text-muted-foreground">
-                No {view === "exhibitors" ? "exhibitors" : "sessions"} found for &ldquo;{query}&rdquo;
+                No {view === "exhibitors" ? "exhibitors" : "sessions"} found for &ldquo;{query}
+                &rdquo;
               </div>
             ) : (
               <>
@@ -253,9 +261,9 @@ export function CommandSearch({
                         onSelect={() => handleSelect(item)}
                         onHover={() => setActiveIndex(i)}
                       />
-                    )
+                    );
                   }
-                  const status = getSessionStatus(item.session, now)
+                  const status = getSessionStatus(item.session, now);
                   return (
                     <CommandSearchItem
                       key={item.session.id}
@@ -265,7 +273,7 @@ export function CommandSearch({
                       onSelect={() => handleSelect(item)}
                       onHover={() => setActiveIndex(i)}
                     />
-                  )
+                  );
                 })}
               </>
             )}
@@ -294,7 +302,7 @@ export function CommandSearch({
         </div>
       </div>
     </div>
-  )
+  );
 }
 
 function CommandSearchItem({
@@ -304,29 +312,25 @@ function CommandSearchItem({
   onSelect,
   onHover,
 }: {
-  session: Session
-  status: SessionStatus
-  isActive: boolean
-  onSelect: () => void
-  onHover: () => void
+  session: Session;
+  status: SessionStatus;
+  isActive: boolean;
+  onSelect: () => void;
+  onHover: () => void;
 }) {
   return (
     <button
       data-active={isActive}
       className={cn(
         "flex w-full items-start gap-3 rounded-md px-2.5 py-2 text-left transition-colors",
-        isActive
-          ? "bg-accent text-accent-foreground"
-          : "hover:bg-accent/50"
+        isActive ? "bg-accent text-accent-foreground" : "hover:bg-accent/50",
       )}
       onClick={onSelect}
       onMouseEnter={onHover}
     >
       <div className="min-w-0 flex-1">
         <div className="flex items-start gap-2">
-          <span className="line-clamp-1 font-serif text-xs leading-snug">
-            {session.title}
-          </span>
+          <span className="line-clamp-1 font-serif text-xs leading-snug">{session.title}</span>
           {status === "live" && (
             <Badge variant="destructive" className="shrink-0 gap-0.5 text-[9px]">
               <Broadcast className="size-2.5 animate-pulse" />
@@ -356,11 +360,9 @@ function CommandSearchItem({
         </div>
       </div>
 
-      {isActive && (
-        <ArrowElbowDownLeft className="mt-1 size-3.5 shrink-0 text-muted-foreground" />
-      )}
+      {isActive && <ArrowElbowDownLeft className="mt-1 size-3.5 shrink-0 text-muted-foreground" />}
     </button>
-  )
+  );
 }
 
 function CommandExhibitorItem({
@@ -369,27 +371,23 @@ function CommandExhibitorItem({
   onSelect,
   onHover,
 }: {
-  exhibitor: Exhibitor
-  isActive: boolean
-  onSelect: () => void
-  onHover: () => void
+  exhibitor: Exhibitor;
+  isActive: boolean;
+  onSelect: () => void;
+  onHover: () => void;
 }) {
   return (
     <button
       data-active={isActive}
       className={cn(
         "flex w-full items-start gap-3 rounded-md px-2.5 py-2 text-left transition-colors",
-        isActive
-          ? "bg-accent text-accent-foreground"
-          : "hover:bg-accent/50"
+        isActive ? "bg-accent text-accent-foreground" : "hover:bg-accent/50",
       )}
       onClick={onSelect}
       onMouseEnter={onHover}
     >
       <div className="min-w-0 flex-1">
-        <span className="line-clamp-1 font-serif text-xs leading-snug">
-          {exhibitor.exhibitor}
-        </span>
+        <span className="line-clamp-1 font-serif text-xs leading-snug">{exhibitor.exhibitor}</span>
         <div className="mt-0.5 flex flex-wrap items-center gap-x-3 gap-y-0.5 text-[11px] text-muted-foreground">
           {exhibitor.booth_number && (
             <span className="inline-flex items-center gap-1">
@@ -408,9 +406,7 @@ function CommandExhibitorItem({
         </div>
       </div>
 
-      {isActive && (
-        <ArrowElbowDownLeft className="mt-1 size-3.5 shrink-0 text-muted-foreground" />
-      )}
+      {isActive && <ArrowElbowDownLeft className="mt-1 size-3.5 shrink-0 text-muted-foreground" />}
     </button>
-  )
+  );
 }

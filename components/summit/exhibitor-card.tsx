@@ -1,18 +1,18 @@
-"use client"
+"use client";
 
-import { memo } from "react"
-import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card"
-import { Badge } from "@/components/ui/badge"
-import { MapPin, Hash } from "@phosphor-icons/react"
-import type { Exhibitor } from "@/lib/types"
-import { cn } from "@/lib/utils"
+import { memo } from "react";
+import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import { MapPin, Hash } from "@phosphor-icons/react";
+import type { Exhibitor } from "@/lib/types";
+import { cn } from "@/lib/utils";
 
 interface ExhibitorCardProps {
-  exhibitor: Exhibitor
-  isHighlighted: boolean
-  onClick: () => void
-  onMouseEnter: () => void
-  onMouseLeave: () => void
+  exhibitor: Exhibitor;
+  isHighlighted: boolean;
+  onClick: () => void;
+  onMouseEnter: () => void;
+  onMouseLeave: () => void;
 }
 
 export const ExhibitorCard = memo(function ExhibitorCard({
@@ -27,7 +27,7 @@ export const ExhibitorCard = memo(function ExhibitorCard({
       size="sm"
       className={cn(
         "cursor-pointer transition-subtle hover:bg-accent/50",
-        isHighlighted && "bg-accent/50 ring-1 ring-primary/30"
+        isHighlighted && "bg-accent/50 ring-1 ring-primary/30",
       )}
       onClick={onClick}
       onMouseEnter={onMouseEnter}
@@ -56,5 +56,5 @@ export const ExhibitorCard = memo(function ExhibitorCard({
         </div>
       </CardContent>
     </Card>
-  )
-})
+  );
+});

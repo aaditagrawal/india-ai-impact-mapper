@@ -1,7 +1,7 @@
 "use client";
 
 import { useMemo, useDeferredValue, useCallback, useState, useEffect } from "react";
-import { CaretDown, CaretUp, MapTrifold } from "@phosphor-icons/react";
+import { CaretDown, CaretUp, MapTrifold } from "@phosphor-icons/react/dist/ssr";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { SummitHeader } from "./summit-header";
 import { DateTabs } from "./date-tabs";

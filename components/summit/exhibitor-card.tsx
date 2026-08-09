@@ -3,7 +3,7 @@
 import { memo } from "react";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { MapPin, Hash } from "@phosphor-icons/react";
+import { MapPin, Hash } from "@phosphor-icons/react/dist/ssr";
 import type { Exhibitor } from "@/lib/types";
 import { cn } from "@/lib/utils";
 

@@ -1,6 +1,6 @@
 "use client";
 
-import { X } from "@phosphor-icons/react";
+import { X } from "@phosphor-icons/react/dist/ssr";
 import { Badge } from "@/components/ui/badge";
 import type { FilterState, VenueZone } from "@/lib/types";
 import { ZONE_LABELS } from "@/lib/auditorium-map";

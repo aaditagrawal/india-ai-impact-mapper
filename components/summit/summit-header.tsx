@@ -13,7 +13,7 @@ import {
   Command,
   Storefront,
   Presentation,
-} from "@phosphor-icons/react";
+} from "@phosphor-icons/react/dist/ssr";
 import { useTheme } from "@/hooks/use-theme";
 import type { AppView } from "@/lib/types";
 

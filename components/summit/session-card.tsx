@@ -3,7 +3,7 @@
 import { memo } from "react";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Clock, MapPin, User, Broadcast } from "@phosphor-icons/react";
+import { Clock, MapPin, User, Broadcast } from "@phosphor-icons/react/dist/ssr";
 import type { Session, SessionStatus } from "@/lib/types";
 import { formatTimeRange } from "@/lib/time-utils";
 import { cn } from "@/lib/utils";

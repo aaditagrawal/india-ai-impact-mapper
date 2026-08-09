@@ -10,7 +10,7 @@ import {
   ArrowElbowDownLeft,
   Hash,
   Tag,
-} from "@phosphor-icons/react";
+} from "@phosphor-icons/react/dist/ssr";
 import { Badge } from "@/components/ui/badge";
 import type { Session, SessionStatus, Exhibitor, AppView } from "@/lib/types";
 import { getSessionStatus, formatTimeRange } from "@/lib/time-utils";

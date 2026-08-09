@@ -39,4 +39,4 @@ Session and exhibitor data lives in `/data/` as JSON files scraped from the offi
 | `bun run dev` | Start dev server |
 | `bun run build` | Production build |
 | `bun run start` | Serve production build |
-| `bun lint` | Run ESLint |
+| `bun lint` | Run Oxlint |

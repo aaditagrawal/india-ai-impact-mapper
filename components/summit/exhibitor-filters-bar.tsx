@@ -1,7 +1,7 @@
 "use client";
 
 import { memo, useState, useRef, useCallback, useEffect, useMemo } from "react";
-import { MagnifyingGlass, X } from "@phosphor-icons/react";
+import { MagnifyingGlass, X } from "@phosphor-icons/react/dist/ssr";
 import { InputGroup, InputGroupAddon, InputGroupInput } from "@/components/ui/input-group";
 import {
   Select,

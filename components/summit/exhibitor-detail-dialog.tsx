@@ -3,7 +3,7 @@
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
-import { MapPin, Hash, Tag, NumberSquareOne } from "@phosphor-icons/react";
+import { MapPin, Hash, Tag, NumberSquareOne } from "@phosphor-icons/react/dist/ssr";
 import type { Exhibitor } from "@/lib/types";
 
 interface ExhibitorDetailDialogProps {

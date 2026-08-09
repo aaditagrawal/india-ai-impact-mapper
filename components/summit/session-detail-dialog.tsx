@@ -18,7 +18,7 @@ import {
   Buildings,
   Tag,
   Handshake,
-} from "@phosphor-icons/react";
+} from "@phosphor-icons/react/dist/ssr";
 import type { Session, SessionStatus } from "@/lib/types";
 import { formatTimeRange } from "@/lib/time-utils";
 

@@ -1,22 +1,34 @@
 import type { VenueZone } from "./types";
 
-const AUDITORIUM_MAP: Record<string, VenueZone> = {
-  "plenary hall - a": "plenary-hall-a",
-  "plenary hall - b": "plenary-hall-b",
-  "plenary hall b": "plenary-hall-b",
-  "l3 plenary hall": "l3-plenary",
-  "l2 audi 1": "l2-audi-1",
-  "l2 audi 2": "l2-audi-2",
-  "l2 audi ii": "l2-audi-2",
-  "l2 summit room": "l2-summit-room",
-  amphitheatre: "amphitheatre",
-  amphitheater: "amphitheatre",
-  "chanakya auditorium": "ssb-chanakya",
-  "nalanda banquet": "ssb-nalanda",
-  "shakuntalam banquet": "ssb-shakuntalam",
-};
+const AUDITORIUM_MAP = new Map<string, VenueZone>([
+  ["plenary hall - a", "plenary-hall-a"],
+  ["plenary hall - b", "plenary-hall-b"],
+  ["plenary hall b", "plenary-hall-b"],
+  ["l3 plenary hall", "l3-plenary"],
+  ["l2 audi 1", "l2-audi-1"],
+  ["l2 audi 2", "l2-audi-2"],
+  ["l2 audi ii", "l2-audi-2"],
+  ["l2 summit room", "l2-summit-room"],
+  ["amphitheatre", "amphitheatre"],
+  ["amphitheater", "amphitheatre"],
+  ["chanakya auditorium", "ssb-chanakya"],
+  ["nalanda banquet", "ssb-nalanda"],
+  ["shakuntalam banquet", "ssb-shakuntalam"],
+]);
 
-const VALID_L1_ROOMS = [6, 7, 8, 9, 10, 14, 15, 16, 17, 18, 19];
+const L1_ROOM_ZONES = new Map<number, VenueZone>([
+  [6, "l1-mr-6"],
+  [7, "l1-mr-7"],
+  [8, "l1-mr-8"],
+  [9, "l1-mr-9"],
+  [10, "l1-mr-10"],
+  [14, "l1-mr-14"],
+  [15, "l1-mr-15"],
+  [16, "l1-mr-16"],
+  [17, "l1-mr-17"],
+  [18, "l1-mr-18"],
+  [19, "l1-mr-19"],
+]);
 
 function extractL1RoomNumber(cleaned: string): number | null {
   let match: RegExpMatchArray | null;
@@ -41,14 +53,13 @@ export function normalizeAuditorium(raw: string): VenueZone | null {
 
   if (!cleaned || cleaned === "#n/a") return null;
 
-  const direct = AUDITORIUM_MAP[cleaned];
+  const direct = AUDITORIUM_MAP.get(cleaned);
   if (direct) return direct;
 
   // L1 Meeting Room variants → individual zones
   const roomNum = extractL1RoomNumber(cleaned);
-  if (roomNum && VALID_L1_ROOMS.includes(roomNum)) {
-    return `l1-mr-${roomNum}` as VenueZone;
-  }
+  const roomZone = roomNum === null ? undefined : L1_ROOM_ZONES.get(roomNum);
+  if (roomZone) return roomZone;
 
   if (cleaned.startsWith("west wing")) return "west-wing";
 
@@ -61,7 +72,7 @@ export function normalizeAuditorium(raw: string): VenueZone | null {
   return null;
 }
 
-export const ZONE_LABELS: Record<VenueZone, string> = {
+export const ZONE_LABELS = {
   "plenary-hall-a": "Plenary Hall A",
   "plenary-hall-b": "Plenary Hall B",
   "l3-plenary": "L3 Plenary Hall",
@@ -93,9 +104,9 @@ export const ZONE_LABELS: Record<VenueZone, string> = {
   "ssb-chanakya": "Chanakya Auditorium",
   "ssb-nalanda": "Nalanda Banquet",
   "ssb-shakuntalam": "Shakuntalam Banquet",
-};
+} satisfies Record<VenueZone, string>;
 
-export const ZONE_VENUE: Record<VenueZone, string> = {
+export const ZONE_VENUE = {
   "plenary-hall-a": "Bharat Mandapam",
   "plenary-hall-b": "Bharat Mandapam",
   "l3-plenary": "Bharat Mandapam",
@@ -127,7 +138,7 @@ export const ZONE_VENUE: Record<VenueZone, string> = {
   "ssb-chanakya": "Sushma Swaraj Bhawan",
   "ssb-nalanda": "Sushma Swaraj Bhawan",
   "ssb-shakuntalam": "Sushma Swaraj Bhawan",
-};
+} satisfies Record<VenueZone, string>;
 
 export const ALL_ZONES: VenueZone[] = [
   "plenary-hall-a",
@@ -177,11 +188,15 @@ export const EXPO_HALL_ZONES: VenueZone[] = [
 
 export function hallNumberToZone(hall: string): VenueZone | null {
   if (!hall || hall === "NA") return null;
-  const zone = `expo-hall-${hall}` as VenueZone;
-  return EXPO_HALL_ZONES.includes(zone) ? zone : null;
+  return EXPO_HALL_ZONES.find((zone) => zoneToHallNumber(zone) === hall) ?? null;
 }
 
 export function zoneToHallNumber(zone: VenueZone): string | null {
   const match = zone.match(/^expo-hall-(\d+)$/);
   return match ? match[1] : null;
+}
+
+/** Narrows an untrusted string (URL query parameter, restored state) to a known zone. */
+export function parseVenueZone(raw: string | null): VenueZone | null {
+  return ALL_ZONES.find((zone) => zone === raw) ?? null;
 }

@@ -2,7 +2,7 @@
 
 import { X } from "@phosphor-icons/react/dist/ssr";
 import { Badge } from "@/components/ui/badge";
-import type { FilterState, VenueZone } from "@/lib/types";
+import type { FilterState } from "@/lib/types";
 import { ZONE_LABELS } from "@/lib/auditorium-map";
 
 interface ActiveFiltersProps {
@@ -21,7 +21,7 @@ export function ActiveFilters({ filters, onUpdate }: ActiveFiltersProps) {
   }
   if (filters.zone) {
     chips.push({
-      label: `Zone: ${ZONE_LABELS[filters.zone as VenueZone]}`,
+      label: `Zone: ${ZONE_LABELS[filters.zone]}`,
       onRemove: () => onUpdate({ zone: "" }),
     });
   }

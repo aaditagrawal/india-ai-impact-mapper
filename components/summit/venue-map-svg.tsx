@@ -5,13 +5,13 @@ import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip
 import type { VenueZone, AppView } from "@/lib/types";
 import { ZONE_LABELS } from "@/lib/auditorium-map";
 
-interface ZoneData {
+export interface ZoneData {
   count: number;
   hasLive: boolean;
 }
 
 interface VenueMapSvgProps {
-  zoneData: Record<VenueZone, ZoneData>;
+  zoneData: ReadonlyMap<VenueZone, ZoneData>;
   activeZone: VenueZone | "";
   hoveredZone: VenueZone | null;
   onZoneClick: (zone: VenueZone) => void;
@@ -446,7 +446,7 @@ export const VenueMapSvg = memo(function VenueMapSvg({
 
   const z = (zone: VenueZone) => ({
     zone,
-    data: zoneData[zone] ?? { count: 0, hasLive: false },
+    data: zoneData.get(zone) ?? { count: 0, hasLive: false },
     isActive: activeZone === zone,
     isHovered: hoveredZone === zone,
     maxCount,

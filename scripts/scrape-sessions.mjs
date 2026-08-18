@@ -58,6 +58,22 @@ function parseRscResponse(text) {
   return null;
 }
 
+/**
+ * Reads the tag labels for a session.
+ *
+ * The API exposes tags through two different fields: `buttons.tagButtons`
+ * holds `{ name }` records, while the older `tags` field holds bare label
+ * strings. Reading whichever field is present keeps each shape on its own
+ * branch instead of merging them into one list and inspecting the entries.
+ */
+function extractTagLabels(raw) {
+  const tagButtons = raw.buttons?.tagButtons;
+  if (tagButtons) {
+    return tagButtons.map((button) => button.name || "").filter(Boolean);
+  }
+  return (raw.tags || []).filter(Boolean);
+}
+
 function transformSession(raw) {
   return {
     id: raw.id,
@@ -82,9 +98,7 @@ function transformSession(raw) {
       name: kp.title || kp.name || "",
       image: kp.image || null,
     })),
-    tags: (raw.buttons?.tagButtons || raw.tags || [])
-      .map((t) => (typeof t === "string" ? t : t.name || ""))
-      .filter(Boolean),
+    tags: extractTagLabels(raw),
     watchLiveUrl: raw.buttons?.watchLiveButton?.[0]?.url || raw.watchLiveUrl || "",
   };
 }

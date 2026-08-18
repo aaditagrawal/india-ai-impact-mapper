@@ -63,7 +63,7 @@ export interface Session {
   speakers: Speaker[];
   knowledgePartners: KnowledgePartner[];
   tags: string[];
-  watchLiveUrl: string;
+  watchLiveUrl: string | null;
 }
 
 export interface SummitData {

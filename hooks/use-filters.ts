@@ -1,8 +1,9 @@
 "use client";
 
 import { useState, useCallback, useEffect } from "react";
-import type { FilterState, VenueZone } from "@/lib/types";
+import type { FilterState } from "@/lib/types";
 import { DEFAULT_FILTERS } from "@/lib/filters";
+import { parseVenueZone } from "@/lib/auditorium-map";
 
 function parseFiltersFromURL(): FilterState {
   const params = new URLSearchParams(window.location.search);
@@ -10,7 +11,7 @@ function parseFiltersFromURL(): FilterState {
     query: params.get("q") ?? DEFAULT_FILTERS.query,
     date: params.get("date") ?? DEFAULT_FILTERS.date,
     venue: params.get("venue") ?? DEFAULT_FILTERS.venue,
-    zone: (params.get("zone") as VenueZone | "") ?? DEFAULT_FILTERS.zone,
+    zone: parseVenueZone(params.get("zone")) ?? DEFAULT_FILTERS.zone,
     tag: params.get("tag") ?? DEFAULT_FILTERS.tag,
     timeSlot: params.get("time") ?? DEFAULT_FILTERS.timeSlot,
     showPast: params.get("past") !== "0",

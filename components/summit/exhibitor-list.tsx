@@ -19,18 +19,18 @@ interface HallGroup {
   exhibitors: Exhibitor[];
 }
 
-const HALL_SORT_ORDER: Record<string, number> = {
-  "1": 1,
-  "2": 2,
-  "3": 3,
-  "4": 4,
-  "5": 5,
-  "6": 6,
-  "7": 7,
-  "8": 8,
-  "14": 14,
-  Unassigned: 99,
-};
+const HALL_SORT_ORDER = new Map<string, number>([
+  ["1", 1],
+  ["2", 2],
+  ["3", 3],
+  ["4", 4],
+  ["5", 5],
+  ["6", 6],
+  ["7", 7],
+  ["8", 8],
+  ["14", 14],
+  ["Unassigned", 99],
+]);
 
 function groupByHall(exhibitors: Exhibitor[]): HallGroup[] {
   const groups = new Map<string, Exhibitor[]>();
@@ -42,7 +42,7 @@ function groupByHall(exhibitors: Exhibitor[]): HallGroup[] {
   }
 
   return Array.from(groups.entries())
-    .sort(([a], [b]) => (HALL_SORT_ORDER[a] ?? 50) - (HALL_SORT_ORDER[b] ?? 50))
+    .sort(([a], [b]) => (HALL_SORT_ORDER.get(a) ?? 50) - (HALL_SORT_ORDER.get(b) ?? 50))
     .map(([hall, exs]) => ({
       hall,
       label: hall === "Unassigned" ? "Unassigned" : `Hall ${hall}`,

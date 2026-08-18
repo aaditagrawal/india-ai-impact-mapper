@@ -1,7 +1,7 @@
 "use client";
 
 import { useMemo } from "react";
-import { VenueMapSvg } from "./venue-map-svg";
+import { VenueMapSvg, type ZoneData } from "./venue-map-svg";
 import { VenueLegend } from "./venue-legend";
 import type { Session, Exhibitor, VenueZone, FilterState, AppView } from "@/lib/types";
 import {
@@ -34,25 +34,25 @@ export function VenueMap({
   view,
 }: VenueMapProps) {
   const zoneData = useMemo(() => {
-    const data = {} as Record<VenueZone, { count: number; hasLive: boolean }>;
-    for (const zone of ALL_ZONES) {
-      data[zone] = { count: 0, hasLive: false };
-    }
+    const data = new Map<VenueZone, ZoneData>();
+    const record = (zone: VenueZone, isLive: boolean) => {
+      const entry = data.get(zone) ?? { count: 0, hasLive: false };
+      entry.count++;
+      if (isLive) entry.hasLive = true;
+      data.set(zone, entry);
+    };
 
     if (view === "exhibitors" && exhibitors) {
       for (const ex of exhibitors) {
         const zone = hallNumberToZone(ex.hall_number);
         if (!zone) continue;
-        data[zone].count++;
+        record(zone, false);
       }
     } else {
       for (const session of sessions) {
         const zone = normalizeAuditorium(session.auditorium);
         if (!zone) continue;
-        data[zone].count++;
-        if (getSessionStatus(session, now) === "live") {
-          data[zone].hasLive = true;
-        }
+        record(zone, getSessionStatus(session, now) === "live");
       }
     }
     return data;
@@ -60,7 +60,7 @@ export function VenueMap({
 
   const zones = view === "exhibitors" ? EXPO_HALL_ZONES : ALL_ZONES;
   const maxCount = useMemo(
-    () => Math.max(...zones.map((z) => zoneData[z].count), 1),
+    () => Math.max(...zones.map((z) => zoneData.get(z)?.count ?? 0), 1),
     [zoneData, zones],
   );
 
@@ -68,7 +68,7 @@ export function VenueMap({
     <div className="space-y-1">
       <VenueMapSvg
         zoneData={zoneData}
-        activeZone={filters.zone as VenueZone | ""}
+        activeZone={filters.zone}
         hoveredZone={hoveredZone}
         onZoneClick={onZoneClick}
         onZoneHover={onZoneHover}

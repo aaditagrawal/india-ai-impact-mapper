@@ -44,5 +44,6 @@
   "trustedDependencies": [
     "sharp",
     "unrs-resolver"
-  ]
+  ],
+  "packageManager": "bun@1.4.2"
 }

@@ -6,8 +6,8 @@ A session browser and exhibitor directory for the India AI Impact Summit 2026. B
 
 - Next.js 16 with App Router
 - React 19
-- Tailwind CSS 4
-- shadcn/ui + Radix UI + Base UI
+- StyleX with extracted CSS
+- Existing shadcn-derived components + Radix UI + Base UI
 - Phosphor Icons
 - TypeScript
 

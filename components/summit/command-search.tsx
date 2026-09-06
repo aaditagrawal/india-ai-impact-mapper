@@ -1,5 +1,7 @@
 "use client";
 
+import { classNames } from "@/app/ui.stylex";
+
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import {
   MagnifyingGlass,
@@ -192,21 +194,21 @@ export function CommandSearch({
   if (!open) return null;
 
   return (
-    <div className="fixed inset-0 z-50">
+    <div className={classNames.commandSearch4}>
       {/* Backdrop */}
       <button
         type="button"
         aria-label="Close search"
-        className="absolute inset-0 bg-black/20 backdrop-blur-xs"
+        className={classNames.commandSearch5}
         onClick={() => onOpenChange(false)}
       />
 
       {/* Dialog */}
-      <div className="absolute left-1/2 top-[min(20%,8rem)] w-full max-w-lg -translate-x-1/2 px-4">
-        <div className="overflow-hidden rounded-lg border bg-background shadow-2xl ring-1 ring-foreground/5">
+      <div className={classNames.commandSearch6}>
+        <div className={classNames.commandSearch7}>
           {/* Search input */}
-          <div className="flex items-center gap-2 border-b px-3">
-            <MagnifyingGlass className="size-4 shrink-0 text-muted-foreground" />
+          <div className={classNames.commandSearch8}>
+            <MagnifyingGlass className={classNames.commandSearch9} />
             <input
               ref={inputRef}
               type="text"
@@ -218,32 +220,29 @@ export function CommandSearch({
                   ? "Search exhibitors..."
                   : "Search sessions, speakers, topics..."
               }
-              className="flex-1 bg-transparent py-3 text-sm outline-none placeholder:text-muted-foreground/60"
+              className={classNames.commandSearch10}
               autoComplete="off"
               autoCorrect="off"
               spellCheck={false}
             />
             {query && (
-              <button
-                onClick={() => setQuery("")}
-                className="text-xs text-muted-foreground transition-colors hover:text-foreground"
-              >
+              <button onClick={() => setQuery("")} className={classNames.commandSearch11}>
                 Clear
               </button>
             )}
           </div>
 
           {/* Results */}
-          <div ref={listRef} className="max-h-[min(60vh,24rem)] overflow-y-auto p-1.5">
+          <div ref={listRef} className={classNames.commandSearch12}>
             {results.items.length === 0 ? (
-              <div className="px-3 py-8 text-center text-sm text-muted-foreground">
+              <div className={classNames.commandSearch13}>
                 No {view === "exhibitors" ? "exhibitors" : "sessions"} found for &ldquo;{query}
                 &rdquo;
               </div>
             ) : (
               <>
                 {results.isDefault && (
-                  <div className="px-2.5 py-1.5 text-[10px] font-medium uppercase tracking-wider text-muted-foreground/60">
+                  <div className={classNames.commandSearch14}>
                     {view === "exhibitors"
                       ? "Exhibitors"
                       : sessions.some((s) => getSessionStatus(s, now) === "live")
@@ -280,24 +279,24 @@ export function CommandSearch({
           </div>
 
           {/* Footer */}
-          <div className="flex items-center justify-between border-t px-3 py-2 text-[10px] text-muted-foreground/60">
-            <div className="hidden items-center gap-3 sm:flex">
-              <span className="inline-flex items-center gap-1">
-                <kbd className="rounded border px-1 py-0.5 font-mono text-[9px]">
-                  <ArrowElbowDownLeft className="inline size-2.5" />
+          <div className={classNames.commandSearch15}>
+            <div className={classNames.commandSearch16}>
+              <span className={classNames.commandSearch17}>
+                <kbd className={classNames.commandSearch18}>
+                  <ArrowElbowDownLeft className={classNames.commandSearch19} />
                 </kbd>
                 open
               </span>
-              <span className="inline-flex items-center gap-1">
-                <kbd className="rounded border px-1 py-0.5 font-mono text-[9px]">&uarr;&darr;</kbd>
+              <span className={classNames.commandSearch17}>
+                <kbd className={classNames.commandSearch18}>&uarr;&darr;</kbd>
                 navigate
               </span>
-              <span className="inline-flex items-center gap-1">
-                <kbd className="rounded border px-1 py-0.5 font-mono text-[9px]">esc</kbd>
+              <span className={classNames.commandSearch17}>
+                <kbd className={classNames.commandSearch18}>esc</kbd>
                 close
               </span>
             </div>
-            <span className="tabular-nums sm:ml-auto">{results.items.length} results</span>
+            <span className={classNames.commandSearch20}>{results.items.length} results</span>
           </div>
         </div>
       </div>
@@ -322,34 +321,34 @@ function CommandSearchItem({
     <button
       data-active={isActive}
       className={cn(
-        "flex w-full items-start gap-3 rounded-md px-2.5 py-2 text-left transition-colors",
-        isActive ? "bg-accent text-accent-foreground" : "hover:bg-accent/50",
+        classNames.commandSearch21,
+        isActive ? classNames.commandSearch22 : classNames.commandSearch23,
       )}
       onClick={onSelect}
       onMouseEnter={onHover}
     >
-      <div className="min-w-0 flex-1">
-        <div className="flex items-start gap-2">
-          <span className="line-clamp-1 font-serif text-xs leading-snug">{session.title}</span>
+      <div className={classNames.commandSearch24}>
+        <div className={classNames.commandSearch25}>
+          <span className={classNames.commandSearch26}>{session.title}</span>
           {status === "live" && (
-            <Badge variant="destructive" className="shrink-0 gap-0.5 text-[9px]">
-              <Broadcast className="size-2.5 animate-pulse" />
+            <Badge variant="destructive" className={classNames.commandSearch27}>
+              <Broadcast className={classNames.commandSearch28} />
               LIVE
             </Badge>
           )}
         </div>
-        <div className="mt-0.5 flex flex-wrap items-center gap-x-3 gap-y-0.5 text-[11px] text-muted-foreground">
-          <span className="inline-flex items-center gap-1">
-            <Clock className="size-3" />
+        <div className={classNames.commandSearch29}>
+          <span className={classNames.commandSearch17}>
+            <Clock className={classNames.activeFilters3} />
             {session.formattedDate} &middot; {formatTimeRange(session)}
           </span>
-          <span className="inline-flex items-center gap-1">
-            <MapPin className="size-3" />
-            <span className="truncate">{session.auditorium}</span>
+          <span className={classNames.commandSearch17}>
+            <MapPin className={classNames.activeFilters3} />
+            <span className={classNames.commandSearch30}>{session.auditorium}</span>
           </span>
           {session.speakers.length > 0 && (
-            <span className="inline-flex items-center gap-1">
-              <User className="size-3" />
+            <span className={classNames.commandSearch17}>
+              <User className={classNames.activeFilters3} />
               {session.speakers
                 .slice(0, 2)
                 .map((s) => s.name.split(",")[0])
@@ -360,7 +359,7 @@ function CommandSearchItem({
         </div>
       </div>
 
-      {isActive && <ArrowElbowDownLeft className="mt-1 size-3.5 shrink-0 text-muted-foreground" />}
+      {isActive && <ArrowElbowDownLeft className={classNames.commandSearch31} />}
     </button>
   );
 }
@@ -380,33 +379,33 @@ function CommandExhibitorItem({
     <button
       data-active={isActive}
       className={cn(
-        "flex w-full items-start gap-3 rounded-md px-2.5 py-2 text-left transition-colors",
-        isActive ? "bg-accent text-accent-foreground" : "hover:bg-accent/50",
+        classNames.commandSearch21,
+        isActive ? classNames.commandSearch22 : classNames.commandSearch23,
       )}
       onClick={onSelect}
       onMouseEnter={onHover}
     >
-      <div className="min-w-0 flex-1">
-        <span className="line-clamp-1 font-serif text-xs leading-snug">{exhibitor.exhibitor}</span>
-        <div className="mt-0.5 flex flex-wrap items-center gap-x-3 gap-y-0.5 text-[11px] text-muted-foreground">
+      <div className={classNames.commandSearch24}>
+        <span className={classNames.commandSearch26}>{exhibitor.exhibitor}</span>
+        <div className={classNames.commandSearch29}>
           {exhibitor.booth_number && (
-            <span className="inline-flex items-center gap-1">
-              <Hash className="size-3" />
+            <span className={classNames.commandSearch17}>
+              <Hash className={classNames.activeFilters3} />
               Booth {exhibitor.booth_number}
             </span>
           )}
-          <span className="inline-flex items-center gap-1">
-            <MapPin className="size-3" />
+          <span className={classNames.commandSearch17}>
+            <MapPin className={classNames.activeFilters3} />
             {exhibitor.hall_number ? `Hall ${exhibitor.hall_number}` : "Unassigned"}
           </span>
-          <span className="inline-flex items-center gap-1">
-            <Tag className="size-3" />
+          <span className={classNames.commandSearch17}>
+            <Tag className={classNames.activeFilters3} />
             {exhibitor.tag}
           </span>
         </div>
       </div>
 
-      {isActive && <ArrowElbowDownLeft className="mt-1 size-3.5 shrink-0 text-muted-foreground" />}
+      {isActive && <ArrowElbowDownLeft className={classNames.commandSearch31} />}
     </button>
   );
 }

@@ -1,5 +1,7 @@
 "use client";
 
+import { classNames } from "@/app/ui.stylex";
+
 import { useMemo, useCallback, useState } from "react";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { SessionCard } from "./session-card";
@@ -62,19 +64,17 @@ export function SessionList({ sessions, now, hoveredZone, onHoverSession }: Sess
 
   if (sessions.length === 0) {
     return (
-      <div className="flex flex-col items-center justify-center py-20 text-center">
-        <p className="text-sm text-muted-foreground">No sessions match your filters.</p>
-        <p className="mt-1 text-xs text-muted-foreground/70">
-          Try adjusting your search or filters.
-        </p>
+      <div className={classNames.exhibitorList60}>
+        <p className={classNames.exhibitorList61}>No sessions match your filters.</p>
+        <p className={classNames.exhibitorList62}>Try adjusting your search or filters.</p>
       </div>
     );
   }
 
   return (
     <>
-      <ScrollArea className="h-full">
-        <div className="space-y-5 p-4 sm:p-6">
+      <ScrollArea className={classNames.exhibitorList63}>
+        <div className={classNames.exhibitorList64}>
           {groups.map((group) => (
             <SessionTimeGroup
               key={group.key}
@@ -113,10 +113,8 @@ function SessionTimeGroup({
 }) {
   return (
     <div>
-      <div className="sticky top-0 z-10 -mx-4 bg-background/95 px-4 py-1.5 text-xs font-medium text-muted-foreground backdrop-blur supports-backdrop-filter:bg-background/60 sm:-mx-6 sm:px-6">
-        {group.label}
-      </div>
-      <div className="grid grid-cols-1 gap-2 pt-2 sm:grid-cols-2 xl:grid-cols-3">
+      <div className={classNames.exhibitorList65}>{group.label}</div>
+      <div className={classNames.exhibitorList66}>
         {group.sessions.map((session) => {
           const status = getSessionStatus(session, now);
           const zone = normalizeAuditorium(session.auditorium);

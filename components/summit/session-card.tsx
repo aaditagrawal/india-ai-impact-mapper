@@ -1,5 +1,7 @@
 "use client";
 
+import { classNames } from "@/app/ui.stylex";
+
 import { memo } from "react";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -29,42 +31,40 @@ export const SessionCard = memo(function SessionCard({
     <Card
       size="sm"
       className={cn(
-        "cursor-pointer transition-subtle hover:bg-accent/50 flex flex-col sm:block",
-        "max-h-[9rem] sm:max-h-none",
+        classNames.sessionCard68,
+        classNames.sessionCard69,
 
-        status === "live" && "border-l-2 border-l-primary",
-        isHighlighted && "bg-accent/50 ring-1 ring-primary/30",
+        status === "live" && classNames.sessionCard70,
+        isHighlighted && classNames.exhibitorCard41,
       )}
       onClick={onClick}
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}
     >
-      <CardHeader className="shrink-0">
-        <div className="flex items-start justify-between gap-2">
-          <CardTitle className="line-clamp-3 font-serif text-[11px] leading-snug">
-            {session.title}
-          </CardTitle>
+      <CardHeader className={classNames.sessionCard71}>
+        <div className={classNames.sessionCard72}>
+          <CardTitle className={classNames.sessionCard73}>{session.title}</CardTitle>
           {status === "live" && (
-            <Badge variant="destructive" className="shrink-0 gap-1 text-[10px]">
-              <Broadcast className="size-3 animate-pulse" />
+            <Badge variant="destructive" className={classNames.sessionCard74}>
+              <Broadcast className={classNames.sessionCard75} />
               LIVE
             </Badge>
           )}
         </div>
       </CardHeader>
-      <CardContent className="space-y-1 overflow-y-auto sm:overflow-y-visible">
-        <div className="flex items-center gap-1.5 text-[11px] text-muted-foreground">
-          <Clock className="size-3 shrink-0" />
+      <CardContent className={classNames.sessionCard76}>
+        <div className={classNames.sessionCard77}>
+          <Clock className={classNames.exhibitorCard45} />
           <span>{formatTimeRange(session)} (IST)</span>
         </div>
-        <div className="flex items-center gap-1.5 text-[11px] text-muted-foreground">
-          <MapPin className="size-3 shrink-0" />
-          <span className="truncate">{session.auditorium}</span>
+        <div className={classNames.sessionCard77}>
+          <MapPin className={classNames.exhibitorCard45} />
+          <span className={classNames.commandSearch30}>{session.auditorium}</span>
         </div>
         {session.speakers.length > 0 && (
-          <div className="flex items-center gap-1.5 text-[11px] text-muted-foreground">
-            <User className="size-3 shrink-0" />
-            <span className="truncate">
+          <div className={classNames.sessionCard77}>
+            <User className={classNames.exhibitorCard45} />
+            <span className={classNames.commandSearch30}>
               {session.speakers
                 .slice(0, 2)
                 .map((s) => s.name.split(",")[0])
@@ -74,9 +74,9 @@ export const SessionCard = memo(function SessionCard({
           </div>
         )}
         {session.tags.length > 0 && (
-          <div className="flex flex-wrap gap-1 pt-0.5">
+          <div className={classNames.sessionCard78}>
             {session.tags.map((tag) => (
-              <Badge key={tag} variant="secondary" className="text-[10px]">
+              <Badge key={tag} variant="secondary" className={classNames.exhibitorCard47}>
                 {tag}
               </Badge>
             ))}

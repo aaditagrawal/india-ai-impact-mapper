@@ -1,5 +1,7 @@
 "use client";
 
+import { classNames } from "@/app/ui.stylex";
+
 import { X } from "@phosphor-icons/react/dist/ssr";
 import { Badge } from "@/components/ui/badge";
 import type { FilterState } from "@/lib/types";
@@ -47,16 +49,16 @@ export function ActiveFilters({ filters, onUpdate }: ActiveFiltersProps) {
   if (chips.length === 0) return null;
 
   return (
-    <div className="flex flex-wrap gap-1.5 px-4 sm:px-6">
+    <div className={classNames.activeFilters1}>
       {chips.map((chip) => (
         <Badge
           key={chip.label}
           variant="outline"
-          className="cursor-pointer gap-1 pr-1.5 transition-subtle hover:bg-accent/50"
+          className={classNames.activeFilters2}
           onClick={chip.onRemove}
         >
           {chip.label}
-          <X className="size-3" />
+          <X className={classNames.activeFilters3} />
         </Badge>
       ))}
     </div>

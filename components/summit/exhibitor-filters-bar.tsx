@@ -1,5 +1,7 @@
 "use client";
 
+import { classNames } from "@/app/ui.stylex";
+
 import { memo, useState, useRef, useCallback, useEffect, useMemo } from "react";
 import { MagnifyingGlass, X } from "@phosphor-icons/react/dist/ssr";
 import { InputGroup, InputGroupAddon, InputGroupInput } from "@/components/ui/input-group";
@@ -86,10 +88,10 @@ export const ExhibitorFiltersBar = memo(function ExhibitorFiltersBar({
   }, [exhibitors]);
 
   return (
-    <div className="flex flex-wrap items-center gap-2 px-4 sm:px-6">
-      <InputGroup className="w-full sm:w-56">
+    <div className={classNames.exhibitorFiltersBar54}>
+      <InputGroup className={classNames.exhibitorFiltersBar55}>
         <InputGroupAddon>
-          <MagnifyingGlass className="size-4" />
+          <MagnifyingGlass className={classNames.exhibitorFiltersBar56} />
         </InputGroupAddon>
         <InputGroupInput
           placeholder="Search exhibitors..."
@@ -98,17 +100,14 @@ export const ExhibitorFiltersBar = memo(function ExhibitorFiltersBar({
         />
         {localQuery && (
           <InputGroupAddon align="inline-end">
-            <button
-              onClick={handleQueryClear}
-              className="text-muted-foreground transition-subtle hover:text-foreground"
-            >
-              <X className="size-3.5" />
+            <button onClick={handleQueryClear} className={classNames.exhibitorFiltersBar57}>
+              <X className={classNames.exhibitorFiltersBar58} />
             </button>
           </InputGroupAddon>
         )}
       </InputGroup>
 
-      <div className="flex flex-wrap items-center gap-2">
+      <div className={classNames.exhibitorFiltersBar59}>
         <Select
           value={filters.tag || "all"}
           onValueChange={(v) => onUpdate({ tag: v === "all" ? "" : v })}
@@ -145,7 +144,7 @@ export const ExhibitorFiltersBar = memo(function ExhibitorFiltersBar({
 
         {hasActiveFilters && (
           <Button variant="ghost" size="xs" onClick={onClear}>
-            <X className="size-3" />
+            <X className={classNames.activeFilters3} />
             Clear
           </Button>
         )}

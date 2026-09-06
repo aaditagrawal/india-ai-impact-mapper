@@ -36,6 +36,7 @@
     "oxlint": "^1.78.0",
     "typescript": "^7.0.2"
   },
+  "packageManager": "bun@1.4.2",
   "ignoreScripts": [
     "sharp",
     "unrs-resolver"

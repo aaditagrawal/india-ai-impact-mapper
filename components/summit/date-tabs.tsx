@@ -1,5 +1,7 @@
 "use client";
 
+import { classNames } from "@/app/ui.stylex";
+
 import { cn } from "@/lib/utils";
 import {
   Select,
@@ -32,7 +34,7 @@ export function DateTabs({ sessions, activeDate, onDateChange }: DateTabsProps) 
   return (
     <>
       {/* Mobile: dropdown */}
-      <div className="sm:hidden">
+      <div className={classNames.dateTabs32}>
         <Select
           value={activeDate || "all"}
           onValueChange={(v) => onDateChange(v === "all" ? "" : v)}
@@ -51,7 +53,7 @@ export function DateTabs({ sessions, activeDate, onDateChange }: DateTabsProps) 
       </div>
 
       {/* Desktop: tab buttons */}
-      <div className="hidden gap-1.5 sm:flex" role="tablist">
+      <div className={classNames.dateTabs33} role="tablist">
         {DATES.map((d) => {
           const isActive = activeDate === d.value;
           return (
@@ -61,17 +63,15 @@ export function DateTabs({ sessions, activeDate, onDateChange }: DateTabsProps) 
               aria-selected={isActive}
               onClick={() => onDateChange(d.value)}
               className={cn(
-                "inline-flex items-center gap-1.5 rounded-md px-2.5 py-1.5 text-xs font-medium transition-colors",
-                isActive
-                  ? "bg-foreground text-background"
-                  : "bg-muted text-muted-foreground hover:bg-accent hover:text-accent-foreground",
+                classNames.dateTabs34,
+                isActive ? classNames.dateTabs35 : classNames.dateTabs36,
               )}
             >
               {d.label}
               <span
                 className={cn(
-                  "tabular-nums",
-                  isActive ? "text-background/60" : "text-muted-foreground/60",
+                  classNames.dateTabs37,
+                  isActive ? classNames.dateTabs38 : classNames.dateTabs39,
                 )}
               >
                 {countByDate(d.value)}

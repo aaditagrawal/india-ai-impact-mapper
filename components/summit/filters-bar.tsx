@@ -1,5 +1,7 @@
 "use client";
 
+import { classNames } from "@/app/ui.stylex";
+
 import { memo, useState, useRef, useCallback, useEffect } from "react";
 import { MagnifyingGlass, X, EyeSlash, Eye } from "@phosphor-icons/react/dist/ssr";
 import { InputGroup, InputGroupAddon, InputGroupInput } from "@/components/ui/input-group";
@@ -75,10 +77,10 @@ export const FiltersBar = memo(function FiltersBar({
   }, [onUpdate]);
 
   return (
-    <div className="flex flex-wrap items-center gap-2 px-4 sm:px-6">
-      <InputGroup className="w-full sm:w-56">
+    <div className={classNames.exhibitorFiltersBar54}>
+      <InputGroup className={classNames.exhibitorFiltersBar55}>
         <InputGroupAddon>
-          <MagnifyingGlass className="size-4" />
+          <MagnifyingGlass className={classNames.exhibitorFiltersBar56} />
         </InputGroupAddon>
         <InputGroupInput
           placeholder="Search sessions..."
@@ -87,19 +89,16 @@ export const FiltersBar = memo(function FiltersBar({
         />
         {localQuery && (
           <InputGroupAddon align="inline-end">
-            <button
-              onClick={handleQueryClear}
-              className="text-muted-foreground transition-subtle hover:text-foreground"
-            >
-              <X className="size-3.5" />
+            <button onClick={handleQueryClear} className={classNames.exhibitorFiltersBar57}>
+              <X className={classNames.exhibitorFiltersBar58} />
             </button>
           </InputGroupAddon>
         )}
       </InputGroup>
 
-      <div className="flex flex-wrap items-center gap-2">
+      <div className={classNames.exhibitorFiltersBar59}>
         {/* Mobile date dropdown — hidden on sm+ where tab buttons show */}
-        <div className="sm:hidden">
+        <div className={classNames.dateTabs32}>
           <DateTabs
             sessions={sessions}
             activeDate={filters.date}
@@ -144,13 +143,17 @@ export const FiltersBar = memo(function FiltersBar({
           onPressedChange={(pressed) => onUpdate({ showPast: !pressed })}
           aria-label="Hide past events"
         >
-          {filters.showPast ? <Eye className="size-3.5" /> : <EyeSlash className="size-3.5" />}
-          <span className="hidden sm:inline">Past</span>
+          {filters.showPast ? (
+            <Eye className={classNames.exhibitorFiltersBar58} />
+          ) : (
+            <EyeSlash className={classNames.exhibitorFiltersBar58} />
+          )}
+          <span className={classNames.filtersBar67}>Past</span>
         </Toggle>
 
         {hasActiveFilters && (
           <Button variant="ghost" size="xs" onClick={onClear}>
-            <X className="size-3" />
+            <X className={classNames.activeFilters3} />
             Clear
           </Button>
         )}

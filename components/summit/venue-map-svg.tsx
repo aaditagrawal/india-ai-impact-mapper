@@ -1,5 +1,7 @@
 "use client";
 
+import { classNames } from "@/app/ui.stylex";
+
 import { memo } from "react";
 import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
 import type { VenueZone, AppView } from "@/lib/types";
@@ -75,7 +77,7 @@ function ZoneRect({
     <Tooltip>
       <TooltipTrigger asChild>
         <g
-          className="cursor-pointer"
+          className={classNames.venueMapSvg131}
           onClick={() => onZoneClick(zone)}
           onMouseEnter={() => onZoneHover(zone)}
           onMouseLeave={() => onZoneHover(null)}
@@ -96,7 +98,7 @@ function ZoneRect({
               stroke="var(--primary)"
               strokeWidth={1}
               opacity={isActive ? 0.35 : 0.2}
-              className="zone-transition"
+              className={classNames.venueMapSvg132}
             />
           )}
           {/* Main zone rect */}
@@ -109,7 +111,7 @@ function ZoneRect({
             fill={isEmpty ? "url(#empty-zone-pattern)" : fill}
             stroke={emphasized ? "var(--primary)" : "var(--border)"}
             strokeWidth={isActive ? 2 : isHovered ? 1.5 : 0.5}
-            className="zone-transition"
+            className={classNames.venueMapSvg132}
           />
           {/* Active state: inner highlight at top edge */}
           {isActive && (
@@ -132,14 +134,14 @@ function ZoneRect({
                 r={4.5}
                 fill="var(--destructive)"
                 opacity={0.2}
-                className="animate-pulse"
+                className={classNames.venueMapSvg133}
               />
               <circle
                 cx={x + width - 6}
                 cy={y + 6}
                 r={2.5}
                 fill="var(--destructive)"
-                className="animate-pulse"
+                className={classNames.venueMapSvg133}
               />
             </>
           )}
@@ -150,7 +152,7 @@ function ZoneRect({
                 y={y + height / 2 - 2}
                 textAnchor="middle"
                 dominantBaseline="middle"
-                className="fill-foreground text-[6.5px] font-semibold"
+                className={classNames.venueMapSvg134}
                 style={{ pointerEvents: "none" }}
               >
                 {displayLabel}
@@ -160,7 +162,7 @@ function ZoneRect({
                 y={y + height / 2 + 8}
                 textAnchor="middle"
                 dominantBaseline="middle"
-                className="fill-muted-foreground text-[5.5px]"
+                className={classNames.venueMapSvg135}
                 style={{ pointerEvents: "none" }}
               >
                 {data.count}
@@ -173,7 +175,7 @@ function ZoneRect({
                 y={y + height / 2 - 4}
                 textAnchor="middle"
                 dominantBaseline="middle"
-                className="fill-foreground text-[7px] font-medium"
+                className={classNames.venueMapSvg136}
                 style={{ pointerEvents: "none" }}
               >
                 {displayLabel.length > 18 ? displayLabel.slice(0, 18) + "..." : displayLabel}
@@ -183,7 +185,7 @@ function ZoneRect({
                 y={y + height / 2 + 7}
                 textAnchor="middle"
                 dominantBaseline="middle"
-                className="fill-muted-foreground text-[6px]"
+                className={classNames.venueMapSvg137}
                 style={{ pointerEvents: "none" }}
               >
                 {data.count} {data.count === 1 ? countLabel : `${countLabel}s`}
@@ -193,8 +195,8 @@ function ZoneRect({
         </g>
       </TooltipTrigger>
       <TooltipContent side="top" sideOffset={6}>
-        <p className="font-medium">{ZONE_LABELS[zone]}</p>
-        <p className="text-muted-foreground">
+        <p className={classNames.venueMapSvg138}>{ZONE_LABELS[zone]}</p>
+        <p className={classNames.venueMapSvg139}>
           {data.count} {data.count === 1 ? countLabel : `${countLabel}s`}
           {data.hasLive ? " · live now" : ""}
         </p>
@@ -248,7 +250,7 @@ function Gate({ x, y, label, accent }: { x: number; y: number; label: string; ac
         y={y + 8}
         textAnchor="middle"
         dominantBaseline="middle"
-        className="fill-foreground text-[3px] font-bold"
+        className={classNames.venueMapSvg140}
         opacity={0.7}
       >
         G
@@ -257,7 +259,7 @@ function Gate({ x, y, label, accent }: { x: number; y: number; label: string; ac
         x={x + 18}
         y={y + 7}
         dominantBaseline="middle"
-        className={`text-[5px] ${accent ? "fill-foreground font-semibold" : "fill-muted-foreground"}`}
+        className={` ${classNames.venueMapSvg143} ${accent ? classNames.venueMapSvg141 : classNames.venueMapSvg142}`}
         opacity={accent ? 0.7 : 0.5}
       >
         {label}
@@ -355,7 +357,7 @@ function DecoBuilding({
         y={y + height / 2}
         textAnchor="middle"
         dominantBaseline="middle"
-        className="fill-muted-foreground text-[7px] font-medium"
+        className={classNames.venueMapSvg144}
         opacity={0.5}
       >
         {label}
@@ -415,16 +417,11 @@ function SectionLabel({
         fill="var(--border)"
         opacity={0.5}
       />
-      <text
-        x={x}
-        y={y}
-        className="fill-foreground text-[8px] font-bold tracking-widest"
-        textAnchor="middle"
-      >
+      <text x={x} y={y} className={classNames.venueMapSvg145} textAnchor="middle">
         {children}
       </text>
       {sub && (
-        <text x={x} y={y + 11} className="fill-muted-foreground text-[5.5px]" textAnchor="middle">
+        <text x={x} y={y + 11} className={classNames.venueMapSvg135} textAnchor="middle">
           {sub}
         </text>
       )}
@@ -470,7 +467,11 @@ export const VenueMapSvg = memo(function VenueMapSvg({
   const svgHeight = isExhibitorView ? 660 : 660;
 
   return (
-    <svg viewBox={`0 0 920 ${svgHeight}`} className="w-full" xmlns="http://www.w3.org/2000/svg">
+    <svg
+      viewBox={`0 0 920 ${svgHeight}`}
+      className={classNames.sessionDetailDialog87}
+      xmlns="http://www.w3.org/2000/svg"
+    >
       <defs>
         {/* Diagonal stripe pattern for empty zones (count === 0) */}
         <pattern
@@ -545,7 +546,7 @@ export const VenueMapSvg = memo(function VenueMapSvg({
       <text
         x={zi.x - 14}
         y={zi.y + rowH / 2}
-        className="fill-muted-foreground text-[5.5px] font-bold"
+        className={classNames.venueMapSvg146}
         textAnchor="middle"
         dominantBaseline="middle"
         style={{ pointerEvents: "none" }}
@@ -555,7 +556,7 @@ export const VenueMapSvg = memo(function VenueMapSvg({
       <text
         x={zi.x - 14}
         y={zi.y + rowH + gap + rowH / 2}
-        className="fill-muted-foreground text-[5.5px] font-bold"
+        className={classNames.venueMapSvg146}
         textAnchor="middle"
         dominantBaseline="middle"
         style={{ pointerEvents: "none" }}
@@ -565,7 +566,7 @@ export const VenueMapSvg = memo(function VenueMapSvg({
       <text
         x={zi.x - 14}
         y={zi.y + (rowH + gap) * 2 + mrH + 4}
-        className="fill-muted-foreground text-[5.5px] font-bold"
+        className={classNames.venueMapSvg146}
         textAnchor="middle"
         dominantBaseline="middle"
         style={{ pointerEvents: "none" }}
@@ -605,7 +606,7 @@ export const VenueMapSvg = memo(function VenueMapSvg({
       <text
         x={zi.x}
         y={zi.y + (rowH + gap) * 2 + 2}
-        className="fill-muted-foreground text-[5px]"
+        className={classNames.venueMapSvg147}
         style={{ pointerEvents: "none" }}
       >
         Meeting Rooms
@@ -776,7 +777,7 @@ export const VenueMapSvg = memo(function VenueMapSvg({
       <text
         x={440}
         y={236}
-        className="fill-muted-foreground text-[4.5px]"
+        className={classNames.venueMapSvg148}
         textAnchor="middle"
         style={{ pointerEvents: "none" }}
         opacity={0.5}
@@ -912,7 +913,7 @@ export const VenueMapSvg = memo(function VenueMapSvg({
             y={fc.y + 7.5}
             textAnchor="middle"
             dominantBaseline="middle"
-            className="fill-foreground text-[3.5px] font-bold"
+            className={classNames.venueMapSvg149}
             opacity={0.45}
           >
             FC

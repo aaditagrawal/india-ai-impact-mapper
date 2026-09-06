@@ -1,5 +1,7 @@
 "use client";
 
+import { classNames } from "@/app/ui.stylex";
+
 import * as React from "react";
 import { Separator as SeparatorPrimitive } from "radix-ui";
 
@@ -16,10 +18,7 @@ function Separator({
       data-slot="separator"
       decorative={decorative}
       orientation={orientation}
-      className={cn(
-        "bg-border shrink-0 data-horizontal:h-px data-horizontal:w-full data-vertical:w-px data-vertical:self-stretch",
-        className,
-      )}
+      className={cn(classNames.separator264, className)}
       {...props}
     />
   );

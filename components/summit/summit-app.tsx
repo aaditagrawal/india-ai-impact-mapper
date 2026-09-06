@@ -1,5 +1,7 @@
 "use client";
 
+import { classNames } from "@/app/ui.stylex";
+
 import { useMemo, useDeferredValue, useCallback, useState, useEffect } from "react";
 import { CaretDown, CaretUp, MapTrifold } from "@phosphor-icons/react/dist/ssr";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -174,7 +176,7 @@ function SummitAppInner({ data, exhibitors }: SummitAppProps) {
 
   return (
     <TooltipProvider>
-      <div className="flex h-dvh flex-col">
+      <div className={classNames.summitApp88}>
         <SummitHeader
           totalSessions={totalCount}
           filteredCount={filteredCount}
@@ -184,10 +186,10 @@ function SummitAppInner({ data, exhibitors }: SummitAppProps) {
           onViewChange={handleViewChange}
         />
 
-        <div className="space-y-2 border-b py-2.5 sm:py-3">
+        <div className={classNames.summitApp89}>
           {view === "sessions" ? (
             <>
-              <div className="hidden px-4 sm:block sm:px-6">
+              <div className={classNames.summitApp90}>
                 <DateTabs
                   sessions={data.sessions}
                   activeDate={filters.date}
@@ -213,15 +215,15 @@ function SummitAppInner({ data, exhibitors }: SummitAppProps) {
                 hasActiveFilters={hasActiveExFilters}
               />
               {exFilterChips.length > 0 && (
-                <div className="flex flex-wrap gap-1.5 px-4 sm:px-6">
+                <div className={classNames.activeFilters1}>
                   {exFilterChips.map((chip) => (
                     <button
                       key={chip.label}
                       onClick={chip.onRemove}
-                      className="inline-flex items-center gap-1 rounded-full border px-2 py-0.5 text-xs text-muted-foreground transition-colors hover:bg-accent/50"
+                      className={classNames.summitApp91}
                     >
                       {chip.label}
-                      <span className="text-[10px]">&times;</span>
+                      <span className={classNames.exhibitorCard47}>&times;</span>
                     </button>
                   ))}
                 </div>
@@ -230,22 +232,25 @@ function SummitAppInner({ data, exhibitors }: SummitAppProps) {
           )}
         </div>
 
-        <div className="flex min-h-0 flex-1 flex-col lg:flex-row">
+        <div className={classNames.summitApp92}>
           {/* Map panel */}
           <div
-            className={`shrink-0 border-b ${mapExpanded ? "lg:w-1/2 lg:border-r lg:border-b-0" : ""}`}
+            className={` ${classNames.summitApp94} ${mapExpanded ? classNames.summitApp93 : ""}`}
           >
-            <button
-              onClick={() => setMapExpanded((v) => !v)}
-              className="flex w-full items-center justify-between px-4 py-2 text-xs text-muted-foreground transition-colors hover:bg-accent/50"
-            >
-              <span className="inline-flex items-center gap-1.5 font-medium">
-                <MapTrifold className="size-3.5" />
+            <button onClick={() => setMapExpanded((v) => !v)} className={classNames.summitApp95}>
+              <span className={classNames.summitApp96}>
+                <MapTrifold className={classNames.exhibitorFiltersBar58} />
                 Venue Map
               </span>
-              {mapExpanded ? <CaretUp className="size-3.5" /> : <CaretDown className="size-3.5" />}
+              {mapExpanded ? (
+                <CaretUp className={classNames.exhibitorFiltersBar58} />
+              ) : (
+                <CaretDown className={classNames.exhibitorFiltersBar58} />
+              )}
             </button>
-            <div className={`overflow-y-auto p-4 sm:p-6 ${mapExpanded ? "block" : "hidden"}`}>
+            <div
+              className={` ${classNames.summitApp99} ${mapExpanded ? classNames.summitApp97 : classNames.summitApp98}`}
+            >
               <VenueMap
                 sessions={filtered}
                 exhibitors={view === "exhibitors" ? filteredExhibitors : undefined}
@@ -260,7 +265,7 @@ function SummitAppInner({ data, exhibitors }: SummitAppProps) {
           </div>
 
           {/* List panel */}
-          <div className="min-h-0 flex-1">
+          <div className={classNames.summitApp100}>
             {view === "sessions" ? (
               <SessionList
                 sessions={filtered}

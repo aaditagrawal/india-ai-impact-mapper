@@ -1,5 +1,7 @@
 "use client";
 
+import { classNames } from "@/app/ui.stylex";
+
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
@@ -21,37 +23,37 @@ export function ExhibitorDetailDialog({
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="sm:max-w-md">
+      <DialogContent className={classNames.exhibitorDetailDialog48}>
         <DialogHeader>
-          <DialogTitle className="font-serif text-base leading-snug">
+          <DialogTitle className={classNames.exhibitorDetailDialog49}>
             {exhibitor.exhibitor}
           </DialogTitle>
         </DialogHeader>
 
-        <Separator className="my-1" />
+        <Separator className={classNames.exhibitorDetailDialog50} />
 
-        <div className="space-y-3">
-          <div className="flex items-center gap-2 text-sm">
-            <NumberSquareOne className="size-4 shrink-0 text-muted-foreground" />
+        <div className={classNames.exhibitorDetailDialog51}>
+          <div className={classNames.exhibitorDetailDialog52}>
+            <NumberSquareOne className={classNames.commandSearch9} />
             <span>#{exhibitor.sno}</span>
           </div>
 
           {exhibitor.booth_number && (
-            <div className="flex items-center gap-2 text-sm">
-              <Hash className="size-4 shrink-0 text-muted-foreground" />
+            <div className={classNames.exhibitorDetailDialog52}>
+              <Hash className={classNames.commandSearch9} />
               <span>Booth {exhibitor.booth_number}</span>
             </div>
           )}
 
-          <div className="flex items-center gap-2 text-sm">
-            <MapPin className="size-4 shrink-0 text-muted-foreground" />
+          <div className={classNames.exhibitorDetailDialog52}>
+            <MapPin className={classNames.commandSearch9} />
             <span>
               {exhibitor.hall_number ? `Hall ${exhibitor.hall_number}` : "Hall not assigned"}
             </span>
           </div>
 
-          <div className="flex items-center gap-2">
-            <Tag className="size-4 shrink-0 text-muted-foreground" />
+          <div className={classNames.exhibitorDetailDialog53}>
+            <Tag className={classNames.commandSearch9} />
             <Badge variant="secondary">{exhibitor.tag}</Badge>
           </div>
         </div>

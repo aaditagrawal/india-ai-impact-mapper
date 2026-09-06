@@ -1,5 +1,7 @@
 "use client";
 
+import { classNames } from "@/app/ui.stylex";
+
 import {
   Dialog,
   DialogContent,
@@ -39,53 +41,57 @@ export function SessionDetailDialog({
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="max-h-[85vh] overflow-y-auto sm:max-w-lg">
+      <DialogContent className={classNames.sessionDetailDialog79}>
         <DialogHeader>
-          <div className="flex items-start gap-2 pr-8">
-            <DialogTitle className="font-serif text-base leading-snug">{session.title}</DialogTitle>
+          <div className={classNames.sessionDetailDialog80}>
+            <DialogTitle className={classNames.exhibitorDetailDialog49}>
+              {session.title}
+            </DialogTitle>
             {status === "live" && (
-              <Badge variant="destructive" className="shrink-0 text-[10px]">
+              <Badge variant="destructive" className={classNames.sessionDetailDialog81}>
                 LIVE
               </Badge>
             )}
             {status === "past" && (
-              <Badge variant="secondary" className="shrink-0 text-[10px]">
+              <Badge variant="secondary" className={classNames.sessionDetailDialog81}>
                 Past
               </Badge>
             )}
           </div>
           {session.description && (
-            <DialogDescription className="mt-1.5">{session.description}</DialogDescription>
+            <DialogDescription className={classNames.sessionDetailDialog82}>
+              {session.description}
+            </DialogDescription>
           )}
         </DialogHeader>
 
-        <Separator className="my-1" />
+        <Separator className={classNames.exhibitorDetailDialog50} />
 
-        <div className="space-y-3">
-          <div className="flex items-center gap-2 text-sm">
-            <Clock className="size-4 shrink-0 text-muted-foreground" />
+        <div className={classNames.exhibitorDetailDialog51}>
+          <div className={classNames.exhibitorDetailDialog52}>
+            <Clock className={classNames.commandSearch9} />
             <span>
               {session.formattedDate} &middot; {formatTimeRange(session)} (IST)
             </span>
           </div>
 
-          <div className="flex items-center gap-2 text-sm">
-            <Buildings className="size-4 shrink-0 text-muted-foreground" />
+          <div className={classNames.exhibitorDetailDialog52}>
+            <Buildings className={classNames.commandSearch9} />
             <span>{session.venue}</span>
           </div>
 
-          <div className="flex items-center gap-2 text-sm">
-            <MapPin className="size-4 shrink-0 text-muted-foreground" />
+          <div className={classNames.exhibitorDetailDialog52}>
+            <MapPin className={classNames.commandSearch9} />
             <span>{session.auditorium}</span>
           </div>
 
           {session.speakers.length > 0 && (
-            <div className="space-y-2">
-              <div className="flex items-center gap-2 text-sm font-medium">
-                <User className="size-4 shrink-0 text-muted-foreground" />
+            <div className={classNames.sessionDetailDialog83}>
+              <div className={classNames.sessionDetailDialog84}>
+                <User className={classNames.commandSearch9} />
                 Speakers
               </div>
-              <ul className="space-y-1 pl-6 text-sm text-muted-foreground">
+              <ul className={classNames.sessionDetailDialog85}>
                 {session.speakers.map((speaker) => (
                   <li key={speaker.id}>{speaker.name}</li>
                 ))}
@@ -94,12 +100,12 @@ export function SessionDetailDialog({
           )}
 
           {session.knowledgePartners.length > 0 && (
-            <div className="space-y-2">
-              <div className="flex items-center gap-2 text-sm font-medium">
-                <Handshake className="size-4 shrink-0 text-muted-foreground" />
+            <div className={classNames.sessionDetailDialog83}>
+              <div className={classNames.sessionDetailDialog84}>
+                <Handshake className={classNames.commandSearch9} />
                 Knowledge Partners
               </div>
-              <ul className="space-y-1 pl-6 text-sm text-muted-foreground">
+              <ul className={classNames.sessionDetailDialog85}>
                 {session.knowledgePartners.map((kp) => (
                   <li key={kp.id}>{kp.name}</li>
                 ))}
@@ -108,11 +114,11 @@ export function SessionDetailDialog({
           )}
 
           {session.tags.length > 0 && (
-            <div className="flex items-center gap-2">
-              <Tag className="size-4 shrink-0 text-muted-foreground" />
-              <div className="flex flex-wrap gap-1">
+            <div className={classNames.exhibitorDetailDialog53}>
+              <Tag className={classNames.commandSearch9} />
+              <div className={classNames.sessionDetailDialog86}>
                 {session.tags.map((tag) => (
-                  <Badge key={tag} variant="secondary" className="text-[10px]">
+                  <Badge key={tag} variant="secondary" className={classNames.exhibitorCard47}>
                     {tag}
                   </Badge>
                 ))}
@@ -123,11 +129,14 @@ export function SessionDetailDialog({
 
         {session.watchLiveUrl && (
           <>
-            <Separator className="my-1" />
-            <Button asChild variant="outline" className="w-full">
+            <Separator className={classNames.exhibitorDetailDialog50} />
+            <Button asChild variant="outline" className={classNames.sessionDetailDialog87}>
               <a href={session.watchLiveUrl} target="_blank" rel="noopener noreferrer">
                 Watch Live
-                <ArrowSquareOut data-icon="inline-end" className="size-4" />
+                <ArrowSquareOut
+                  data-icon="inline-end"
+                  className={classNames.exhibitorFiltersBar56}
+                />
               </a>
             </Button>
           </>

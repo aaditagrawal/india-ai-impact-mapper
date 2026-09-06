@@ -1,3 +1,4 @@
+import { classNames } from "@/app/ui.stylex";
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import { GeistPixelSquare } from "geist/font/pixel";
@@ -40,7 +41,7 @@ export default function RootLayout({
         />
         <script defer src="https://stat.sys256.com/script.js"></script>
       </head>
-      <body className="antialiased">{children}</body>
+      <body className={classNames.layout0}>{children}</body>
     </html>
   );
 }

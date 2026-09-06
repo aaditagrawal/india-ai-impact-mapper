@@ -1,5 +1,7 @@
 "use client";
 
+import { classNames } from "@/app/ui.stylex";
+
 import { useMemo } from "react";
 import { VenueMapSvg, type ZoneData } from "./venue-map-svg";
 import { VenueLegend } from "./venue-legend";
@@ -65,7 +67,7 @@ export function VenueMap({
   );
 
   return (
-    <div className="space-y-1">
+    <div className={classNames.venueMap150}>
       <VenueMapSvg
         zoneData={zoneData}
         activeZone={filters.zone}

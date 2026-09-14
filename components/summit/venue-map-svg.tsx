@@ -81,9 +81,6 @@ function ZoneRect({
           onClick={() => onZoneClick(zone)}
           onMouseEnter={() => onZoneHover(zone)}
           onMouseLeave={() => onZoneHover(null)}
-          style={{
-            transition: "opacity 200ms cubic-bezier(0.4,0,0.2,1)",
-          }}
           opacity={emphasized ? 1 : undefined}
         >
           {/* Soft glow ring on active/hovered */}
@@ -121,9 +118,9 @@ function ZoneRect({
               width={width - 2}
               height={Math.min(height * 0.35, 14)}
               rx={Math.max(cornerRadius - 1, 1)}
-              fill="white"
+              fill="var(--background)"
               opacity={0.12}
-              style={{ pointerEvents: "none" }}
+              className={classNames.pointerEventsNone}
             />
           )}
           {data.hasLive && (
@@ -153,7 +150,6 @@ function ZoneRect({
                 textAnchor="middle"
                 dominantBaseline="middle"
                 className={classNames.venueMapSvg134}
-                style={{ pointerEvents: "none" }}
               >
                 {displayLabel}
               </text>
@@ -163,7 +159,6 @@ function ZoneRect({
                 textAnchor="middle"
                 dominantBaseline="middle"
                 className={classNames.venueMapSvg135}
-                style={{ pointerEvents: "none" }}
               >
                 {data.count}
               </text>
@@ -176,7 +171,6 @@ function ZoneRect({
                 textAnchor="middle"
                 dominantBaseline="middle"
                 className={classNames.venueMapSvg136}
-                style={{ pointerEvents: "none" }}
               >
                 {displayLabel.length > 18 ? displayLabel.slice(0, 18) + "..." : displayLabel}
               </text>
@@ -186,7 +180,6 @@ function ZoneRect({
                 textAnchor="middle"
                 dominantBaseline="middle"
                 className={classNames.venueMapSvg137}
-                style={{ pointerEvents: "none" }}
               >
                 {data.count} {data.count === 1 ? countLabel : `${countLabel}s`}
               </text>
@@ -209,7 +202,7 @@ function Gate({ x, y, label, accent }: { x: number; y: number; label: string; ac
   const gateColor = accent ? "var(--primary)" : "var(--chart-2)";
   const gateOpacity = accent ? 0.65 : 0.5;
   return (
-    <g style={{ pointerEvents: "none" }}>
+    <g className={classNames.pointerEventsNone}>
       {/* Gate base */}
       <rect x={x} y={y + 3} width={14} height={7} rx={1} fill={gateColor} opacity={gateOpacity} />
       {/* Arch top */}
@@ -286,7 +279,7 @@ function DecoBuilding({
   const r = rx ?? 2;
   const cornerSize = 6;
   return (
-    <g style={{ pointerEvents: "none" }}>
+    <g className={classNames.pointerEventsNone}>
       <rect
         x={x}
         y={y}
@@ -382,7 +375,7 @@ function SectionLabel({
   // Approximate half-width of text for line placement
   const textHalfW = children.length * 3.2;
   return (
-    <g style={{ pointerEvents: "none" }}>
+    <g className={classNames.pointerEventsNone}>
       {/* Decorative lines flanking the label */}
       <line
         x1={x - textHalfW - 6}
@@ -549,7 +542,6 @@ export const VenueMapSvg = memo(function VenueMapSvg({
         className={classNames.venueMapSvg146}
         textAnchor="middle"
         dominantBaseline="middle"
-        style={{ pointerEvents: "none" }}
       >
         L3
       </text>
@@ -559,7 +551,6 @@ export const VenueMapSvg = memo(function VenueMapSvg({
         className={classNames.venueMapSvg146}
         textAnchor="middle"
         dominantBaseline="middle"
-        style={{ pointerEvents: "none" }}
       >
         L2
       </text>
@@ -569,7 +560,6 @@ export const VenueMapSvg = memo(function VenueMapSvg({
         className={classNames.venueMapSvg146}
         textAnchor="middle"
         dominantBaseline="middle"
-        style={{ pointerEvents: "none" }}
       >
         L1
       </text>
@@ -603,12 +593,7 @@ export const VenueMapSvg = memo(function VenueMapSvg({
       />
 
       {/* Level 1 ─── Meeting Rooms */}
-      <text
-        x={zi.x}
-        y={zi.y + (rowH + gap) * 2 + 2}
-        className={classNames.venueMapSvg147}
-        style={{ pointerEvents: "none" }}
-      >
+      <text x={zi.x} y={zi.y + (rowH + gap) * 2 + 2} className={classNames.venueMapSvg147}>
         Meeting Rooms
       </text>
 
@@ -754,7 +739,7 @@ export const VenueMapSvg = memo(function VenueMapSvg({
         );
       })}
       {/* Walking figure icon */}
-      <g style={{ pointerEvents: "none" }} opacity={0.35} transform="translate(420,240)">
+      <g className={classNames.pointerEventsNone} opacity={0.35} transform="translate(420,240)">
         {/* Head */}
         <circle cx={0} cy={0} r={1.8} fill="var(--muted-foreground)" />
         {/* Body */}
@@ -774,14 +759,7 @@ export const VenueMapSvg = memo(function VenueMapSvg({
         <line x1={0} y1={7} x2={2.5} y2={10.5} stroke="var(--muted-foreground)" strokeWidth={0.7} />
       </g>
       {/* Walkway label */}
-      <text
-        x={440}
-        y={236}
-        className={classNames.venueMapSvg148}
-        textAnchor="middle"
-        style={{ pointerEvents: "none" }}
-        opacity={0.5}
-      >
+      <text x={440} y={236} className={classNames.venueMapSvg148} textAnchor="middle" opacity={0.5}>
         Walkway
       </text>
 
@@ -848,7 +826,7 @@ export const VenueMapSvg = memo(function VenueMapSvg({
         { x: 480, y: 310 },
         { x: ex.x + 200 + 2, y: 260 },
       ].map((fc, i) => (
-        <g key={i} style={{ pointerEvents: "none" }}>
+        <g key={i} className={classNames.pointerEventsNone}>
           {/* Plate circle */}
           <circle cx={fc.x + 8} cy={fc.y + 7} r={8} fill="var(--chart-2)" opacity={0.2} />
           <circle

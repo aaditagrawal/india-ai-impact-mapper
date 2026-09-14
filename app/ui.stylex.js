@@ -813,6 +813,8 @@ export const styles = stylex.create({
     height: "calc(var(--spacing) * 2)",
     width: "calc(var(--spacing) * 16)",
     borderRadius: "calc(var(--radius) - 4px)",
+    backgroundImage:
+      "linear-gradient(to right, var(--chart-1), var(--chart-2), var(--chart-3), var(--chart-4), var(--chart-5))",
   },
   venueLegend127: {
     position: "relative",
@@ -828,6 +830,7 @@ export const styles = stylex.create({
     height: "100%",
     borderRadius: "3.40282e38px",
     backgroundColor: "var(--destructive)",
+    animation: "pulse-ring 1.5s cubic-bezier(0, 0, 0.2, 1) infinite",
   },
   venueLegend129: {
     position: "relative",
@@ -845,6 +848,9 @@ export const styles = stylex.create({
   },
   venueMapSvg131: {
     cursor: "pointer",
+    transitionProperty: "opacity",
+    transitionDuration: ".2s",
+    transitionTimingFunction: "cubic-bezier(.4,0,.2,1)",
   },
   venueMapSvg132: {
     transitionProperty: "fill,stroke,filter,opacity",
@@ -861,12 +867,14 @@ export const styles = stylex.create({
     fontWeight: "var(--font-weight-semibold)",
     "--tw-leading": null,
     lineHeight: null,
+    pointerEvents: "none",
   },
   venueMapSvg135: {
     fill: "var(--muted-foreground)",
     fontSize: "5.5px",
     "--tw-leading": null,
     lineHeight: null,
+    pointerEvents: "none",
   },
   venueMapSvg136: {
     fill: "var(--foreground)",
@@ -875,12 +883,14 @@ export const styles = stylex.create({
     fontWeight: "var(--font-weight-medium)",
     "--tw-leading": null,
     lineHeight: null,
+    pointerEvents: "none",
   },
   venueMapSvg137: {
     fill: "var(--muted-foreground)",
     fontSize: "6px",
     "--tw-leading": null,
     lineHeight: null,
+    pointerEvents: "none",
   },
   venueMapSvg138: {
     "--tw-font-weight": "var(--font-weight-medium)",
@@ -933,18 +943,21 @@ export const styles = stylex.create({
     fontWeight: "var(--font-weight-bold)",
     "--tw-leading": null,
     lineHeight: null,
+    pointerEvents: "none",
   },
   venueMapSvg147: {
     fill: "var(--muted-foreground)",
     fontSize: "5px",
     "--tw-leading": null,
     lineHeight: null,
+    pointerEvents: "none",
   },
   venueMapSvg148: {
     fill: "var(--muted-foreground)",
     fontSize: "4.5px",
     "--tw-leading": null,
     lineHeight: null,
+    pointerEvents: "none",
   },
   venueMapSvg149: {
     fill: "var(--foreground)",
@@ -953,6 +966,9 @@ export const styles = stylex.create({
     fontWeight: "var(--font-weight-bold)",
     "--tw-leading": null,
     lineHeight: null,
+  },
+  pointerEventsNone: {
+    pointerEvents: "none",
   },
   venueMap150: {},
   alertDialog151: {
@@ -2226,6 +2242,7 @@ export const classNames = {
   venueMapSvg147: `${stylex.props(styles.venueMapSvg147).className ?? ""} summit-venueMapSvg147`,
   venueMapSvg148: `${stylex.props(styles.venueMapSvg148).className ?? ""} summit-venueMapSvg148`,
   venueMapSvg149: `${stylex.props(styles.venueMapSvg149).className ?? ""} summit-venueMapSvg149`,
+  pointerEventsNone: `${stylex.props(styles.pointerEventsNone).className ?? ""} summit-pointerEventsNone`,
   venueMap150: `${stylex.props(styles.venueMap150).className ?? ""} summit-venueMap150`,
   alertDialog151: `${stylex.props(styles.alertDialog151).className ?? ""} summit-alertDialog151`,
   alertDialog152: `${stylex.props(styles.alertDialog152).className ?? ""} summit-alertDialog152 group/alert-dialog-content`,
@@ -2514,6 +2531,7 @@ export const styleEntries = {
   "summit-venueMapSvg147": styles.venueMapSvg147,
   "summit-venueMapSvg148": styles.venueMapSvg148,
   "summit-venueMapSvg149": styles.venueMapSvg149,
+  "summit-pointerEventsNone": styles.pointerEventsNone,
   "summit-venueMap150": styles.venueMap150,
   "summit-alertDialog151": styles.alertDialog151,
   "summit-alertDialog152": styles.alertDialog152,

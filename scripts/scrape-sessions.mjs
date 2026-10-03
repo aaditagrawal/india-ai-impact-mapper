@@ -5,7 +5,6 @@
 
 const BASE_URL = "https://impact.indiaai.gov.in/sessions";
 const GET_ALL_SESSIONS_ACTION = "7ff6cbc8a6b585bb0fe7d20cbea5495f6d846327a8";
-const _GET_FILTER_OPTIONS_ACTION = "004e64170b9b3d4f4188ce1d259531183dacc71a59";
 
 async function callServerAction(actionId, args) {
   const res = await fetch(BASE_URL, {

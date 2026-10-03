@@ -40,6 +40,10 @@ export const FiltersBar = memo(function FiltersBar({
 
   // Sync from parent only when query changes externally
   if (filters.query !== lastSentRef.current) {
+    if (debounceRef.current) {
+      clearTimeout(debounceRef.current);
+      debounceRef.current = null;
+    }
     lastSentRef.current = filters.query;
     if (localQuery !== filters.query) {
       setLocalQuery(filters.query);
@@ -152,7 +156,14 @@ export const FiltersBar = memo(function FiltersBar({
         </Toggle>
 
         {hasActiveFilters && (
-          <Button variant="ghost" size="xs" onClick={onClear}>
+          <Button
+            variant="ghost"
+            size="xs"
+            onClick={() => {
+              handleQueryClear();
+              onClear();
+            }}
+          >
             <X className={classNames.activeFilters3} />
             Clear
           </Button>

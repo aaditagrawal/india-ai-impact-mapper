@@ -45,7 +45,3 @@ export function formatTimeRange(session: Session): string {
   const end = session.formattedEndTime ?? "TBD";
   return `${start} — ${end}`;
 }
-
-export function getTimeGroupKey(session: Session): string {
-  return session.formattedStartTime ?? "TBD";
-}

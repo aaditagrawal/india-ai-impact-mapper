@@ -105,10 +105,13 @@ export function CommandSearch({
       const upcoming = sessions
         .filter((s) => getSessionStatus(s, now) === "upcoming")
         .slice(0, 12 - live.length);
-      const items: SearchResult[] = [...live, ...upcoming].map((s) => ({
-        type: "session" as const,
-        session: s,
-      }));
+      const defaults = [...live, ...upcoming];
+      const items: SearchResult[] = (defaults.length ? defaults : sessions.slice(0, 12)).map(
+        (s) => ({
+          type: "session" as const,
+          session: s,
+        }),
+      );
       return { items, isDefault: true };
     }
 

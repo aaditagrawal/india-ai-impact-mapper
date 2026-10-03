@@ -89,16 +89,6 @@ export interface FilterState {
 
 export type TimeSlot = "morning" | "afternoon" | "evening";
 
-export type ExhibitorTag =
-  | "Academia"
-  | "Corporate (Domestic)"
-  | "Corporate (International)"
-  | "Country Representation"
-  | "Government (Ministries & States)"
-  | "Non Profit Organization"
-  | "Public Sector Undertaking"
-  | "Startups (Startup Pods)";
-
 export interface Exhibitor {
   sno: number;
   exhibitor: string;

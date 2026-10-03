@@ -21,7 +21,7 @@ import { useCurrentTime } from "@/hooks/use-current-time";
 import { filterSessions, DEFAULT_FILTERS } from "@/lib/filters";
 import { filterExhibitors, DEFAULT_EXHIBITOR_FILTERS } from "@/lib/exhibitor-filters";
 import { getSessionStatus } from "@/lib/time-utils";
-import { zoneToHallNumber } from "@/lib/auditorium-map";
+import { zoneToHallNumber, hallNumberToZone } from "@/lib/auditorium-map";
 import type {
   Session,
   SummitData,
@@ -40,6 +40,7 @@ function SummitAppInner({ data, exhibitors }: SummitAppProps) {
   const { filters, updateFilters, clearFilters } = useFilters();
   const now = useCurrentTime();
   const [view, setView] = useState<AppView>("sessions");
+  const [viewInitialized, setViewInitialized] = useState(false);
   const [mapHoveredZone, setMapHoveredZone] = useState<VenueZone | null>(null);
   const [cardHoveredZone, setCardHoveredZone] = useState<VenueZone | null>(null);
   const [commandOpen, setCommandOpen] = useState(false);
@@ -66,9 +67,11 @@ function SummitAppInner({ data, exhibitors }: SummitAppProps) {
     if (params.get("view") === "exhibitors") {
       setView("exhibitors");
     }
+    setViewInitialized(true);
   }, []);
 
   useEffect(() => {
+    if (!viewInitialized) return;
     const params = new URLSearchParams(window.location.search);
     if (view === "exhibitors") {
       params.set("view", "exhibitors");
@@ -78,7 +81,7 @@ function SummitAppInner({ data, exhibitors }: SummitAppProps) {
     const search = params.toString();
     const url = search ? `?${search}` : window.location.pathname;
     window.history.replaceState(null, "", url);
-  }, [view]);
+  }, [view, viewInitialized]);
 
   // Defer the query so filtering doesn't block input
   const deferredQuery = useDeferredValue(filters.query);
@@ -254,7 +257,11 @@ function SummitAppInner({ data, exhibitors }: SummitAppProps) {
               <VenueMap
                 sessions={filtered}
                 exhibitors={view === "exhibitors" ? filteredExhibitors : undefined}
-                filters={filters}
+                filters={
+                  view === "exhibitors"
+                    ? { ...filters, zone: hallNumberToZone(exFilters.hall) ?? "" }
+                    : filters
+                }
                 now={now}
                 hoveredZone={mapHoveredZone ?? cardHoveredZone}
                 onZoneClick={handleZoneClick}

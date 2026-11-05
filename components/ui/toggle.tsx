@@ -3,12 +3,12 @@
 import { classNames } from "@/app/ui.stylex";
 
 import * as React from "react";
-import { cva, type VariantProps } from "class-variance-authority";
+import { defineVariants, type VariantProps } from "@/lib/variants";
 import { Toggle as TogglePrimitive } from "radix-ui";
 
 import { cn } from "@/lib/utils";
 
-const toggleVariants = cva(classNames.toggle276, {
+const toggleVariants = defineVariants(classNames.toggle276, {
   variants: {
     variant: {
       default: classNames.toggle277,

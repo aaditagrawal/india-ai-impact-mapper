@@ -1,11 +1,11 @@
 import { classNames } from "@/app/ui.stylex";
 import * as React from "react";
-import { cva, type VariantProps } from "class-variance-authority";
+import { defineVariants, type VariantProps } from "@/lib/variants";
 import { Slot } from "radix-ui";
 
 import { cn } from "@/lib/utils";
 
-const badgeVariants = cva(classNames.badge158, {
+const badgeVariants = defineVariants(classNames.badge158, {
   variants: {
     variant: {
       default: classNames.badge159,

@@ -3,7 +3,7 @@
 import { classNames } from "@/app/ui.stylex";
 
 import * as React from "react";
-import { cva, type VariantProps } from "class-variance-authority";
+import { defineVariants, type VariantProps } from "@/lib/variants";
 
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
@@ -21,7 +21,7 @@ function InputGroup({ className, ...props }: React.ComponentProps<"div">) {
   );
 }
 
-const inputGroupAddonVariants = cva(classNames.inputGroup238, {
+const inputGroupAddonVariants = defineVariants(classNames.inputGroup238, {
   variants: {
     align: {
       "inline-start": classNames.inputGroup239,
@@ -67,7 +67,7 @@ function InputGroupAddon({
   );
 }
 
-const inputGroupButtonVariants = cva(classNames.inputGroup243, {
+const inputGroupButtonVariants = defineVariants(classNames.inputGroup243, {
   variants: {
     size: {
       xs: classNames.inputGroup244,

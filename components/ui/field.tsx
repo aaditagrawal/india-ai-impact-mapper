@@ -3,7 +3,7 @@
 import { classNames } from "@/app/ui.stylex";
 
 import { useMemo } from "react";
-import { cva, type VariantProps } from "class-variance-authority";
+import { defineVariants, type VariantProps } from "@/lib/variants";
 
 import { cn } from "@/lib/utils";
 import { Label } from "@/components/ui/label";
@@ -34,7 +34,7 @@ function FieldGroup({ className, ...props }: React.ComponentProps<"div">) {
   return <div data-slot="field-group" className={cn(classNames.field221, className)} {...props} />;
 }
 
-const fieldVariants = cva(classNames.field222, {
+const fieldVariants = defineVariants(classNames.field222, {
   variants: {
     orientation: {
       vertical: classNames.field223,
